@@ -1,0 +1,66 @@
+otonodir=~/code
+scripts=${otonodir}/frontend-build-scripts
+
+usage() {
+    cat << EOT
+Usage: release-notes <env> <repo> <start-ver> <end-ver>
+
+EOT
+}
+
+err() {
+    echo "[$(date +'%Y-%m-%dT%H:%M:%S%z')] Error: $@" >&2
+    usage
+    exit 1
+}
+
+parseCommand() {
+    if [[ $# != 4 ]]; then
+        err "Not enough args"
+    fi
+
+    re="(stg|prod)"
+    if [[ ! "$1" =~ $re ]]; then
+        err "<env> must be either 'stg' or 'prod'"
+    fi
+
+    if [[ ! -d "${otonodir}/$2" ]]; then
+        err "$2 is not a checked out repo"
+    fi
+
+    readonly ENVIRON=$1
+    readonly REPO=$2
+    readonly START_VER=$3
+    readonly END_VER=$4
+}
+
+printEnviron() {
+    if [[ "$ENVIRON" == "stg" ]]; then
+        echo "Staging"
+    elif [[ "$ENVIRON" == "prod" ]]; then
+        echo "Production"
+    fi
+}
+
+preemptiveFetch() {
+    cd ${otonodir}/${REPO}
+    git fetch --tags #premptive fetch to suppress output
+}
+
+printPullReqs() {
+    cd ${otonodir}/${REPO}
+    notes=$(${scripts}/release_notes.sh $START_VER $END_VER)
+    prs=$(echo "$notes" | sed -e '/Internal Package Updates/,$d')
+    prs=$(echo "$prs" | sed -e '1,/Pull requests/d')
+    echo "$prs"
+}
+
+printReleaseNotes() {
+    preemptiveFetch
+    printf ":rotating_light: $(printEnviron) Deployment: \
+\`${REPO}\` \`v${START_VER}\` -> \`v${END_VER}\`\n"
+    printf "\`\`\`$(printPullReqs)\`\`\`\n"
+}
+
+parseCommand "${@}"
+printReleaseNotes

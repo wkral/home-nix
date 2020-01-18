@@ -1,0 +1,4 @@
+#! /usr/bin/env bash
+
+ln -s ~/projects/docgen/Makefile ./Makefile
+ln -s ~/projects/docgen/build ./build
