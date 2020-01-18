@@ -1,11 +1,12 @@
 {pkgs, ...}:
 {
   imports = [
+    ../modules/inputrc
     ../modules/vim
     ../modules/fzf
     ../modules/git
     ../modules/htop
-    ../modules/inputrc
+    ../modules/starship
   ];
 
   home.packages = with pkgs; [
