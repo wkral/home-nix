@@ -16,5 +16,13 @@
     swaybg
     swayidle
     wl-clipboard
+
+    libsForQt5.qtstyleplugins
+    libsForQt5.qtstyleplugin-kvantum
+    arc-icon-theme
+    arc-theme
+    bibata-cursors
+    gnome-themes-extra
+    gsettings-desktop-schemas
   ];
 }
