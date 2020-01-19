@@ -1,4 +1,7 @@
 { pkgs, ... }:
+let
+  gui = if pkgs.stdenv.isDarwin then "darwin" else "gtk3";
+in
 {
   home.sessionVariables = {
     EDITOR = "vim";
@@ -9,6 +12,8 @@
       vi = "vim";
     };
   };
+
+  nixpkgs.config.vim.gui = gui;
 
   programs.vim =  {
     enable = true;
