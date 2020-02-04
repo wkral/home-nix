@@ -32,6 +32,7 @@ output * bg ~/wallpapers/12878491_1600x1200.jpg fill
 
 font Noto Sans Mono 9
 
+output eDP-1 mode 2560x1440 scale 2 position 0,0
 
 exec ${pkgs.swayidle}/bin/swayidle \
     timeout 600 'swaylock' \
@@ -214,6 +215,13 @@ smart_gaps on
 default_border none
 focus_follows_mouse no
 
+titlebar_border_thickness 0
+titlebar_padding 5 2
+
+client.focused #005880AA #005880AA #EEEEEE
+client.unfocused #22222ADD #22222ADD #888888
+
 include config.d/*
+
 '';
 }
