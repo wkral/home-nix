@@ -10,6 +10,8 @@ in
     ../modules/work-gpg
     ../modules/python
     ../modules/clojure
+    ../modules/teams
+    ../modules/docs
     # ./modules/ajv TODO Fix this
   ];
 
