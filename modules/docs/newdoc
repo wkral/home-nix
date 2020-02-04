@@ -1,4 +1,4 @@
-#! /usr/bin/env bash
+# vim: filetype=bash
 
 ln -s ~/projects/docgen/Makefile ./Makefile
 ln -s ~/projects/docgen/build ./build

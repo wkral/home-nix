@@ -1,3 +1,5 @@
+# vim: filetype=bash
+
 boxes=$(vagrant global-status | sed -n -e '3,/^ $/p' | grep running)
 
 regular=$(echo "${boxes}" | grep -v devops | cut -d' ' -f1 | xargs)

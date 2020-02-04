@@ -1,3 +1,5 @@
+# vim: filetype=bash
+
 usage() {
     cat << EOT
 Usage: newbranch [-s <source-branch>] <issue> <title>

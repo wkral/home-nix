@@ -1,3 +1,5 @@
+# vim: filetype=bash
+
 set -- ${1:-default}
 
 if [ ! -f '.ssh-config' ]; then
