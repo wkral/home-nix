@@ -24,4 +24,5 @@
 
   programs.bash.enable = true;
   programs.jq.enable = true;
+  programs.taskwarrior.enable = true;
 }

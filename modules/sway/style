@@ -1,0 +1,14 @@
+font Noto Sans Mono 9
+
+gaps inner 8
+gaps outer -8
+smart_gaps on
+
+default_border none
+focus_follows_mouse no
+
+titlebar_border_thickness 0
+titlebar_padding 5 2
+
+client.focused #005880AA #005880AA #EEEEEE
+client.unfocused #22222ADD #22222ADD #888888

@@ -6,6 +6,7 @@ in
 {
   home.packages = with pkgs; [
     newdoc
+    librsvg
     graphviz
     pandoc
     plantuml
