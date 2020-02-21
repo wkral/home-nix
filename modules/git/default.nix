@@ -34,6 +34,7 @@
       "ehthumbs.db"
       "Thumbs.db"
       ".ssh-config"
+      "my-todo.md"
     ];
   };
 }
