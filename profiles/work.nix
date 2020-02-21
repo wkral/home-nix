@@ -4,6 +4,10 @@ let
     inherit pkgs;
     inherit builtins;
   };
+
+  node-tools = import ../modules/node-tools {
+    inherit pkgs;
+  };
 in
 {
   imports = [
@@ -12,7 +16,6 @@ in
     ../modules/clojure
     ../modules/teams
     ../modules/docs
-    # ./modules/ajv TODO Fix this
   ];
 
 
@@ -21,6 +24,11 @@ in
     packer
     terraform_0_12
     vagrant
+
+    node-tools.ajv-cli
+    node-tools.swagger-cli
+
+    nodePackages.node2nix
 
     scripts.last-commit-id
     scripts.newbranch
