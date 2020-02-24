@@ -14,21 +14,6 @@ set $term alacritty
 # Your preferred application launcher
 set $menu rofi -show drun
 
-### Output configuration
-#
-#output * bg ~/wallpapers/12878491_1600x1200.jpg fill
-
-#output eDP-1 mode 2560x1440 scale 2 position 0,0
-
-exec ${pkgs.swayidle}/bin/swayidle \
-    timeout 600 'swaylock' \
-    timeout 565 'swaymsg "output * dpms off"' \
-         resume 'swaymsg "output * dpms on"'
-
-exec ${pkgs.kanshi}/bin/kanshi
-
-exec chg-bg
-
 ### Key bindings
 #
 # Basics:

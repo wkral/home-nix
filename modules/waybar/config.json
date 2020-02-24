@@ -31,12 +31,12 @@
         "format": " {:%a, %b %d %H:%M}"
     },
     "cpu": {
-        "format": " {usage:2}%",
+        "format": " {usage:2}%",
         "max-length": 10,
         "interval": 5
     },
     "memory": {
-        "format": " {:2}%"
+        "format": " {:2}%"
     },
     "network": {
         "format-wifi": " {essid}",
