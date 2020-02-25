@@ -34,7 +34,7 @@ let g:lightline = {
 function! LightlineFilename()
   let filename = expand('%:f') !=# '' ? expand('%:f') : '[No Name]'
   let modified = &modified ? ' +' : ''
-  let readonly = &readonly ? '  ⃠' : ''
+  let readonly = &readonly ? '🚫' : ''
   return filename . modified . readonly
 endfunction
 
@@ -51,7 +51,7 @@ function! GitBranchStats()
 
     let char_map = ['', ' -', ' ~', ' ≃', ' +', ' ±', ' +̃', ' ±̃']
 
-    return 'ᚶ ' . branch . char_map[change_val]
+    return ' ' . branch . char_map[change_val]
 endfunction
 
 set incsearch "hilight as I search

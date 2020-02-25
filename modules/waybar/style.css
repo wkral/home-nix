@@ -7,7 +7,7 @@
 }
 
 window#waybar {
-    background: rgb(43, 48, 59);
+    background: rgba(29, 31, 33, 0.9);
     color: white;
 }
 
@@ -49,13 +49,7 @@ window#waybar {
 }
 
 #battery {
-    background-color: #ffffff;
-    color: black;
-}
-
-#battery.charging {
     color: white;
-    background-color: #26A65B;
 }
 
 @keyframes blink {
@@ -67,7 +61,6 @@ window#waybar {
 
 #battery.warning:not(.charging) {
     background: #f53c3c;
-    color: white;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: linear;
@@ -75,14 +68,82 @@ window#waybar {
     animation-direction: alternate;
 }
 
-#cpu {
-    background: #2ecc71;
-    color: #000000;
+#battery.percent100 { background: #0ec971; }
+#battery.percent95 { background: linear-gradient(to right, #1ec76e 95%, rgba(255,255,255,0.2) 95%); }
+#battery.percent90 { background: linear-gradient(to right, #2ec56b 90%, rgba(255,255,255,0.2) 90%); }
+#battery.percent85 { background: linear-gradient(to right, #3ec368 85%, rgba(255,255,255,0.2) 85%); }
+#battery.percent80 { background: linear-gradient(to right, #4ec165 80%, rgba(255,255,255,0.2) 80%); }
+#battery.percent75 { background: linear-gradient(to right, #5ec062 75%, rgba(255,255,255,0.2) 75%); }
+#battery.percent70 { background: linear-gradient(to right, #6ebe5f 70%, rgba(255,255,255,0.2) 70%); }
+#battery.percent65 { background: linear-gradient(to right, #7ebd5c 65%, rgba(255,255,255,0.2) 65%); }
+#battery.percent60 { background: linear-gradient(to right, #8ebb59 60%, rgba(255,255,255,0.2) 60%); }
+#battery.percent55 { background: linear-gradient(to right, #aeb853 55%, rgba(255,255,255,0.2) 55%); }
+#battery.percent50 { background: linear-gradient(to right, #c2b650 50%, rgba(255,255,255,0.2) 50%); }
+#battery.percent45 { background: linear-gradient(to right, #d5b44c 45%, rgba(255,255,255,0.2) 45%); }
+#battery.percent40 { background: linear-gradient(to right, #e9b248 40%, rgba(255,255,255,0.2) 40%); }
+#battery.percent35 { background: linear-gradient(to right, #fcaf45 35%, rgba(255,255,255,0.2) 35%); }
+#battery.percent30 { background: linear-gradient(to right, #fc973f 30%, rgba(255,255,255,0.2) 30%); }
+#battery.percent25 { background: linear-gradient(to right, #fc7f38 25%, rgba(255,255,255,0.2) 25%); }
+#battery.percent20 { background: linear-gradient(to right, #fc6731 20%, rgba(255,255,255,0.2) 20%); }
+#battery.percent15 { background: linear-gradient(to right, #fc4e2a 15%, rgba(255,255,255,0.2) 15%); }
+#battery.percent10 { background: linear-gradient(to right, #fc3524 10%, rgba(255,255,255,0.2) 10%); }
+#battery.percent5 { background: linear-gradient(to right, #fd1d1d 5%, rgba(255,255,255,0.2) 5%); }
+#battery.percent0 {
+    background: rgba(255,255,255,0.2);
 }
 
-#memory {
-    background: #9b59b6;
+#cpu {
+    color: #ffffff;
 }
+
+#cpu.percent100 { background-color: #fd1d1d; }
+#cpu.percent95 { background-color: #fc4227; }
+#cpu.percent90 { background-color: #fc6631; }
+#cpu.percent85 { background-color: #fc8b3b; }
+#cpu.percent80 { background-color: #fcaf45; }
+#cpu.percent75 { background-color: #f1ac50; }
+#cpu.percent70 { background-color: #e5a85a; }
+#cpu.percent65 { background-color: #daa565; }
+#cpu.percent60 { background-color: #cea16f; }
+#cpu.percent55 { background-color: #c29e7a; }
+#cpu.percent50 { background-color: #b69a85; }
+#cpu.percent45 { background-color: #aa9790; }
+#cpu.percent40 { background-color: #9e939b; }
+#cpu.percent35 { background-color: #9290a6; }
+#cpu.percent30 { background-color: #868cb1; }
+#cpu.percent25 { background-color: #7a89bc; }
+#cpu.percent20 { background-color: #6e86c7; }
+#cpu.percent15 { background-color: #6283d2; }
+#cpu.percent10 { background-color: #5680dd; }
+#cpu.percent5 { background-color: #4a7de8; }
+#cpu.percent1 { background-color: #417af0; }
+#cpu.percent0 { background-color: #04ff73; }
+
+#memory {
+    color: white;
+}
+
+#memory.percent100 { background: #9b59b6; }
+#memory.percent95 { background: linear-gradient(to right, #9b59b6 95%, rgba(255,255,255,0.2) 95%); }
+#memory.percent90 { background: linear-gradient(to right, #9b59b6 90%, rgba(255,255,255,0.2) 90%); }
+#memory.percent85 { background: linear-gradient(to right, #9b59b6 85%, rgba(255,255,255,0.2) 85%); }
+#memory.percent80 { background: linear-gradient(to right, #9b59b6 80%, rgba(255,255,255,0.2) 80%); }
+#memory.percent75 { background: linear-gradient(to right, #9b59b6 75%, rgba(255,255,255,0.2) 75%); }
+#memory.percent70 { background: linear-gradient(to right, #9b59b6 70%, rgba(255,255,255,0.2) 70%); }
+#memory.percent65 { background: linear-gradient(to right, #9b59b6 65%, rgba(255,255,255,0.2) 65%); }
+#memory.percent60 { background: linear-gradient(to right, #9b59b6 60%, rgba(255,255,255,0.2) 60%); }
+#memory.percent55 { background: linear-gradient(to right, #9b59b6 55%, rgba(255,255,255,0.2) 55%); }
+#memory.percent50 { background: linear-gradient(to right, #9b59b6 50%, rgba(255,255,255,0.2) 50%); }
+#memory.percent45 { background: linear-gradient(to right, #9b59b6 45%, rgba(255,255,255,0.2) 45%); }
+#memory.percent40 { background: linear-gradient(to right, #9b59b6 40%, rgba(255,255,255,0.2) 40%); }
+#memory.percent35 { background: linear-gradient(to right, #9b59b6 35%, rgba(255,255,255,0.2) 35%); }
+#memory.percent30 { background: linear-gradient(to right, #9b59b6 30%, rgba(255,255,255,0.2) 30%); }
+#memory.percent25 { background: linear-gradient(to right, #9b59b6 25%, rgba(255,255,255,0.2) 25%); }
+#memory.percent20 { background: linear-gradient(to right, #9b59b6 20%, rgba(255,255,255,0.2) 20%); }
+#memory.percent15 { background: linear-gradient(to right, #9b59b6 15%, rgba(255,255,255,0.2) 15%); }
+#memory.percent10 { background: linear-gradient(to right, #9b59b6 10%, rgba(255,255,255,0.2) 10%); }
+#memory.percent5 { background: linear-gradient(to right, #9b59b6 5%, rgba(255,255,255,0.2) 5%); }
+#memory.percent0 { background: rgba(255,255,255,0.2); }
 
 #network {
     background: #2980b9;

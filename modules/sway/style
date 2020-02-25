@@ -10,5 +10,5 @@ focus_follows_mouse no
 titlebar_border_thickness 0
 titlebar_padding 5 2
 
-client.focused #005880AA #005880AA #EEEEEE
-client.unfocused #22222ADD #22222ADD #888888
+client.focused #005880aa #005880aa #eeeeee
+client.unfocused #1d1f21e6 #1d1f21e6 #888888
