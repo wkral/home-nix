@@ -18,6 +18,7 @@
     wireshark
     gnome3.gnome-tweak-tool
     gnome3.networkmanagerapplet
+    font-manager
     zbar
   ];
 

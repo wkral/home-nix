@@ -15,7 +15,7 @@ in
 
     exec ${pkgs.kanshi}/bin/kanshi
 
-    exec ${random-hourly-bg}
+    exec_always ${random-hourly-bg}
   '';
 
   xdg.configFile."sway/config.d/13-bar".text = ''
