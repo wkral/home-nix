@@ -4,7 +4,7 @@
     ../modules/sway
     ../modules/swaylock
     ../modules/waybar
-    ../modules/rofi
+    ../modules/wofi
     ../modules/kanshi
   ];
   home.packages = with pkgs; [

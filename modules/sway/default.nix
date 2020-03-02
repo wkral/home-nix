@@ -7,8 +7,16 @@ in
 {
 
   xdg.configFile."sway/config".source = ./config;
-  xdg.configFile."sway/config.d/11-workspaces".source = ./workspaces;
-  xdg.configFile."sway/config.d/12-execs".text = ''
+  xdg.configFile."sway/config.d/11-menu".text = ''
+    set $menu ${pkgs.wofi}/bin/wofi --show drun
+    bindsym $mod+d exec $menu
+  '';
+  xdg.configFile."sway/config.d/12-terminal".text = ''
+    set $term ${pkgs.alacritty}/bin/alacritty
+    bindsym $mod+Return exec $term
+  '';
+  xdg.configFile."sway/config.d/13-workspaces".source = ./workspaces;
+  xdg.configFile."sway/config.d/14-execs".text = ''
     exec ${pkgs.swayidle}/bin/swayidle \
         timeout 600 'swaylock' \
         timeout 565 'swaymsg "output * dpms off"' \
@@ -19,7 +27,7 @@ in
     exec_always ${random-hourly-bg}
   '';
 
-  xdg.configFile."sway/config.d/13-bar".text = ''
+  xdg.configFile."sway/config.d/15-bar".text = ''
     bar {
         height 19
         position top
@@ -27,8 +35,8 @@ in
     }
   '';
 
-  xdg.configFile."sway/config.d/14-style".source = ./style;
-  xdg.configFile."sway/config.d/15-inputs".source = ./inputs;
-  xdg.configFile."sway/config.d/16-audio-controls".source = ./audio-controls;
+  xdg.configFile."sway/config.d/16-style".source = ./style;
+  xdg.configFile."sway/config.d/17-inputs".source = ./inputs;
+  xdg.configFile."sway/config.d/18-audio-controls".source = ./audio-controls;
 
 }
