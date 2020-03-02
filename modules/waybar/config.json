@@ -24,8 +24,10 @@
         }
     },
     "battery": {
-        "format-discharging": "",
+        "format": "",
+        "format-full": "",
         "format-charging": "",
+        "format-discharging": "",
         "format-discharging-percent15": "",
         "format-discharging-percent10": "",
         "format-discharging-percent5": "",

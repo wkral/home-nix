@@ -2,6 +2,7 @@
 let
   bg-source = builtins.readFile ./random-hourly-bg;
   random-hourly-bg = pkgs.writeShellScript "random-hourly-bg" bg-source;
+  waybar = pkgs.waybar.override { pulseSupport = true; };
 in
 {
 
@@ -22,7 +23,7 @@ in
     bar {
         height 19
         position top
-        swaybar_command ${pkgs.waybar}/bin/waybar
+        swaybar_command ${waybar}/bin/waybar
     }
   '';
 

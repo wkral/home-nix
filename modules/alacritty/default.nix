@@ -6,6 +6,7 @@
       env = {
         TERM = "xterm-256color";
       };
+      dynamic_title = true;
       mouse = {
         hide_when_typeing = true;
       };

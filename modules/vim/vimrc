@@ -1,6 +1,9 @@
 syntax on
 colorscheme colours
 
+"Window title for vim
+set title
+
 "Indentation that doesn't suck
 set smartindent
 set softtabstop=4

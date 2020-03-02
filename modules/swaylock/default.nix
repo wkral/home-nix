@@ -6,7 +6,7 @@
 
   xdg.configFile."swaylock/config".text = ''
     ignore-empty-password
-    image=$HOME/.config/wallpapers/12883713_1600x1200.jpg
+    image=$HOME/.config/swaylock/background.jpg
     scaling=fill
   '';
 

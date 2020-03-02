@@ -117,7 +117,7 @@ window#waybar {
 #cpu.percent10 { background-color: #5680dd; }
 #cpu.percent5 { background-color: #4a7de8; }
 #cpu.percent1 { background-color: #417af0; }
-#cpu.percent0 { background-color: #04ff73; }
+#cpu.percent0 { background-color: #0ec971; }
 
 #memory {
     color: white;
