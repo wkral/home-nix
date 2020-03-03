@@ -154,11 +154,32 @@ window#waybar {
 }
 
 #pulseaudio {
-    background: #f1c40f;
-    color: black;
+    color: white;
 }
 
+#pulseaudio.percent100 { background: #f1c40f; }
+#pulseaudio.percent95 { background: linear-gradient(to top, #f1c40f 95%, rgba(255,255,255,0.2) 95%); }
+#pulseaudio.percent90 { background: linear-gradient(to top, #f1c40f 90%, rgba(255,255,255,0.2) 90%); }
+#pulseaudio.percent85 { background: linear-gradient(to top, #f1c40f 85%, rgba(255,255,255,0.2) 85%); }
+#pulseaudio.percent80 { background: linear-gradient(to top, #f1c40f 80%, rgba(255,255,255,0.2) 80%); }
+#pulseaudio.percent75 { background: linear-gradient(to top, #f1c40f 75%, rgba(255,255,255,0.2) 75%); }
+#pulseaudio.percent70 { background: linear-gradient(to top, #f1c40f 70%, rgba(255,255,255,0.2) 70%); }
+#pulseaudio.percent65 { background: linear-gradient(to top, #f1c40f 65%, rgba(255,255,255,0.2) 65%); }
+#pulseaudio.percent60 { background: linear-gradient(to top, #f1c40f 60%, rgba(255,255,255,0.2) 60%); }
+#pulseaudio.percent55 { background: linear-gradient(to top, #f1c40f 55%, rgba(255,255,255,0.2) 55%); }
+#pulseaudio.percent50 { background: linear-gradient(to top, #f1c40f 50%, rgba(255,255,255,0.2) 50%); }
+#pulseaudio.percent45 { background: linear-gradient(to top, #f1c40f 45%, rgba(255,255,255,0.2) 45%); }
+#pulseaudio.percent40 { background: linear-gradient(to top, #f1c40f 40%, rgba(255,255,255,0.2) 40%); }
+#pulseaudio.percent35 { background: linear-gradient(to top, #f1c40f 35%, rgba(255,255,255,0.2) 35%); }
+#pulseaudio.percent30 { background: linear-gradient(to top, #f1c40f 30%, rgba(255,255,255,0.2) 30%); }
+#pulseaudio.percent25 { background: linear-gradient(to top, #f1c40f 25%, rgba(255,255,255,0.2) 25%); }
+#pulseaudio.percent20 { background: linear-gradient(to top, #f1c40f 20%, rgba(255,255,255,0.2) 20%); }
+#pulseaudio.percent15 { background: linear-gradient(to top, #f1c40f 15%, rgba(255,255,255,0.2) 15%); }
+#pulseaudio.percent10 { background: linear-gradient(to top, #f1c40f 10%, rgba(255,255,255,0.2) 10%); }
+#pulseaudio.percent5 { background: linear-gradient(to top, #f1c40f 5%, rgba(255,255,255,0.2) 5%); }
+#pulseaudio.percent0 { background: rgba(255,255,255,0.2); }
+
 #pulseaudio.muted {
-    background: #90b1b1;
-    color: #2a5c45;
+    background: rgba(255,255,255,0.2);
+    color: #999999;
 }
