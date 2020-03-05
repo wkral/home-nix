@@ -119,8 +119,16 @@ let g:syntastic_rust_checkers = ['rustc']
 "ALE Fixers
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'python': ['yapf', 'isort'],
+\   'python': ['isort'],
+\   'nix': ['nixpkgs-fmt'],
 \}"
+
+nnoremap <leader>f :ALEFix<cr>
+
+
+"polyglot overrides
+let g:plantuml_set_makeprg=0
+
 
 set colorcolumn=80 "better version of 80 column editing
 

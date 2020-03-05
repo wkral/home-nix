@@ -1,4 +1,4 @@
-{pkgs, ...}:
+{ pkgs, ... }:
 let
   bg-source = builtins.readFile ./random-hourly-bg;
   random-hourly-bg = pkgs.writeShellScript "random-hourly-bg" bg-source;
@@ -38,5 +38,8 @@ in
   xdg.configFile."sway/config.d/16-style".source = ./style;
   xdg.configFile."sway/config.d/17-inputs".source = ./inputs;
   xdg.configFile."sway/config.d/18-audio-controls".source = ./audio-controls;
+  xdg.configFile."sway/config.d/19-xcursor".text = ''
+    seat seat0 xcursor_theme Bibata_Ice
+  '';
 
 }

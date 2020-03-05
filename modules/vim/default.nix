@@ -15,7 +15,11 @@ in
 
   nixpkgs.config.vim.gui = gui;
 
-  programs.vim =  {
+  home.packages = [
+    pkgs.nixpkgs-fmt
+  ];
+
+  programs.vim = {
     enable = true;
     extraConfig = builtins.readFile ./vimrc;
     plugins = let
@@ -38,19 +42,19 @@ in
         };
       };
     in
-    with pkgs.vimPlugins; [
-      fugitive
-      fzf-vim
-      gitgutter
-      vim-jinja
-      lightline-vim
-      #syntastic
-      ale
-      lightline-ale
-      vim-fireplace
-      vim-polyglot
-      colours
-      salt
-    ];
+      with pkgs.vimPlugins; [
+        fugitive
+        fzf-vim
+        gitgutter
+        vim-jinja
+        lightline-vim
+        #syntastic
+        ale
+        lightline-ale
+        vim-fireplace
+        vim-polyglot
+        colours
+        salt
+      ];
   };
 }

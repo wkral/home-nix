@@ -1,4 +1,4 @@
-{pkgs, ... }:
+{ pkgs, ... }:
 {
   imports = [
     ./sway.nix
@@ -20,9 +20,15 @@
     gnome3.networkmanagerapplet
     font-manager
     zbar
+    imv
+    gnome3.eog
   ];
 
   home.sessionVariables = {
     BROWSER = "firefox";
   };
+
+  home.file.".Xresources".text = ''
+    Xcursor.theme=Bibata_Ice
+  '';
 }
