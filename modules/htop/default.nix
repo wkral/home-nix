@@ -1,4 +1,4 @@
-{pkgs, ...}:
+{ pkgs, ... }:
 {
   programs.htop = {
     enable = true;
@@ -7,8 +7,8 @@
     hideUserlandThreads = true;
     treeView = true;
     meters = {
-      left = ["LeftCPUs" "Memory" "Swap" "Clock"];
-      right = ["RightCPUs" "Tasks" "LoadAverage" "Uptime"];
+      left = [ "LeftCPUs" "Memory" "Swap" "Clock" ];
+      right = [ "RightCPUs" "Tasks" "LoadAverage" "Uptime" ];
     };
   };
 }

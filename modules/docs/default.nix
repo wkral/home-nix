@@ -1,5 +1,4 @@
 { pkgs, ... }:
-
 let
   newdoc = pkgs.writeShellScriptBin "newdoc" (builtins.readFile ./newdoc);
 in

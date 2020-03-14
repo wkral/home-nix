@@ -1,4 +1,4 @@
-{pkgs, ...}:
+{ pkgs, ... }:
 {
   imports = [
     ../modules/sway
@@ -9,9 +9,9 @@
   ];
   home.packages = with pkgs; [
     xwayland
-    grim          # img screencap
-    slurp         # img selection tool
-    mako          # notification daemon
+    grim # img screencap
+    slurp # img selection tool
+    mako # notification daemon
     # wlstream      # video screencap
     swaybg
     swayidle
