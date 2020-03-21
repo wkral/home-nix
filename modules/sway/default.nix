@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 let
   bg-source = builtins.readFile ./random-hourly-bg;
   random-hourly-bg = pkgs.writeShellScript "random-hourly-bg" bg-source;
@@ -29,16 +29,18 @@ in
 
   xdg.configFile."sway/config.d/15-bar".text = ''
     bar {
-        height 19
         position top
         swaybar_command ${waybar}/bin/waybar
     }
   '';
 
-  xdg.configFile."sway/config.d/16-style".source = ./style;
-  xdg.configFile."sway/config.d/17-inputs".source = ./inputs;
-  xdg.configFile."sway/config.d/18-audio-controls".source = ./audio-controls;
-  xdg.configFile."sway/config.d/19-xcursor".text = ''
+  xdg.configFile."sway/config.d/16-font".text = ''
+    font Noto Sans ${toString config.profiles.gui.base-font-size}
+  '';
+  xdg.configFile."sway/config.d/17-style".source = ./style;
+  xdg.configFile."sway/config.d/18-inputs".source = ./inputs;
+  xdg.configFile."sway/config.d/19-audio-controls".source = ./audio-controls;
+  xdg.configFile."sway/config.d/20-xcursor".text = ''
     seat seat0 xcursor_theme Bibata_Ice
   '';
 
