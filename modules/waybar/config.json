@@ -1,9 +1,9 @@
 {
     "layer": "top",
-    "height": 19,
     "modules-left": ["sway/workspaces", "sway/mode"],
     "modules-center": ["sway/window"],
     "modules-right": [
+        "idle_inhibitor",
         "pulseaudio",
         "memory",
         "cpu",
@@ -156,5 +156,13 @@
           "percent5": 5,
           "percent0": 0
         }
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
     }
+
 }

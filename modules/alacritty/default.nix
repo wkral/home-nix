@@ -1,4 +1,4 @@
-{pkgs, ... }:
+{ config, pkgs, ... }:
 {
   programs.alacritty = {
     enable = true;
@@ -20,15 +20,15 @@
       background_opacity = 0.9;
       font = {
         normal = {
-          family = "Noto Sans Mono";
+          family = "Noto Sans Mono Condensed";
         };
         bold = {
-          family = "Noto Sans Mono SemiBold";
+          family = "Noto Sans Mono Condensed SemiBold";
         };
         italic = {
-          family = "Noto Sans Mono";
+          family = "Noto Sans Mono Condensed Italic";
         };
-        size = 9;
+        size = config.profiles.gui.base-font-size;
       };
       colors = {
         primary = {

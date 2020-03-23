@@ -1,8 +1,6 @@
 * {
     border: none;
     border-radius: 0;
-    font-family: "Noto Sans Mono";
-    font-size: 9pt;
     min-height: 0;
 }
 
@@ -39,7 +37,7 @@ window#waybar {
     border-bottom: 1px solid white;
 }
 
-#clock, #battery, #cpu, #memory, #network, #pulseaudio, #custom-spotify, #tray, #mode {
+#clock, #battery, #cpu, #memory, #network, #pulseaudio, #custom-spotify, #tray, #mode, #idle_inhibitor {
     padding: 0px 4px;
     margin: 0px 2px;
 }
@@ -182,4 +180,14 @@ window#waybar {
 #pulseaudio.muted {
     background: rgba(255,255,255,0.2);
     color: #999999;
+}
+
+#idle_inhibitor.deactivated {
+    color: white;
+    background: rgba(255,255,255,0.2);
+}
+
+#idle_inhibitor.activated {
+    color: white;
+    background: #0aaf05;
 }

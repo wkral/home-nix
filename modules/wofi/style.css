@@ -12,18 +12,18 @@
 #input {
     background-color: rgba(59,61,73, 0.9);
     border-radius:    10px 10px 0 0;
-    color: #c5c8c6;
+    color:            #c5c8c6;
 }
 
 #text {
-    padding-left: 10px;
+    padding-left:     10px;
 }
 
 #img {
-    padding-right: 5px;
+    padding-right:    5px;
 }
 
 #entry {
-    color: #c5c8c6;
-    padding: 5px;
+    color:            #c5c8c6;
+    padding:          5px;
 }

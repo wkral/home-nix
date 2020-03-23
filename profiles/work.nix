@@ -1,4 +1,4 @@
-{pkgs, ... }:
+{ pkgs, ... }:
 let
   scripts = import ../scripts {
     inherit pkgs;
