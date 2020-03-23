@@ -18,6 +18,7 @@ in
     ../modules/docs
   ];
 
+  nixpkgs.config.allowUnfree = true; # required by zoom-us
 
   home.packages = with pkgs; [
     awscli
@@ -29,6 +30,8 @@ in
     node-tools.swagger-cli
 
     nodePackages.node2nix
+
+    zoom-us # video conference
 
     scripts.last-commit-id
     scripts.newbranch

@@ -121,6 +121,8 @@ let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'python': ['isort'],
 \   'nix': ['nixpkgs-fmt'],
+\   'bash': ['shfmt'],
+\   'sh': ['shfmt'],
 \}"
 
 nnoremap <leader>f :ALEFix<cr>

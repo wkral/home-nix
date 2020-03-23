@@ -1,4 +1,4 @@
-{pkgs, ...}:
+{ pkgs, ... }:
 {
   imports = [
     ../modules/inputrc
@@ -7,12 +7,12 @@
     ../modules/git
     ../modules/htop
     ../modules/starship
+    ../modules/pass
   ];
 
   home.packages = with pkgs; [
     file
     gnumake
-    pass
     broot
     nnn
     unzip

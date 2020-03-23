@@ -17,6 +17,7 @@ in
 
   home.packages = [
     pkgs.nixpkgs-fmt
+    pkgs.shfmt
   ];
 
   programs.vim = {
