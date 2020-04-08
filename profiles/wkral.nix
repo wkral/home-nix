@@ -20,6 +20,7 @@
     dnsutils
     zip
     qrencode
+    yj
   ];
 
   programs.bash.enable = true;
