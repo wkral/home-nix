@@ -122,6 +122,7 @@ let g:ale_fixers = {
 \   'python': ['isort'],
 \   'nix': ['nixpkgs-fmt'],
 \   'bash': ['shfmt'],
+\   'json': ['jq'],
 \   'sh': ['shfmt'],
 \}"
 
