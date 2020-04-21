@@ -34,7 +34,8 @@ with lib;
       libsForQt5.qtstyleplugins
       libsForQt5.qtstyleplugin-kvantum
       arc-icon-theme
-      arc-theme
+      matcha #theme
+
       bibata-cursors
       gnome-themes-extra
       gsettings-desktop-schemas

@@ -22,6 +22,8 @@
     zbar
     imv
     gnome3.eog
+    pavucontrol
+    pinentry_gnome
   ];
 
   home.sessionVariables = {

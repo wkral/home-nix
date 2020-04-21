@@ -11,7 +11,6 @@ let
 in
 {
   imports = [
-    ../modules/work-gpg
     ../modules/python
     ../modules/clojure
     ../modules/teams
@@ -42,4 +41,8 @@ in
     scripts.vagrant-halt-all
     scripts.vsh
   ];
+
+  programs.gpg.settings = {
+    default-key = "3213F8D26AD65DF98B62C43BC733A26D1B5DE28D";
+  };
 }
