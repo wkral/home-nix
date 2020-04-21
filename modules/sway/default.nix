@@ -22,6 +22,9 @@ in
         timeout 565 'swaymsg "output * dpms off"' \
              resume 'swaymsg "output * dpms on"'
 
+    exec ${pkgs.networkmanagerapplet}/bin/nm-applet --indicator
+    exec ${pkgs.pasystray}/bin/pasystray
+
     exec ${pkgs.kanshi}/bin/kanshi
 
     exec_always ${random-hourly-bg}

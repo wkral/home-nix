@@ -33,6 +33,9 @@ in
 
     zoom-us # video conference
 
+    openconnect
+    gnome3.networkmanager-openconnect
+
     scripts.last-commit-id
     scripts.newbranch
     scripts.release-notes

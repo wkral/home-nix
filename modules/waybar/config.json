@@ -8,7 +8,7 @@
         "memory",
         "cpu",
         "battery",
-        "network",
+        "tray",
         "clock"
     ],
     "sway/window": {
