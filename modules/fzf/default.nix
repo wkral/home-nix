@@ -6,6 +6,6 @@
 
   programs.fzf = {
     enable = true;
-    defaultCommand = "rg --files --follow";
+    defaultCommand = "rg --files --follow --no-ignore-exclude";
   };
 }

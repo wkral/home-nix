@@ -89,7 +89,7 @@ let g:polyglot_disabled = ['yaml']
 
 if executable('rg')
   " Use ripgrep over Grep
-  set grepprg=rg\ --vimgrep
+  set grepprg=rg\ --vimgrep\ --no-ignore-exclude
   set grepformat^=%f:%l:%c:%m
 endif
 
