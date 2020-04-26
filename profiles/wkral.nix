@@ -23,7 +23,15 @@
     yj
   ];
 
-  programs.bash.enable = true;
-  programs.jq.enable = true;
-  programs.taskwarrior.enable = true;
+  programs = {
+    bash.enable = true;
+    jq.enable = true;
+    taskwarrior.enable = true;
+    gpg.enable = true;
+  };
+
+  services.gpg-agent = {
+    enable = true;
+    pinentryFlavor = "gnome3";
+  };
 }
