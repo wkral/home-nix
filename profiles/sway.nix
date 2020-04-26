@@ -16,6 +16,20 @@ with lib;
       example = 14;
       description = "Base font size for GUI layout";
     };
+    outputs = {
+      primary = mkOption {
+        type = types.str;
+        default = "eDP-1";
+        example = "HDMI-A-1";
+        description = "Primary display source";
+      };
+      secondary = mkOption {
+        type = types.str;
+        default = "HDMI-A-1";
+        example = "eDP-1";
+        description = "Secondary display source";
+      };
+    };
   };
 
   config = {

@@ -16,7 +16,19 @@ in
     bindsym $mod+Return exec $term
   '';
   xdg.configFile."sway/config.d/13-workspaces".source = ./workspaces;
-  xdg.configFile."sway/config.d/14-execs".text = ''
+  xdg.configFile."sway/config.d/14-outputs".text = ''
+    workspace $wk1 output ${config.profiles.gui.outputs.primary}
+    workspace $wk2 output ${config.profiles.gui.outputs.primary}
+    workspace $wk3 output ${config.profiles.gui.outputs.primary}
+    workspace $wk4 output ${config.profiles.gui.outputs.primary}
+    workspace $wk5 output ${config.profiles.gui.outputs.primary}
+    workspace $wk6 output ${config.profiles.gui.outputs.primary}
+    workspace $wk7 output ${config.profiles.gui.outputs.primary}
+    workspace $wk8 output ${config.profiles.gui.outputs.secondary}
+    workspace $wk9 output ${config.profiles.gui.outputs.secondary}
+    workspace $wk0 output ${config.profiles.gui.outputs.secondary}
+  '';
+  xdg.configFile."sway/config.d/15-execs".text = ''
     exec ${pkgs.swayidle}/bin/swayidle \
         timeout 600 'swaylock' \
         timeout 565 'swaymsg "output * dpms off"' \
@@ -30,20 +42,20 @@ in
     exec_always ${random-hourly-bg}
   '';
 
-  xdg.configFile."sway/config.d/15-bar".text = ''
+  xdg.configFile."sway/config.d/16-bar".text = ''
     bar {
         position top
         swaybar_command ${waybar}/bin/waybar
     }
   '';
 
-  xdg.configFile."sway/config.d/16-font".text = ''
+  xdg.configFile."sway/config.d/17-font".text = ''
     font Noto Sans ${toString config.profiles.gui.base-font-size}
   '';
-  xdg.configFile."sway/config.d/17-style".source = ./style;
-  xdg.configFile."sway/config.d/18-inputs".source = ./inputs;
-  xdg.configFile."sway/config.d/19-audio-controls".source = ./audio-controls;
-  xdg.configFile."sway/config.d/20-xcursor".text = ''
+  xdg.configFile."sway/config.d/18-style".source = ./style;
+  xdg.configFile."sway/config.d/19-inputs".source = ./inputs;
+  xdg.configFile."sway/config.d/20-audio-controls".source = ./audio-controls;
+  xdg.configFile."sway/config.d/21-xcursor".text = ''
     seat seat0 xcursor_theme Bibata_Ice
   '';
 
