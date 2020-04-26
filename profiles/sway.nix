@@ -1,5 +1,11 @@
 { config, lib, pkgs, ... }:
 with lib;
+let
+  font-base = config.profiles.gui.base-font-size;
+  font-size = toString font-base;
+  font-up = toString (font-base + 1);
+  font-down = toString (font-base - 1);
+in
 {
   imports = [
     ../modules/sway
@@ -47,12 +53,38 @@ with lib;
 
       libsForQt5.qtstyleplugins
       libsForQt5.qtstyleplugin-kvantum
-      arc-icon-theme
-      matcha #theme
 
+      matcha
+      arc-icon-theme
       bibata-cursors
       gnome-themes-extra
       gsettings-desktop-schemas
     ];
+
+    gtk = {
+      theme = {
+        package = pkgs.matcha;
+        name = "Matcha-dark-azul";
+      };
+      iconTheme = {
+        package = pkgs.arc-icon-theme;
+        name = "Arc";
+      };
+      gtk3.extraConfig = {
+        gtk-cursor-theme-name = "Bibata_Ice";
+      };
+    };
+
+    dconf.settings = {
+      "org/gnome/desktop/interface" = {
+        font-name = "Noto Sans " + font-size;
+        document-font-name = "Noto Sans Light " + font-size;
+        monospace-font-name = "Noto Sans Mono Medium Semi-Condensed " + font-down;
+
+      };
+      "org/gnome/desktop/wm/preferences" = {
+        titlebar-font = "Noto Sans Semi-Bold Condensed " + font-up;
+      };
+    };
   };
 }
