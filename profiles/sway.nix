@@ -86,5 +86,15 @@ in
         titlebar-font = "Noto Sans Semi-Bold Condensed " + font-up;
       };
     };
+
+    programs.mako = {
+      enable = true;
+      font = "Noto Sans Light " + font-size;
+      defaultTimeout = 10000;
+      backgroundColor = "#1d1f21e6";
+      borderColor = "#3d3f41e6";
+      borderRadius = 5;
+      textColor = "#eeeeeeff";
+    };
   };
 }
