@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 with lib;
 let
-  font-base = config.profiles.gui.base-font-size;
+  font-base = config.gui.base-font-size;
   font-size = toString font-base;
   font-up = toString (font-base + 1);
   font-down = toString (font-base - 1);
@@ -15,7 +15,7 @@ in
     ../modules/kanshi
   ];
 
-  options.profiles.gui = {
+  options.gui = {
     base-font-size = mkOption {
       type = types.int;
       default = 9;

@@ -9,7 +9,7 @@ with lib;
   xdg.configFile."waybar/style.css".text = ''
     * {
         font-family: "Noto Sans Mono";
-        font-size: ${toString config.profiles.gui.base-font-size}pt;
+        font-size: ${toString config.gui.base-font-size}pt;
     }
   '' + strings.fileContents ./style.css;
 }

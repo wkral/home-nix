@@ -14,7 +14,7 @@ with lib;
   xdg.configFile."wofi/style.css".text = ''
     * {
         font-family: "Noto Sans SemiBold";
-        font-size: ${toString (config.profiles.gui.base-font-size + 1)}pt;
+        font-size: ${toString (config.gui.base-font-size + 1)}pt;
     }
   '' + strings.fileContents ./style.css;
 }

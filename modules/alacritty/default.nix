@@ -28,7 +28,7 @@
         italic = {
           family = "Noto Sans Mono Condensed Italic";
         };
-        size = config.profiles.gui.base-font-size;
+        size = config.gui.base-font-size;
       };
       colors = {
         primary = {

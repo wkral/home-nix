@@ -17,16 +17,16 @@ in
   '';
   xdg.configFile."sway/config.d/13-workspaces".source = ./workspaces;
   xdg.configFile."sway/config.d/14-outputs".text = ''
-    workspace $wk1 output ${config.profiles.gui.outputs.primary}
-    workspace $wk2 output ${config.profiles.gui.outputs.primary}
-    workspace $wk3 output ${config.profiles.gui.outputs.primary}
-    workspace $wk4 output ${config.profiles.gui.outputs.primary}
-    workspace $wk5 output ${config.profiles.gui.outputs.primary}
-    workspace $wk6 output ${config.profiles.gui.outputs.primary}
-    workspace $wk7 output ${config.profiles.gui.outputs.primary}
-    workspace $wk8 output ${config.profiles.gui.outputs.secondary}
-    workspace $wk9 output ${config.profiles.gui.outputs.secondary}
-    workspace $wk0 output ${config.profiles.gui.outputs.secondary}
+    workspace $wk1 output ${config.gui.outputs.primary}
+    workspace $wk2 output ${config.gui.outputs.primary}
+    workspace $wk3 output ${config.gui.outputs.primary}
+    workspace $wk4 output ${config.gui.outputs.primary}
+    workspace $wk5 output ${config.gui.outputs.primary}
+    workspace $wk6 output ${config.gui.outputs.primary}
+    workspace $wk7 output ${config.gui.outputs.primary}
+    workspace $wk8 output ${config.gui.outputs.secondary}
+    workspace $wk9 output ${config.gui.outputs.secondary}
+    workspace $wk0 output ${config.gui.outputs.secondary}
   '';
   xdg.configFile."sway/config.d/15-execs".text = ''
     exec ${pkgs.swayidle}/bin/swayidle \
@@ -50,7 +50,7 @@ in
   '';
 
   xdg.configFile."sway/config.d/17-font".text = ''
-    font Noto Sans ${toString config.profiles.gui.base-font-size}
+    font Noto Sans ${toString config.gui.base-font-size}
   '';
   xdg.configFile."sway/config.d/18-style".source = ./style;
   xdg.configFile."sway/config.d/19-inputs".source = ./inputs;
