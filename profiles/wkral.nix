@@ -8,6 +8,7 @@
     ../modules/htop
     ../modules/starship
     ../modules/pass
+    ../modules/lorri.nix
   ];
 
   home.packages = with pkgs; [

@@ -30,7 +30,7 @@ in
       libsForQt5.qtstyleplugins
       libsForQt5.qtstyleplugin-kvantum
 
-      matcha
+      matcha-gtk-theme
       arc-icon-theme
       bibata-cursors
       gnome-themes-extra
@@ -39,7 +39,7 @@ in
 
     gtk = {
       theme = {
-        package = pkgs.matcha;
+        package = pkgs.matcha-gtk-theme;
         name = "Matcha-dark-azul";
       };
       iconTheme = {
