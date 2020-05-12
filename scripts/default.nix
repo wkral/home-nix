@@ -13,4 +13,6 @@ in
   release-notes = pkgScript "release-notes";
   vagrant-halt-all = pkgScript "vagrant-halt-all";
   vsh = pkgScript "vsh";
+  headphones = pkgScript "headphones";
+  speakers = pkgScript "speakers";
 }
