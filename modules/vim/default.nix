@@ -13,7 +13,7 @@ in
     };
   };
 
-  nixpkgs.config.vim.gui = gui;
+  nixpkgs.config.vim.gui = "false";
 
   home.packages = [
     pkgs.nixpkgs-fmt

@@ -1,5 +1,4 @@
 { config, lib, pkgs, ... }:
-with lib;
 let
   font-base = config.gui.base-font-size;
   font-size = toString font-base;
@@ -14,29 +13,6 @@ in
     ../modules/wofi
     ../modules/kanshi
   ];
-
-  options.gui = {
-    base-font-size = mkOption {
-      type = types.int;
-      default = 9;
-      example = 14;
-      description = "Base font size for GUI layout";
-    };
-    outputs = {
-      primary = mkOption {
-        type = types.str;
-        default = "eDP-1";
-        example = "HDMI-A-1";
-        description = "Primary display source";
-      };
-      secondary = mkOption {
-        type = types.str;
-        default = "HDMI-A-1";
-        example = "eDP-1";
-        description = "Secondary display source";
-      };
-    };
-  };
 
   config = {
     home.packages = with pkgs; [

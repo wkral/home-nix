@@ -30,9 +30,10 @@ in
   '';
   xdg.configFile."sway/config.d/15-execs".text = ''
     exec ${pkgs.swayidle}/bin/swayidle \
-        timeout 600 'swaylock' \
-        timeout 565 'swaymsg "output * dpms off"' \
-             resume 'swaymsg "output * dpms on"'
+        timeout ${toString config.gui.idle.lock} 'swaylock' \
+        timeout ${toString config.gui.idle.screen-poweroff} \
+            'swaymsg "output * dpms off"' \
+            resume 'swaymsg "output * dpms on"'
 
     exec ${pkgs.networkmanagerapplet}/bin/nm-applet --indicator
     exec ${pkgs.pasystray}/bin/pasystray
