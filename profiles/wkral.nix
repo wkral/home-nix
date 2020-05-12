@@ -21,6 +21,7 @@
     zip
     qrencode
     yj
+    nix-review
   ];
 
   programs = {
