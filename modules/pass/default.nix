@@ -1,7 +1,7 @@
 { pkgs, ... }:
 with pkgs;
 let
-  passpkg = pass.withExtensions (exts: [ exts.pass-otp ]);
+  passpkg = pass-wayland.withExtensions (exts: [ exts.pass-otp ]);
 in
 {
   config = {
