@@ -1,12 +1,14 @@
 { pkgs, ... }:
 with pkgs;
-let
-  passpkg = pass-wayland.withExtensions (exts: [ exts.pass-otp ]);
-in
 {
-  config = {
-    home.packages = [
-      passpkg
-    ];
-  };
+  nixpkgs.overlays = [
+    (self: super: {
+      pass = super.pass.override {
+        waylandSupport = true;
+      };
+    })
+  ];
+  home.packages = [
+    (pass.withExtensions (exts: [ exts.pass-otp ]))
+  ];
 }
