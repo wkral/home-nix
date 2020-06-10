@@ -22,6 +22,7 @@
     zip
     qrencode
     yj
+    fd
     nix-review
   ];
 

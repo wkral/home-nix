@@ -1,168 +1,179 @@
 {
-    "layer": "top",
-    "modules-left": ["sway/workspaces", "sway/mode"],
-    "modules-center": ["sway/window"],
-    "modules-right": [
-        "idle_inhibitor",
-        "pulseaudio",
-        "memory",
-        "cpu",
-        "battery",
-        "tray",
-        "clock"
-    ],
-    "sway/window": {
-        "max-length": 50
-    },
-    "sway/workspaces": {
-        "disable-scroll": true,
-        "format": "{icon} {name}",
-        "format-icons": {
-            "1": "",
-            "urgent": "",
-            "default": ""
-        }
-    },
-    "battery": {
-        "format": "",
-        "format-full": "",
-        "format-charging": "",
-        "format-discharging": "",
-        "format-discharging-percent15": "",
-        "format-discharging-percent10": "",
-        "format-discharging-percent5": "",
-        "format-discharging-percent0": "",
-        "states": {
-          "percent100": 100,
-          "percent95": 95,
-          "percent90": 90,
-          "percent85": 85,
-          "percent80": 80,
-          "percent75": 75,
-          "percent70": 70,
-          "percent65": 65,
-          "percent60": 60,
-          "percent55": 55,
-          "percent50": 50,
-          "percent45": 45,
-          "percent40": 40,
-          "percent35": 35,
-          "percent30": 30,
-          "percent25": 25,
-          "percent20": 20,
-          "percent15": 15,
-          "percent10": 10,
-          "percent5": 5,
-          "percent0": 0
-        }
-    },
-    "clock": {
-        "format": " {:%a, %b %d %H:%M}"
-    },
-    "cpu": {
-        "format": "",
-        "max-length": 10,
-        "interval": 5,
-        "states": {
-          "percent100": 100,
-          "percent95": 95,
-          "percent90": 90,
-          "percent85": 85,
-          "percent80": 80,
-          "percent75": 75,
-          "percent70": 70,
-          "percent65": 65,
-          "percent60": 60,
-          "percent55": 55,
-          "percent50": 50,
-          "percent45": 45,
-          "percent40": 40,
-          "percent35": 35,
-          "percent30": 30,
-          "percent25": 25,
-          "percent20": 20,
-          "percent15": 15,
-          "percent10": 10,
-          "percent5": 5,
-          "percent1": 1,
-          "percent0": 0
-        }
-    },
-    "memory": {
-        "format": "",
-        "states": {
-          "percent100": 100,
-          "percent95": 95,
-          "percent90": 90,
-          "percent85": 85,
-          "percent80": 80,
-          "percent75": 75,
-          "percent70": 70,
-          "percent65": 65,
-          "percent60": 60,
-          "percent55": 55,
-          "percent50": 50,
-          "percent45": 45,
-          "percent40": 40,
-          "percent35": 35,
-          "percent30": 30,
-          "percent25": 25,
-          "percent20": 20,
-          "percent15": 15,
-          "percent10": 10,
-          "percent5": 5,
-          "percent0": 0
-        }
-    },
-    "network": {
-        "format-wifi": " {essid}",
-        "format-ethernet": "{ifname} ",
-        "format-disconnected": "",
-        "max-length": 50
-    },
-    "pulseaudio": {
-        "format": "{icon}",
-        "format-bluetooth": "{volume}% {icon}",
-        "format-muted": "",
-        "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", ""]
-        },
-        "states": {
-          "percent100": 100,
-          "percent95": 95,
-          "percent90": 90,
-          "percent85": 85,
-          "percent80": 80,
-          "percent75": 75,
-          "percent70": 70,
-          "percent65": 65,
-          "percent60": 60,
-          "percent55": 55,
-          "percent50": 50,
-          "percent45": 45,
-          "percent40": 40,
-          "percent35": 35,
-          "percent30": 30,
-          "percent25": 25,
-          "percent20": 20,
-          "percent15": 15,
-          "percent10": 10,
-          "percent5": 5,
-          "percent0": 0
-        }
-    },
-    "idle_inhibitor": {
-        "format": "{icon}",
-        "format-icons": {
-            "activated": "",
-            "deactivated": ""
-        }
+  "layer": "top",
+  "modules-left": [
+    "sway/workspaces",
+    "sway/mode"
+  ],
+  "modules-center": [
+    "sway/window"
+  ],
+  "modules-right": [
+    "idle_inhibitor",
+    "pulseaudio",
+    "memory",
+    "cpu",
+    "battery",
+    "tray",
+    "clock"
+  ],
+  "sway/window": {
+    "max-length": 50
+  },
+  "sway/workspaces": {
+    "disable-scroll": true,
+    "format": "{icon} {name}",
+    "format-icons": {
+      "1": "",
+      "urgent": "",
+      "default": ""
     }
-
+  },
+  "battery": {
+    "format": "",
+    "format-full": "",
+    "format-charging": "",
+    "format-discharging": "",
+    "format-discharging-percent15": "",
+    "format-discharging-percent10": "",
+    "format-discharging-percent5": "",
+    "format-discharging-percent0": "",
+    "states": {
+      "percent100": 100,
+      "percent95": 95,
+      "percent90": 90,
+      "percent85": 85,
+      "percent80": 80,
+      "percent75": 75,
+      "percent70": 70,
+      "percent65": 65,
+      "percent60": 60,
+      "percent55": 55,
+      "percent50": 50,
+      "percent45": 45,
+      "percent40": 40,
+      "percent35": 35,
+      "percent30": 30,
+      "percent25": 25,
+      "percent20": 20,
+      "percent15": 15,
+      "percent10": 10,
+      "percent5": 5,
+      "percent0": 0
+    }
+  },
+  "clock": {
+    "format": " {:%a, %b %d %H:%M}"
+  },
+  "cpu": {
+    "format": "",
+    "max-length": 10,
+    "interval": 5,
+    "states": {
+      "percent100": 100,
+      "percent95": 95,
+      "percent90": 90,
+      "percent85": 85,
+      "percent80": 80,
+      "percent75": 75,
+      "percent70": 70,
+      "percent65": 65,
+      "percent60": 60,
+      "percent55": 55,
+      "percent50": 50,
+      "percent45": 45,
+      "percent40": 40,
+      "percent35": 35,
+      "percent30": 30,
+      "percent25": 25,
+      "percent20": 20,
+      "percent15": 15,
+      "percent10": 10,
+      "percent5": 5,
+      "percent1": 1,
+      "percent0": 0
+    }
+  },
+  "memory": {
+    "format": "",
+    "states": {
+      "percent100": 100,
+      "percent95": 95,
+      "percent90": 90,
+      "percent85": 85,
+      "percent80": 80,
+      "percent75": 75,
+      "percent70": 70,
+      "percent65": 65,
+      "percent60": 60,
+      "percent55": 55,
+      "percent50": 50,
+      "percent45": 45,
+      "percent40": 40,
+      "percent35": 35,
+      "percent30": 30,
+      "percent25": 25,
+      "percent20": 20,
+      "percent15": 15,
+      "percent10": 10,
+      "percent5": 5,
+      "percent0": 0
+    }
+  },
+  "network": {
+    "format-wifi": " {essid}",
+    "format-ethernet": "{ifname} ",
+    "format-disconnected": "",
+    "max-length": 50
+  },
+  "pulseaudio": {
+    "format": "{icon}",
+    "format-bluetooth": "{volume}% {icon}",
+    "format-muted": "",
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": [
+        "",
+        ""
+      ]
+    },
+    "states": {
+      "percent100": 100,
+      "percent95": 95,
+      "percent90": 90,
+      "percent85": 85,
+      "percent80": 80,
+      "percent75": 75,
+      "percent70": 70,
+      "percent65": 65,
+      "percent60": 60,
+      "percent55": 55,
+      "percent50": 50,
+      "percent45": 45,
+      "percent40": 40,
+      "percent35": 35,
+      "percent30": 30,
+      "percent25": 25,
+      "percent20": 20,
+      "percent15": 15,
+      "percent10": 10,
+      "percent5": 5,
+      "percent0": 0
+    }
+  },
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "",
+      "deactivated": ""
+    }
+  },
+  "tray": {
+    "icon-size": 27,
+    "spacing": 5
+  }
 }
