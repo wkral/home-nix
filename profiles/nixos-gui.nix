@@ -2,6 +2,7 @@
 with lib;
 {
   imports = [
+    ../pkgs
     ./sway.nix
     ../modules/alacritty
   ];
@@ -64,6 +65,8 @@ with lib;
       pavucontrol
       alsaUtils
       pinentry_gnome
+
+      wkral.quickcmd
     ];
 
     home.sessionVariables = {

@@ -10,6 +10,7 @@ in
   xdg.configFile."sway/config.d/11-menu".text = ''
     set $menu ${pkgs.wofi}/bin/wofi --show drun
     bindsym $mod+d exec $menu
+    bindsym $mod+grave exec ${pkgs.wkral.quickcmd}/bin/quickcmd
   '';
   xdg.configFile."sway/config.d/12-terminal".text = ''
     set $term ${pkgs.alacritty}/bin/alacritty

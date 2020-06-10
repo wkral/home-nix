@@ -2,3 +2,5 @@
 
 pactl set-sink-port alsa_output.pci-0000_0b_00.4.analog-stereo analog-output-headphones
 amixer -c 1 sset 'Auto-Mute Mode' Enabled
+
+
