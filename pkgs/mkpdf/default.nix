@@ -1,4 +1,4 @@
-{ stdenv, pandoc, writeShellScriptBin, wk }:
+{ stdenv, writeShellScriptBin, pandoc, graphviz, librsvg, plantuml, wk }:
 writeShellScriptBin "mkpdf" ''
   __usage="
   Usage:
@@ -50,12 +50,13 @@ writeShellScriptBin "mkpdf" ''
 
   [ "$outfile" != "" ] || outfile="''${infile%%.*}.pdf";
 
+  PATH=$PATH:${graphviz}/bin:${librsvg}/bin:${plantuml}/bin
   ${pandoc}/bin/pandoc $infile \
     --lua-filter=${./lua-filters}/include.lua \
     --lua-filter=${wk.lua-filters}/diagram-generator.lua \
     --pdf-engine=${wk.texlive}/bin/pdflatex \
     --highlight-style ${./templates}/$template/code-style.theme \
-    --output $outfile --pdf-engine=pdflatex \
     --metadata=template-dir=${./templates}/$template/ \
-    --template=${./templates}/$template/template.tex
+    --template=${./templates}/$template/template.tex \
+    --output $outfile
 ''

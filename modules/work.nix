@@ -27,8 +27,11 @@ with lib;
       openconnect
       gnome3.networkmanager-openconnect
 
+      pandoc
       graphviz
       plantuml
+      librsvg
+      wk.texlive
 
       wk.mkpdf
 
