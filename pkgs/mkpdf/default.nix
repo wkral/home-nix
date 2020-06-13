@@ -53,7 +53,7 @@ writeShellScriptBin "mkpdf" ''
   ${pandoc}/bin/pandoc $infile \
     --lua-filter=${./lua-filters}/include.lua \
     --lua-filter=${wk.lua-filters}/diagram-generator.lua \
-    --pdf-engine=${wk.texlive}/bin/pdflatex
+    --pdf-engine=${wk.texlive}/bin/pdflatex \
     --highlight-style ${./templates}/$template/code-style.theme \
     --output $outfile --pdf-engine=pdflatex \
     --metadata=template-dir=${./templates}/$template/ \
