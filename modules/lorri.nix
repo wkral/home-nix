@@ -1,12 +1,20 @@
-{ pkgs, ... }:
+{ config, lib, pkgs, ... }:
+let
+  cfg = config.wk.lorri;
+in
+with lib;
 {
-  home.packages = with pkgs; [
-    direnv
-  ];
+  options.wk.lorri.enable = mkEnableOption "lorri";
 
-  services.lorri.enable = true;
+  config = mkIf cfg.enable {
+    home.packages = with pkgs; [
+      direnv
+    ];
 
-  programs.bash.initExtra = ''
-    eval "$(direnv hook bash)"
-  '';
+    services.lorri.enable = true;
+
+    programs.bash.initExtra = ''
+      eval "$(direnv hook bash)"
+    '';
+  };
 }
