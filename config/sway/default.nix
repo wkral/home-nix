@@ -40,7 +40,7 @@ with pkgs; {
 
     exec ${kanshi}/bin/kanshi
 
-    exec_always ${wk.random-hourly-bg}
+    exec_always ${wk.random-hourly-bg}/bin/random-hourly-bg
   '';
 
   xdg.configFile."sway/config.d/16-bar".text = ''
