@@ -10,6 +10,7 @@
         ignorecase = false;
       };
       push = { default = "simple"; };
+      pull = { rebase = "false"; };
       diff = { tool = "vimdiff"; };
     };
     aliases = {
