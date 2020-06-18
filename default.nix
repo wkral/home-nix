@@ -37,12 +37,12 @@ with lib;
       file
       gnumake
       ripgrep
-      broot
       nnn
       unzip
       openssl
       dnsutils
       zip
+      tree
       qrencode
       yj
       fd
@@ -79,6 +79,10 @@ with lib;
           starship_precmd_user_func="set_win_title"
           source <("${pkgs.starship}/bin/starship" init bash --print-full-init)
         '';
+      };
+      broot = {
+        enable = true;
+        enableBashIntegration = true;
       };
       fzf = {
         enable = true;
