@@ -12,9 +12,5 @@ with lib;
     ];
 
     services.lorri.enable = true;
-
-    programs.bash.initExtra = ''
-      eval "$(direnv hook bash)"
-    '';
   };
 }

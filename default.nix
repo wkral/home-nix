@@ -52,19 +52,26 @@ with lib;
 
       nixpkgs-fmt
       shfmt
+      direnv
     ];
 
-    home.sessionVariables = {
-      EDITOR = "vim";
+    home = {
+      sessionVariables = {
+        EDITOR = "vim";
+      };
+      file = {
+        ".inputrc".source = ./config/inputrc;
+      };
     };
 
-    home.file = {
-      ".inputrc".source = ./config/inputrc;
+    xdg = {
+      enable = true;
+      configFile = {
+        "starship.toml".source = ./config/starship.toml;
+      };
     };
 
-    xdg.configFile = {
-      "starship.toml".source = ./config/starship.toml;
-    };
+    systemd.user.startServices = true;
 
     programs = {
       bash = {
@@ -73,6 +80,7 @@ with lib;
           vi = "vim";
         };
         initExtra = ''
+          eval "$(direnv hook bash)"
           function set_win_title(){
             echo -ne "\033]0; $USER@$HOSTNAME:$PWD \007"
           }
@@ -102,4 +110,5 @@ with lib;
       nix = [ "nixpkgs-fmt" ];
     };
   };
+
 }

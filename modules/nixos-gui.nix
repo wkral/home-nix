@@ -42,7 +42,7 @@ in
 
   imports = [
     ../config/alacritty.nix
-    ../config/sway
+    ../config/sway.nix
     ../config/waybar
     ../config/wofi
   ];
@@ -79,14 +79,11 @@ in
       wk.quickcmd
 
       waybar
-      kanshi
       xwayland
       grim # img screencap
       slurp # img selection tool
       mako # notification daemon
       # wlstream      # video screencap
-      swaybg
-      swayidle
       swaylock
       wl-clipboard
 
@@ -107,6 +104,8 @@ in
       gnome-themes-extra
       gsettings-desktop-schemas
     ];
+
+    wayland.windowManager.sway.enable = true;
 
     programs.alacritty.enable = true;
 

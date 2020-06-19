@@ -8,7 +8,6 @@ let
     mkpdf = callPackage ./mkpdf {};
     newbranch = callPackage ./newbranch.nix { };
     quickcmd = callPackage ./quickcmd { };
-    random-hourly-bg = callPackage ./random-hourly-bg.nix { };
     texlive = callPackage ./texlive.nix { };
     vagrant-halt-all = callPackage ./vagrant-halt-all.nix {};
     vsh = callPackage ./vsh.nix {};
