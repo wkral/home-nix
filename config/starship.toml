@@ -59,3 +59,4 @@ style_user = "bright-blue"
 [time]
 disabled = false
 style = "blue"
+utc_time_offset = "0"
