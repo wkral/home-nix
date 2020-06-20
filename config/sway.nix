@@ -15,7 +15,8 @@ let
   swayidle = "${pkgs.swayidle}/bin/swayidle";
   swaylock = "${pkgs.swaylock}/bin/swaylock";
   fd = "${pkgs.fd}/bin/fd";
-  wallpapers = "${config.xdg.configHome}/wallpapers";
+  inherit (config.xdg) configHome;
+  wallpapers = "${configHome}/wallpapers";
 
   pactl = "${pkgs.pulseaudio}/bin/pactl";
 in
@@ -178,7 +179,7 @@ in
 
   xdg.configFile."swaylock/config".text = ''
     ignore-empty-password
-    image=$HOME/.config/swaylock/background.jpg
+    image=${configHome}/swaylock/${cfg.idle.background-image}
     scaling=fill
   '';
 }

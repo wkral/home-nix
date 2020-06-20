@@ -37,6 +37,12 @@ in
         example = 3600;
         description = "idle time in seconds until screen lock is started";
       };
+      background-image = mkOption {
+        type = types.str;
+        default = "background.jpg";
+        example = "background.png";
+        description = "Image filename found under ~/.config/swaylock/";
+      };
     };
   };
 
