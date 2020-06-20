@@ -12,7 +12,7 @@ with lib;
     };
     vim = {
       ale-fixers = mkOption {
-        type = with types; arrtsOf listOf str;
+        type = with types; attrsOf (listOf str);
         default = { };
         example = {
           json = [ jq ];
