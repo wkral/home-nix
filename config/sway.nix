@@ -32,6 +32,12 @@ in
         "${modifier}+x" = "splith";
         "${modifier}+Shift+e" = "exit";
 
+        # Move workspace around with logo+alt+direction
+        "${modifier}+Mod1+h" = "move workspace to output left";
+        "${modifier}+Mod1+j" = "move workspace to output down";
+        "${modifier}+Mod1+k" = "move workspace to output up";
+        "${modifier}+Mod1+l" = "move workspace to output right";
+
         # audio media keys, would like to decouple from Sway
         "XF86AudioRaiseVolume" = "exec ${pactl} set-sink-volume @DEFAULT_SINK@ +5%";
         "XF86AudioLowerVolume" = "exec ${pactl} set-sink-volume @DEFAULT_SINK@ -5%";
