@@ -83,7 +83,6 @@ in
       pinentry_gnome
 
       wk.quickcmd
-      wk.move-workspace
 
       waybar
       xwayland
