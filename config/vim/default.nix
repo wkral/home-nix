@@ -14,7 +14,7 @@ let
   '';
 in
 {
-  nixpkgs.config.vim.gui = "false";
+  #nixpkgs.config.vim.gui = "false";
 
   programs.vim = {
     extraConfig = (builtins.readFile ./vimrc) + ale-config ;
