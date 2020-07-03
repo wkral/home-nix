@@ -10,6 +10,11 @@ with lib;
     home.packages = with pkgs; [
       lollypop
       id3v2
+      projectm
     ];
   };
+
+  imports = [
+    ../config/projectm.nix
+  ];
 }
