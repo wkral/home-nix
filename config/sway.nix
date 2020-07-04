@@ -148,10 +148,6 @@ in
         description = "Network Manager Tray Applet";
         command = "${pkgs.networkmanagerapplet}/bin/nm-applet --indicator";
       };
-      waybar = mkSwayService {
-        description = "Highly customizable Wayland bar for Sway";
-        command = "${pkgs.waybar}/bin/waybar";
-      };
       pasystray = mkSwayService {
         description = "PulseAudio Tray Applet";
         command = "${pkgs.pasystray}/bin/pasystray";
