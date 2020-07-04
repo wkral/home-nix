@@ -121,6 +121,7 @@ in
           adjust-open = "width";
         };
       };
+      waybar.enable = true;
     };
 
     home.sessionVariables = {
