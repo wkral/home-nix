@@ -101,22 +101,22 @@ in
           "pulseaudio"
           "memory"
           "cpu"
-          #"battery"
+          "battery"
           "tray"
           "clock"
         ];
         modules = {
-         #battery = {
-         #  format = "";
-         #  format-charging = "";
-         #  format-discharging = "";
-         #  format-discharging-percent0 = "";
-         #  format-discharging-percent10 = "";
-         #  format-discharging-percent15 = "";
-         #  format-discharging-percent5 = "";
-         #  format-full = "";
-         #  states = stepped-states;
-         #};
+          battery = {
+            format = "";
+            format-charging = "";
+            format-discharging = "";
+            format-discharging-percent0 = "";
+            format-discharging-percent10 = "";
+            format-discharging-percent15 = "";
+            format-discharging-percent5 = "";
+            format-full = "";
+            states = stepped-states;
+          };
           clock = {
             format = " {:%a, %b %d %H:%M}";
           };
@@ -136,12 +136,6 @@ in
           memory = {
             format = "";
             states = stepped-states;
-          };
-          network = {
-            format-disconnected = "";
-            format-ethernet = "{ifname} ";
-            format-wifi = " {essid}";
-            max-length = 50;
           };
           pulseaudio = {
             format = "{icon}";
