@@ -4,8 +4,8 @@
     ./cad.nix
     ./clojure.nix
     ./games.nix
-    ./lorri.nix
     ./music.nix
+    ./nix-dev.nix
     ./nixos-gui.nix
     ./python.nix
     ./signal.nix

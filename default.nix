@@ -15,7 +15,7 @@ with lib;
         type = with types; attrsOf (listOf str);
         default = { };
         example = {
-          json = [ jq ];
+          json = [ "jq" ];
         };
         description = "Fixers in Vim-ALE to be used for filetypes";
       };
@@ -50,9 +50,7 @@ with lib;
       git-crypt
       starship
 
-      nixpkgs-fmt
       shfmt
-      direnv
     ];
 
     home = {
@@ -80,7 +78,6 @@ with lib;
           vi = "vim";
         };
         initExtra = ''
-          eval "$(direnv hook bash)"
           function set_win_title(){
             echo -ne "\033]0; $USER@$HOSTNAME:$PWD \007"
           }
@@ -107,7 +104,6 @@ with lib;
       json = [ "jq" ];
       bash = [ "shfmt" ];
       sh = [ "shfmt" ];
-      nix = [ "nixpkgs-fmt" ];
     };
   };
 
