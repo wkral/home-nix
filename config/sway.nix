@@ -145,7 +145,7 @@ in
         description = "Display output dynamic configuration for Sway";
         command = "${pkgs.kanshi}/bin/kanshi";
       };
-      netowork-manager-applet = mkSwayService {
+      network-manager-applet = mkSwayService {
         description = "Network Manager Tray Applet";
         command = "${pkgs.networkmanagerapplet}/bin/nm-applet --indicator";
       };
