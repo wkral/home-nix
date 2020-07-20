@@ -49,6 +49,7 @@ in
   imports = [
     ../config/alacritty.nix
     ../config/sway.nix
+    ../config/mako.nix
     ../config/waybar
     ../config/wofi
   ];
@@ -113,7 +114,10 @@ in
 
     wayland.windowManager.sway.enable = true;
 
-    programs.alacritty.enable = true;
+    programs = {
+      alacritty.enable = true;
+      mako.enable = true;
+    };
 
     home.sessionVariables = {
       BROWSER = "firefox";
@@ -153,14 +157,5 @@ in
       };
     };
 
-    programs.mako = {
-      enable = true;
-      font = "Noto Sans Light " + font-base;
-      defaultTimeout = 10000;
-      backgroundColor = "#1d1f21e6";
-      borderColor = "#3d3f41e6";
-      borderRadius = 5;
-      textColor = "#eeeeeeff";
-    };
   };
 }
