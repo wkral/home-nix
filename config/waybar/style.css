@@ -42,11 +42,7 @@ window#waybar {
     margin: 0px 2px;
 }
 
-#clock {
-    background-color: #64727D;
-}
-
-#battery {
+#attery {
     color: white;
 }
 
