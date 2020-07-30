@@ -49,6 +49,7 @@ in
   imports = [
     ../config/alacritty.nix
     ../config/sway.nix
+    ../config/sway-dropdown-term.nix
     ../config/mako.nix
     ../config/waybar
     ../config/wofi

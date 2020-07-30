@@ -113,7 +113,6 @@ in
       gtk = true;
     };
   };
-  #TODO handle output direction
 
   systemd.user = {
     services = {
@@ -169,19 +168,6 @@ in
       Install = { WantedBy = [ "sway-session.target" ]; };
     };
   };
-
-  #  xdg.configFile."sway/config.d/14-outputs".text = ''
-  #    workspace $wk1 output ${cfg.outputs.primary}
-  #    workspace $wk2 output ${cfg.outputs.primary}
-  #    workspace $wk3 output ${cfg.outputs.primary}
-  #    workspace $wk4 output ${cfg.outputs.primary}
-  #    workspace $wk5 output ${cfg.outputs.primary}
-  #    workspace $wk6 output ${cfg.outputs.primary}
-  #    workspace $wk7 output ${cfg.outputs.primary}
-  #    workspace $wk8 output ${cfg.outputs.secondary}
-  #    workspace $wk9 output ${cfg.outputs.secondary}
-  #    workspace $wk0 output ${cfg.outputs.secondary}
-  #  '';
 
   xdg.configFile."swaylock/config".text = ''
     ignore-empty-password
