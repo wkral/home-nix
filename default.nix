@@ -43,6 +43,7 @@ with lib;
       dnsutils
       zip
       tree
+      du-dust
       qrencode
       yj
       fd

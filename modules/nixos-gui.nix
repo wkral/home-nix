@@ -64,17 +64,12 @@ in
     ];
 
     home.packages = with pkgs; [
-      #gui tools
-      xdg_utils
-      xorg.xrdb
       evince # pdf viewer
       firefox-wayland
       gnome3.nautilus # file manager
       gnome3.dconf-editor
       libreoffice #office
-      zathura # pdf viewer
       wireshark
-      gnome3.gnome-tweak-tool
       networkmanagerapplet
       font-manager
       zbar
@@ -118,6 +113,13 @@ in
     programs = {
       alacritty.enable = true;
       mako.enable = true;
+      zathura = {
+        enable = true;
+        options = {
+          font = "Noto Sans Mono ${font-base}";
+          adjust-open = "width";
+        };
+      };
     };
 
     home.sessionVariables = {
