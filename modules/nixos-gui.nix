@@ -68,7 +68,7 @@ in
       firefox-wayland
       gnome3.nautilus # file manager
       gnome3.dconf-editor
-      libreoffice #office
+      #libreoffice #office
       wireshark
       networkmanagerapplet
       font-manager

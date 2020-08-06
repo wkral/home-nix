@@ -5,10 +5,8 @@
       env = {
         TERM = "xterm-256color";
       };
-      dynamic_title = true;
-      mouse = {
-        hide_when_typeing = true;
-      };
+      window.dynamic_title = true;
+      mouse.hide_when_typeing = true;
       key_bindings = [
         {
           mods = "Control";
@@ -18,15 +16,9 @@
       ];
       background_opacity = 0.9;
       font = {
-        normal = {
-          family = "Noto Sans Mono Condensed";
-        };
-        bold = {
-          family = "Noto Sans Mono Condensed SemiBold";
-        };
-        italic = {
-          family = "Noto Sans Mono Condensed Italic";
-        };
+        normal.family = "Noto Sans Mono Condensed";
+        bold.family = "Noto Sans Mono Condensed SemiBold";
+        italic.family = "Noto Sans Mono Condensed Italic";
         size = config.wk.font.base-size;
       };
       colors = {
