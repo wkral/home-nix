@@ -48,5 +48,23 @@ with lib;
     programs.gpg.settings = {
       default-key = "3213F8D26AD65DF98B62C43BC733A26D1B5DE28D";
     };
+
+    systemd.user.services."ssh-tunnel@" = {
+      Unit = {
+        Description = "Setup a secure tunnel to %I";
+        After = "network.target";
+      };
+
+      Service = {
+        EnvironmentFile = "%h/.ssh/systemd-tunnels/%i";
+        ExecStart = ''${pkgs.openssh}/bin/ssh -NT -o ServerAliveInterval=60 -o ExitOnForwardFailure=yes -L ''${LOCAL_ADDR}:''${LOCAL_PORT}:''${REMOTE_ADDR}:''${REMOTE_PORT} ''${TARGET}'';
+
+        # Restart every >2 seconds to avoid StartLimitInterval failure
+        RestartSec = 5;
+        Restart = "always";
+      };
+
+      Install = { WantedBy = [ "multi-user.target" ]; };
+    };
   };
 }
