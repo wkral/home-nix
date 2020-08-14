@@ -68,7 +68,7 @@ in
       firefox-wayland
       gnome3.nautilus # file manager
       gnome3.dconf-editor
-      #libreoffice #office
+      libreoffice #office
       wireshark
       networkmanagerapplet
       font-manager
@@ -78,6 +78,7 @@ in
       pavucontrol
       alsaUtils
       pinentry_gnome
+      xdg_utils
 
       wk.quickcmd
 
