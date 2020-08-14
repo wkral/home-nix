@@ -4,6 +4,8 @@ let
   inherit (lib.attrsets) listToAttrs nameValuePair;
   inherit (lib.strings) concatStringsSep fileContents;
 
+  font-size = config.wk.font.base-size;
+
   numSteps = 21;
   steps = genList (x: 100 - (x * 5)) numSteps;
   strSteps = map toString steps;
@@ -34,7 +36,7 @@ in
       ''
         * {
             font-family: "Noto Sans";
-            font-size: ${toString config.wk.font.base-size}pt;
+            font-size: ${toString font-size}pt;
         }''
       (fileContents ./style.css)
       (colourBgSteps "cpu" [
@@ -162,8 +164,8 @@ in
             };
           };
           tray = {
-            icon-size = 27;
-            spacing = 5;
+            icon-size = (font-size - 1) * 2;
+            spacing = font-size / 2;
           };
         };
       }
