@@ -30,7 +30,7 @@ in
       keybindings = lib.mkOptionDefault {
         "${modifier}+grave" = "exec ${pkgs.wk.quickcmd}/bin/quickcmd";
         "${modifier}+x" = "splith";
-        "${modifier}+Shift+e" = "exit";
+        "${modifier}+Shift+e" = "exec 'systemctl --user stop graphical-session.target'; exit";
 
         # Move workspace around with logo+alt+direction
         "${modifier}+Mod1+h" = "move workspace to output left";
