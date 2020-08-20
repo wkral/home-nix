@@ -3,24 +3,17 @@ let
   cfg = config.wk.gui;
   font-size = config.wk.font.base-size;
   modifier = "Mod4";
-  mkSwayService = service: {
-    Unit = {
-      Description = service.description;
-      PartOf = "graphical-session.target";
-    };
-    Service = { ExecStart = service.command; };
-    Install = { WantedBy = [ "sway-session.target" ]; };
-  };
-  swaymsg = "${pkgs.sway}/bin/swaymsg";
-  swayidle = "${pkgs.swayidle}/bin/swayidle";
-  swaylock = "${pkgs.swaylock}/bin/swaylock";
-  fd = "${pkgs.fd}/bin/fd";
   inherit (config.xdg) configHome;
-  wallpapers = "${configHome}/wallpapers";
 
-  pactl = "${pkgs.pulseaudio}/bin/pactl";
+  pactl = action: "exec '${pkgs.pulseaudio}/bin/pactl ${action}'";
+  sysd = target: action: "exec 'systemctl --user ${action} ${target}'";
+  session = sysd "graphical-session.target";
 in
 {
+  imports = [
+    ./dropdown-term.nix
+    ./services.nix
+  ];
   wayland.windowManager.sway = {
     config = {
       modifier = modifier;
@@ -30,7 +23,8 @@ in
       keybindings = lib.mkOptionDefault {
         "${modifier}+grave" = "exec ${pkgs.wk.quickcmd}/bin/quickcmd";
         "${modifier}+x" = "splith";
-        "${modifier}+Shift+e" = "exec 'systemctl --user stop graphical-session.target'; exit";
+        "${modifier}+Shift+e" = "${session "stop"}; exit";
+        "${modifier}+Shift+c" = "${session "restart"}; reload";
 
         # Move workspace around with logo+alt+direction
         "${modifier}+Mod1+h" = "move workspace to output left";
@@ -39,10 +33,10 @@ in
         "${modifier}+Mod1+l" = "move workspace to output right";
 
         # audio media keys, would like to decouple from Sway
-        "XF86AudioRaiseVolume" = "exec ${pactl} set-sink-volume @DEFAULT_SINK@ +5%";
-        "XF86AudioLowerVolume" = "exec ${pactl} set-sink-volume @DEFAULT_SINK@ -5%";
-        "XF86AudioMute" = "exec ${pactl} set-sink-mute @DEFAULT_SINK@ toggle";
-        "XF86AudioMicMute" = "exec ${pactl} set-source-mute @DEFAULT_SOURCE@ toggle";
+        "XF86AudioRaiseVolume" = pactl "set-sink-volume @DEFAULT_SINK@ +5%";
+        "XF86AudioLowerVolume" = pactl "set-sink-volume @DEFAULT_SINK@ -5%";
+        "XF86AudioMute" = pactl "set-sink-mute @DEFAULT_SINK@ toggle";
+        "XF86AudioMicMute" = pactl "set-source-mute @DEFAULT_SOURCE@ toggle";
       };
       window.border = 0;
       focus.followMouse = false;
@@ -114,56 +108,6 @@ in
     };
   };
 
-  systemd.user = {
-    services = {
-      set-random-background = {
-        Unit = {
-          Description = "Set a random background for Sway";
-          PartOf = "graphical-session.target";
-        };
-        Service = {
-          Type = "oneshot";
-          ExecStart = ''
-            ${swaymsg} "output '*' \
-              bg $(${fd} . -e png -e jpg ${wallpapers} | shuf -n 1) fill"
-          '';
-        };
-        Install = { WantedBy = [ "sway-session.target" ]; };
-      };
-      swayidle = mkSwayService {
-        description = "Lock screen when idle";
-        command = ''
-          ${swayidle} \
-              timeout ${toString cfg.idle.lock} '${swaylock}' \
-              timeout ${toString cfg.idle.screen-poweroff} \
-                 '${swaymsg} "output * dpms off"' \
-                 resume '${swaymsg} "output * dpms on"'
-        '';
-      };
-      kanshi = mkSwayService {
-        description = "Display output dynamic configuration for Sway";
-        command = "${pkgs.kanshi}/bin/kanshi";
-      };
-      network-manager-applet = mkSwayService {
-        description = "Network Manager Tray Applet";
-        command = "${pkgs.networkmanagerapplet}/bin/nm-applet --indicator";
-      };
-      pasystray = mkSwayService {
-        description = "PulseAudio Tray Applet";
-        command = "${pkgs.pasystray}/bin/pasystray";
-      };
-    };
-    timers.set-random-background = {
-      Unit = {
-        Description = "Set a random background for Sway";
-        PartOf = "graphical-session.target";
-      };
-      Timer = {
-        OnUnitActiveSec = "1h";
-      };
-      Install = { WantedBy = [ "sway-session.target" ]; };
-    };
-  };
 
   xdg.configFile."swaylock/config".text = ''
     ignore-empty-password
