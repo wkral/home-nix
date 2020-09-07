@@ -10,5 +10,6 @@
     ./python.nix
     ./signal.nix
     ./work.nix
+    ./zoom.nix
   ];
 }
