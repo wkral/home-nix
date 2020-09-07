@@ -11,7 +11,7 @@ let
 in
 with lib;
 {
-  options.wk.python.enable = mkEnableOption "Clojure dev tools";
+  options.wk.python.enable = mkEnableOption "Python dev tools";
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
