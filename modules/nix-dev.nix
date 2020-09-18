@@ -14,6 +14,7 @@ in
     home.packages = [
       pkgs.nixpkgs-fmt
       pkgs.nixpkgs-review
+      pkgs.nix-update
       pkgs.niv
     ];
 
