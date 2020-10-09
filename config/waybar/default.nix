@@ -4,7 +4,12 @@ let
   inherit (lib.attrsets) listToAttrs nameValuePair;
   inherit (lib.strings) concatStringsSep fileContents;
 
+  sysdLib = import ../../lib/systemd.nix { inherit lib; };
+  inherit (sysdLib) screenService waybarService;
+
   font-size = config.wk.font.base-size;
+
+  waybar = "${config.programs.waybar.package}/bin/waybar";
 
   numSteps = 21;
   steps = genList (x: 100 - (x * 5)) numSteps;
@@ -31,7 +36,6 @@ let
 in
 {
   programs.waybar = {
-    systemd.enable = true;
     style = concatStringsSep "\n\n" [
       ''
         * {
@@ -170,5 +174,22 @@ in
         };
       }
     ];
+  };
+  systemd.user.services = {
+    waybar = screenService "Customizable bar for Wlroots based compositors"
+      waybar
+      {
+        type = "dbus";
+        busName = "fr.arouillard.waybar";
+        restart = "always";
+        restartSec = "1sec";
+      };
+
+    nm-applet = waybarService "Network Manager Tray Applet"
+      "${pkgs.networkmanagerapplet}/bin/nm-applet --indicator"
+      { };
+    pasystray = waybarService "PulseAudio Tray Applet"
+      "${pkgs.pasystray}/bin/pasystray"
+      { };
   };
 }

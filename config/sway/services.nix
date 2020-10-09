@@ -1,20 +1,9 @@
 { config, lib, pkgs, ... }:
 let
   cfg = config.wk.gui;
-  mkUnit = part-of: wanted-by: description: unitFn: input: {
-    Unit = {
-      Description = description;
-      PartOf = part-of;
-    };
-    Install = { WantedBy = [ wanted-by ]; };
-  } // (unitFn input);
 
-  service = cmd: { Service = { ExecStart = cmd; }; };
-  oneshot = cmd: { Service = { Type = "oneshot"; ExecStart = cmd; }; };
-  timer = duration: { Timer = { OnUnitActiveSec = duration; }; };
-
-  swayUnit = mkUnit "graphical-session.target" "sway-session.target";
-  waybarUnit = mkUnit "waybar.service" "waybar.service" ;
+  sysdLib = import ../../lib/systemd.nix { inherit lib; };
+  inherit (sysdLib) mkUnit swayService swayTimer;
 
   fd = "${pkgs.fd}/bin/fd";
 
@@ -28,12 +17,12 @@ in
 {
   systemd.user = {
     services = {
-      set-random-background = swayUnit "Set a random background for Sway"
-        oneshot ''
+      set-random-background = swayService "Set a random background for Sway" ''
         ${swaymsg} "output '*' \
           bg $(${fd} . -e png -e jpg ${wallpapers} | shuf -n 1) fill"
-      '';
-      swayidle = swayUnit "Lock screen when idle" service ''
+      ''
+        { Type = "oneshot"; };
+      swayidle = swayService "Lock screen when idle" ''
         ${swayidle} \
             timeout ${toString cfg.idle.lock} '${swaylock}' \
             timeout ${toString cfg.idle.screen-poweroff} \
@@ -41,17 +30,23 @@ in
                 ${swaymsg} "output * dpms off"' \
                resume '${swaymsg} "output * dpms on"; \
                        systemctl --user start screen-powered.target'
-      '';
-      kanshi = swayUnit "Display output dynamic configuration for Sway"
-        service "${pkgs.kanshi}/bin/kanshi";
-      nm-applet = waybarUnit "Network Manager Tray Applet"
-        service "${pkgs.networkmanagerapplet}/bin/nm-applet --indicator";
-      pasystray = waybarUnit "PulseAudio Tray Applet"
-        service "${pkgs.pasystray}/bin/pasystray";
+      ''
+        { };
+      kanshi = swayService "Display output dynamic configuration for Sway"
+        "${pkgs.kanshi}/bin/kanshi"
+        { };
     };
     timers = {
-      set-random-background = swayUnit "Set a random background for Sway"
-        timer "1h";
+      set-random-background = swayTimer "Set a random background for Sway" "1h"
+        { };
+    };
+    targets = {
+      screen-powered = mkUnit {
+        Description = "Screen is powered";
+        BindsTo = "sway-session.target";
+        PartOf = "sway-session.target";
+        WantedBy = "sway-session.target";
+      };
     };
   };
 }

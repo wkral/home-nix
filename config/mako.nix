@@ -1,10 +1,13 @@
-{ pkgs, config, ... }:
+{ pkgs, lib, config, ... }:
 let
   font-base = toString config.wk.font.base-size;
-  mako = pkgs.mako;
+
+  sysdLib = import ../lib/systemd.nix { inherit lib; };
+  inherit (sysdLib) screenService;
 in
 {
   programs.mako = {
+    anchor = "bottom-right";
     font = "Noto Sans Light " + font-base;
     defaultTimeout = 10000;
     backgroundColor = "#1d1f21e6";
@@ -13,20 +16,13 @@ in
     textColor = "#eeeeeeff";
   };
 
-  systemd.user.services.mako = {
-    Unit = {
-      Description = "Lightweight Wayland notification daemon";
-      Documentation = "man:mako(1)";
-      PartOf = "graphical-session.target";
-    };
-    Service = {
-      Type = "dbus";
-      BusName = "org.freedesktop.Notifications";
-      ExecStart = "${mako}/bin//mako";
-      ExecReload = "${mako}/bin/makoctl reload";
-    };
-    Install = {
-      WantedBy = [ "sway-session.target" ];
-    };
+  systemd.user.services = {
+    mako = screenService "Lightweight Wayland notification daemon"
+      "${pkgs.mako}/bin//mako"
+      {
+        Type = "dbus";
+        BusName = "org.freedesktop.Notifications";
+        ExecReload = "${pkgs.mako}/bin/makoctl reload";
+      };
   };
 }
