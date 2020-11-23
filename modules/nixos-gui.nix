@@ -125,6 +125,7 @@ in
 
     home.sessionVariables = {
       BROWSER = "firefox";
+      XDG_CURRENT_DESKTOP = "sway";
     };
 
     home.file.".Xresources".text = ''

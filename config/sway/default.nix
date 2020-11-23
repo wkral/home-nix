@@ -23,8 +23,13 @@ in
       keybindings = lib.mkOptionDefault {
         "${modifier}+grave" = "exec ${pkgs.wk.quickcmd}/bin/quickcmd";
         "${modifier}+x" = "splith";
-        "${modifier}+Shift+e" = "${session "stop"}; exit";
         "${modifier}+Shift+c" = "${session "restart"}; reload";
+        "${modifier}+Shift+e" = ''
+            exec swaynag -t warning -m 'Exit sway?' \
+            -b 'Logout' 'swaymsg exit' \
+            -b 'Restart' 'systemctl reboot' \
+            -b 'Shutdown' 'systemctl poweroff'
+        '';
 
         # Move workspace around with logo+alt+direction
         "${modifier}+Mod1+h" = "move workspace to output left";
