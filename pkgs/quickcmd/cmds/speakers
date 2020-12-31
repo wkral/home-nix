@@ -1,4 +1,4 @@
-# vim: filetype=bash
+#! /usr/bin/env bash
 
 pactl set-sink-port alsa_output.pci-0000_0b_00.4.analog-stereo analog-output-lineout
-amixer -c 1 sset 'Auto-Mute Mode' Disabled
+amixer -c Generic sset 'Auto-Mute Mode' Disabled
