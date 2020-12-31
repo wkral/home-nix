@@ -3,7 +3,7 @@ let
   font-base = toString config.wk.font.base-size;
 
   sysdLib = import ../lib/systemd.nix { inherit lib; };
-  inherit (sysdLib) screenService;
+  inherit (sysdLib) swayService;
 in
 {
   programs.mako = {
@@ -17,7 +17,7 @@ in
   };
 
   systemd.user.services = {
-    mako = screenService "Lightweight Wayland notification daemon"
+    mako = swayService "Lightweight Wayland notification daemon"
       "${pkgs.mako}/bin//mako"
       {
         Type = "dbus";
