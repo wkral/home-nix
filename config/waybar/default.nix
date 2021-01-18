@@ -44,27 +44,27 @@ in
         }''
       (fileContents ./style.css)
       (colourBgSteps "cpu" [
-        "fd1d1d"
-        "fc4227"
-        "fc6631"
-        "fc8b3b"
-        "fcaf45"
-        "f1ac50"
-        "e5a85a"
-        "daa565"
-        "cea16f"
-        "c29e7a"
-        "b69a85"
-        "aa9790"
-        "9e939b"
-        "9290a6"
-        "868cb1"
-        "7a89bc"
-        "6e86c7"
-        "6283d2"
-        "5680dd"
-        "4a7de8"
-        "417af0"
+        "e50000"
+        "e4483c"
+        "de5425"
+        "d85e00"
+        "d16500"
+        "ca6c00"
+        "c37100"
+        "bc7600"
+        "b57a00"
+        "af7d00"
+        "a87f00"
+        "a18200"
+        "9a8400"
+        "938500"
+        "8c8700"
+        "858823"
+        "7d892f"
+        "758b38"
+        "6c8b41"
+        "628c49"
+        "578c50"
       ]
       )
       (fillBgSteps "battery" [
@@ -92,7 +92,7 @@ in
       ]
       )
       (fillBgSteps "memory" (constSteps "9b59b6"))
-      (fillBgSteps "pulseaudio" (constSteps "f1c40f"))
+      (fillBgSteps "pulseaudio" (constSteps "884aa2"))
     ];
     settings = [
       {
@@ -102,24 +102,22 @@ in
         modules-right = [
           "idle_inhibitor"
           "pulseaudio"
-          "memory"
           "cpu"
-          "battery"
           "tray"
           "clock"
         ];
         modules = {
-          battery = {
-            format = "";
-            format-charging = "";
-            format-discharging = "";
-            format-discharging-percent0 = "";
-            format-discharging-percent10 = "";
-            format-discharging-percent15 = "";
-            format-discharging-percent5 = "";
-            format-full = "";
-            states = stepped-states;
-          };
+          #          battery = {
+          #            format = "";
+          #            format-charging = "";
+          #            format-discharging = "";
+          #            format-discharging-percent0 = "";
+          #            format-discharging-percent10 = "";
+          #            format-discharging-percent15 = "";
+          #            format-discharging-percent5 = "";
+          #            format-full = "";
+          #            states = stepped-states;
+          #          };
           clock = {
             format = " {:%a, %b %d %H:%M}";
           };
@@ -136,10 +134,10 @@ in
               deactivated = "";
             };
           };
-          memory = {
-            format = "";
-            states = stepped-states;
-          };
+          #          memory = {
+          #            format = "";
+          #            states = stepped-states;
+          #          };
           pulseaudio = {
             format = "{icon}";
             format-bluetooth = "{volume}% {icon}";
