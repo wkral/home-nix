@@ -19,6 +19,14 @@ with lib;
         };
         description = "Fixers in Vim-ALE to be used for filetypes";
       };
+      ale-linters = mkOption {
+        type = with types; attrsOf (listOf str);
+        default = { };
+        example = {
+          ryst = [ "analyzer" ];
+        };
+        description = "Linters in Vim-ALE to be used for filetypes";
+      };
     };
   };
 

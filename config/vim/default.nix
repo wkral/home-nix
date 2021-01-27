@@ -2,14 +2,19 @@
 with lib;
 let
   fixers = config.wk.vim.ale-fixers;
+  linters = config.wk.vim.ale-linters;
   vim-str = str: "'${str}'";
   vim-list = list: "[${concatMapStringsSep ", " vim-str list}]";
-  lang-fixers = lang: progs: "\\   ${vim-str lang}: ${vim-list progs},";
+  keyed-list = key: items: "\\   ${vim-str key}: ${vim-list items},";
   ale-config = ''
 
     let g:ale_fixers = {
     \   '*': ['remove_trailing_lines', 'trim_whitespace'],
-    ${concatStringsSep "\n" (mapAttrsToList lang-fixers fixers)}
+    ${concatStringsSep "\n" (mapAttrsToList keyed-list fixers)}
+    \}
+
+    let g:ale_linters = {
+    ${concatStringsSep "\n" (mapAttrsToList keyed-list linters)}
     \}
   '';
 in

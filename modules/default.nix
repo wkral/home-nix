@@ -8,6 +8,7 @@
     ./nix-dev.nix
     ./nixos-gui.nix
     ./python.nix
+    ./rust.nix
     ./signal.nix
     ./work.nix
     ./zoom.nix
