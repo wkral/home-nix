@@ -23,6 +23,7 @@ in
         Type = "dbus";
         BusName = "org.freedesktop.Notifications";
         ExecReload = "${pkgs.mako}/bin/makoctl reload";
+        ConditionEnvironment = "WAYLAND_DISPLAY";
       };
   };
 }

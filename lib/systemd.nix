@@ -13,6 +13,7 @@ rec {
     , After ? null
     , Before ? null
     , WantedBy ? null
+    , ConditionEnvironment ? null
     , ...
     }: {
       Unit = {
@@ -24,7 +25,10 @@ rec {
       option BindsTo { BindsTo = BindsTo; } //
       option Conflicts { Conflicts = Conflicts; } //
       option After { After = After; } //
-      option Before { Before = Before; };
+      option Before { Before = Before; } //
+      option ConditionEnvironment {
+        ConditionEnvironment = ConditionEnvironment;
+      };
     } //
     option WantedBy {
       Install = { WantedBy = [ WantedBy ]; };
@@ -34,6 +38,7 @@ rec {
     { ExecStart ? null
     , ExecStop ? null
     , ExecReload ? null
+    , Environment ? null
     , Type ? null
     , BusName ? null
     , Restart ? null
@@ -46,6 +51,7 @@ rec {
         ExecStart = ExecStart;
       } //
       option ExecStop { ExecStop = ExecStop; } //
+      option Environment { Environment = Environment; } //
       option ExecReload { ExecReload = ExecReload; } //
       option Type { Type = Type; } //
       option BusName { BusName = BusName; } //
