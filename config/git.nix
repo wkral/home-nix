@@ -9,6 +9,9 @@
         editor = "vim";
         ignorecase = false;
       };
+      init = {
+        defaultBranch = "main";
+      };
       push = { default = "simple"; };
       pull = { rebase = "false"; };
       diff = { tool = "vimdiff"; };
