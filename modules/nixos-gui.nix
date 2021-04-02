@@ -48,6 +48,7 @@ in
 
   imports = [
     ../config/alacritty.nix
+    ../config/pulseeffects.nix
     ../config/sway
     ../config/mako.nix
     ../config/waybar
