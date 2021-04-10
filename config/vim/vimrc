@@ -99,10 +99,10 @@ if executable('fzf')
 endif
 
 command! -nargs=+ MyGrep execute 'silent grep! <args>' | copen | redraw!
-nnoremap <leader>/ :MyGrep<space>
+nnoremap <leader>/ :Rg<space>
 " Close the quickfix and other windows with a q
 nnoremap <expr> q (!&modifiable ? ':close!<CR>' : 'q')
-nnoremap <leader>. :MyGrep <cword><CR>
+nnoremap <leader>. :Rg <cword><CR>
 
 autocmd QuickFixCmdPost [^l]* nested cwindow
 autocmd QuickFixCmdPost    l* nested lwindow
