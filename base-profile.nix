@@ -80,26 +80,43 @@ with lib;
     systemd.user.startServices = true;
 
     programs = {
-      bash = {
+      zsh = {
         enable = true;
-        shellAliases = {
-          vi = "vim";
+        enableAutosuggestions = true;
+        enableCompletion = true;
+        enableVteIntegration = true;
+        autocd = true;
+        defaultKeymap = "viins";
+        dotDir = ".config/zsh";
+        history = {
+          extended = true;
+          path = ".cache/zsh/zsh_history";
         };
+        envExtra = ''
+          export KEYTIMEOUT=1
+        '';
         initExtra = ''
           function set_win_title(){
             echo -ne "\033]0; $USER@$HOSTNAME:$PWD \007"
           }
-          starship_precmd_user_func="set_win_title"
-          source <("${pkgs.starship}/bin/starship" init bash --print-full-init)
+          precmd_functions+=(set_win_title)
         '';
+        shellAliases = {
+          vi = "vim";
+        };
       };
-      broot = {
+      dircolors = {
         enable = true;
-        enableBashIntegration = true;
+        enableZshIntegration = true;
+      };
+      starship = {
+        enable = true;
+        enableZshIntegration = true;
       };
       fzf = {
         enable = true;
         defaultCommand = "rg --files --follow --no-ignore-exclude";
+        enableZshIntegration = true;
       };
       gpg.enable = true;
       git.enable = true;
