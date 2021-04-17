@@ -33,7 +33,6 @@ with lib;
   imports = [
     ./pkgs
     ./modules
-    ./configuration.nix
 
     ./config/vim
     ./config/git.nix
