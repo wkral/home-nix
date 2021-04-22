@@ -22,6 +22,10 @@ in
           bg $(${fd} . -e png -e jpg ${wallpapers} | shuf -n 1) fill"
       ''
         { Type = "oneshot"; };
+      kanshi = swayService "Display output dynamic configuration for Sway"
+        "${pkgs.kanshi}/bin/kanshi"
+        { };
+    } // lib.optionalAttrs cfg.idle.enable {
       swayidle = swayService "Lock screen when idle" ''
         ${swayidle} \
             timeout ${toString cfg.idle.lock} '${swaylock}' \
@@ -31,9 +35,6 @@ in
                resume '${swaymsg} "output * dpms on"; \
                        systemctl --user start screen-powered.target'
       ''
-        { };
-      kanshi = swayService "Display output dynamic configuration for Sway"
-        "${pkgs.kanshi}/bin/kanshi"
         { };
     };
     timers = {

@@ -25,6 +25,7 @@ in
       };
     };
     idle = {
+      enable = mkEnableOption "Idle screen lock/poweroff";
       screen-poweroff = mkOption {
         type = types.int;
         default = 540;

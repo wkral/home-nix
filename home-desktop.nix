@@ -6,6 +6,7 @@
       enable = true;
       outputs.primary = "HDMI-A-1";
       idle = {
+        enable = true;
         screen-poweroff = 1200;
         lock = 3600;
         background-image = "MMvault.png";
