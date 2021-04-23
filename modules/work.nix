@@ -20,7 +20,7 @@ with lib;
       librsvg
       wk.texlive
 
-      wk.mkpdf
+      #wk.mkpdf
     ];
   };
 }
