@@ -23,7 +23,7 @@ with lib;
         type = with types; attrsOf (listOf str);
         default = { };
         example = {
-          ryst = [ "analyzer" ];
+          rust = [ "analyzer" ];
         };
         description = "Linters in Vim-ALE to be used for filetypes";
       };
@@ -59,6 +59,7 @@ with lib;
       starship
 
       shfmt
+      vale
     ];
 
     home = {
@@ -113,6 +114,9 @@ with lib;
       bash = [ "shfmt" ];
       sh = [ "shfmt" ];
     };
-  };
 
+    wk.vim.ale-linters = {
+      markdown = ["vale"];
+    };
+  };
 }
