@@ -11,7 +11,6 @@ with lib;
     nixpkgs.config.allowUnfree = true; # required by zoom-us, teams
 
     home.packages = with pkgs; [
-      zoom-us # video conference
       teams
 
       pandoc

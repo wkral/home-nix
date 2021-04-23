@@ -8,6 +8,7 @@
       outputs.primary = "HDMI-A-1";
     };
     work.enable = true;
+    zoom.enable = true;
   };
 
   imports = [

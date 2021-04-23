@@ -14,8 +14,4 @@ with lib;
       v4l-utils
     ];
   };
-
-  imports = [
-    ../config/projectm.nix
-  ];
 }
