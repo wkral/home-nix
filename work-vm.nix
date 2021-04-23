@@ -7,6 +7,7 @@
       enable = true;
       outputs.primary = "HDMI-A-1";
     };
+    work.enable = true;
   };
 
   imports = [
