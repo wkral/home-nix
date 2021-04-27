@@ -9,6 +9,11 @@
     };
     work.enable = true;
     zoom.enable = true;
+
+    nix-dev = {
+      enable = true;
+      enableLorri = true;
+    };
   };
 
   imports = [
