@@ -6,10 +6,7 @@ set title
 
 "Indentation that doesn't suck
 set smartindent
-set softtabstop=4
-set shiftwidth=4
-set tabstop=4
-set expandtab
+"polyglot seems to handle default indenting for most languages now
 
 "The uncool status line is back with a vengeance
 set laststatus=2
@@ -135,17 +132,7 @@ set autoread
 "Use older regex engine as it performs better for many syntax highlights
 set re=1
 
-"Custom tab widths for file types
-autocmd Filetype ruby setlocal ts=2 sw=2 sts=2 expandtab
-autocmd Filetype eruby setlocal ts=2 sw=2 sts=2 expandtab
-autocmd Filetype html setlocal ts=2 sw=2 sts=2 expandtab
-autocmd Filetype javascript setlocal ts=2 sw=2 sts=2 expandtab
-autocmd Filetype sls setlocal ts=2 sw=2 sts=2 expandtab
-autocmd Filetype yaml setlocal ts=2 sw=2 sts=2 expandtab
-autocmd Filetype yml setlocal ts=2 sw=2 sts=2 expandtab
-autocmd Filetype json setlocal ts=2 sw=2 sts=2 expandtab
-autocmd Filetype jinja setlocal ts=2 sw=2 sts=2 expandtab
-autocmd Filetype go setlocal noexpandtab
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 "Spell checking
 set spelllang=en_ca

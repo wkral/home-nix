@@ -31,6 +31,7 @@ in
       lightline-vim
       ale
       lightline-ale
+      editorconfig-vim
       vim-fireplace
       vim-polyglot
       colours
