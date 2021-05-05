@@ -19,16 +19,20 @@ in
       modifier = modifier;
       menu = "${pkgs.wofi}/bin/wofi --show drun";
       terminal = "${pkgs.alacritty}/bin/alacritty";
-      fonts = [ "Noto Sans ${toString font-size}" ];
+      fonts = {
+        names = [ "Noto Sans" ];
+        style = "Regular";
+        size = 0.0 + font-size;
+      };
       keybindings = lib.mkOptionDefault {
         "${modifier}+grave" = "exec ${pkgs.wk.quickcmd}/bin/quickcmd";
         "${modifier}+x" = "splith";
         "${modifier}+Shift+c" = "${session "restart"}; reload";
         "${modifier}+Shift+e" = ''
-            exec swaynag -t warning -m 'Exit sway?' \
-            -b 'Logout' 'swaymsg exit' \
-            -b 'Restart' 'systemctl reboot' \
-            -b 'Shutdown' 'systemctl poweroff'
+          exec swaynag -t warning -m 'Exit sway?' \
+          -b 'Logout' 'swaymsg exit' \
+          -b 'Restart' 'systemctl reboot' \
+          -b 'Shutdown' 'systemctl poweroff'
         '';
 
         # Move workspace around with logo+alt+direction

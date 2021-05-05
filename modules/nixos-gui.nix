@@ -97,8 +97,6 @@ in
       hicolor-icon-theme
       gnome3.adwaita-icon-theme
 
-      mpv
-
       libsForQt5.qtstyleplugins
       libsForQt5.qtstyleplugin-kvantum
 
@@ -115,6 +113,13 @@ in
     programs = {
       alacritty.enable = true;
       mako.enable = true;
+      mpv = {
+        enable = true;
+        config = {
+          cache = "yes";
+          cache-secs = 5;
+        };
+      };
       zathura = {
         enable = true;
         options = {
