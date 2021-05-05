@@ -16,7 +16,6 @@ with lib;
       graphviz
       wk.mkpdf
       wk.texlive
-      jre
     ];
   };
 }

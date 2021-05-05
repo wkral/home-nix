@@ -1,4 +1,4 @@
-{ stdenv, writeShellScriptBin, pandoc, graphviz, librsvg, plantuml, wk }:
+{ stdenv, writeShellScriptBin, pandoc, graphviz, librsvg, plantuml, jre, wk }:
 let
   tmpldir = builtins.path { path = ./templates; name = "templates"; };
   filters = builtins.path { path = ./lua-filters; name = "lua-filters"; };
@@ -54,7 +54,10 @@ writeShellScriptBin "mkpdf" ''
 
   [ "$outfile" != "" ] || outfile="''${infile%%.*}.pdf";
 
-  PATH=$PATH:${graphviz}/bin:${librsvg}/bin:${plantuml}/bin
+  PATH=$PATH:${graphviz}/bin:${librsvg}/bin:${jre}/bin:${plantuml}/bin
+  export JAVA_HOME=${jre}
+  export PLANTUML=${plantuml}/lib/plantuml.jar
+
   ${pandoc}/bin/pandoc $infile \
     --lua-filter=${filters}/include.lua \
     --lua-filter=${wk.lua-filters}/diagram-generator.lua \

@@ -1,12 +1,12 @@
 { stdenv, fetchFromGitHub, librsvg, graphviz, plantuml }:
-stdenv.mkDerivation {
+stdenv.mkDerivation rec {
   pname = "lua-filters";
-  version = "2020-02-25";
+  version = "2020-11-30";
   src = fetchFromGitHub {
     owner = "pandoc";
-    repo = "lua-filters";
-    rev = "b5543537c7a389425476c2e1dd6a1bd84f914c8b";
-    sha256 = "1whlzsyndi82z64m80ybc3cjd2v50jw1d17ihq6a9s7k01n0vfhf";
+    repo = pname;
+    rev = "v${version}";
+    sha256 = "00yv65yia6cqq5f9hvagrp3d7193h1rrkm2s8nhf891faad6aq0x";
   };
   buildInputs = [
     librsvg
