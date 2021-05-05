@@ -7,6 +7,7 @@
       enable = true;
       outputs.primary = "HDMI-A-1";
     };
+    mkpdf.enable = true;
     work.enable = true;
     zoom.enable = true;
 

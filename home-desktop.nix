@@ -14,11 +14,13 @@
     };
     games.enable = true;
     music.enable = true;
+    mkpdf.enable = true;
     signal.enable = true;
     cad.enable = true;
     zoom.enable = true;
     python.enable = true;
     rust.enable = true;
+
     nix-dev = {
       enable = true;
       enableLorri = true;

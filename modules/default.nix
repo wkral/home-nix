@@ -5,6 +5,7 @@
     ./clojure.nix
     ./games.nix
     ./music.nix
+    ./mkpdf.nix
     ./nix-dev.nix
     ./nixos-gui.nix
     ./python.nix

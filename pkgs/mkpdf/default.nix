@@ -1,4 +1,8 @@
 { stdenv, writeShellScriptBin, pandoc, graphviz, librsvg, plantuml, wk }:
+let
+  tmpldir = builtins.path { path = ./templates; name = "templates"; };
+  filters = builtins.path { path = ./lua-filters; name = "lua-filters"; };
+in
 writeShellScriptBin "mkpdf" ''
   __usage="
   Usage:
@@ -29,7 +33,7 @@ writeShellScriptBin "mkpdf" ''
   while [ $# -gt 0 ]
   do
     case "$1" in
-    (-l | --list-templates) ls -1 ${./templates}; exit 0;;
+    (-l | --list-templates) ls -1 ${tmpldir}; exit 0;;
     (-t | --template) template=$(eval "echo $2"); shift 2;;
     (-o | --out) outfile=$(eval "echo $2"); shift 2;;
     (--) shift; break;;
@@ -46,17 +50,17 @@ writeShellScriptBin "mkpdf" ''
 
   [ "$template" != "" ] || error "Missing template argument";
 
-  [ -d "${./templates}/$template" ] || error "'$template' is not an available template";
+  [ -d "${tmpldir}/$template" ] || error "'$template' is not an available template";
 
   [ "$outfile" != "" ] || outfile="''${infile%%.*}.pdf";
 
   PATH=$PATH:${graphviz}/bin:${librsvg}/bin:${plantuml}/bin
   ${pandoc}/bin/pandoc $infile \
-    --lua-filter=${./lua-filters}/include.lua \
+    --lua-filter=${filters}/include.lua \
     --lua-filter=${wk.lua-filters}/diagram-generator.lua \
-    --pdf-engine=${wk.texlive}/bin/pdflatex \
-    --highlight-style ${./templates}/$template/code-style.theme \
-    --metadata=template-dir=${./templates}/$template/ \
-    --template=${./templates}/$template/template.tex \
+    --pdf-engine=${wk.texlive}/bin/xelatex \
+    --highlight-style ${tmpldir}/$template/code-style.theme \
+    --metadata=template-dir=${tmpldir}/$template/ \
+    --template=${tmpldir}/$template/template.tex \
     --output $outfile
 ''
