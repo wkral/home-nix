@@ -1,11 +1,13 @@
 { config, pkgs, lib, ... }:
 let
+  cfg = config.wk.gui;
+
   inherit (lib) elemAt genList;
   inherit (lib.attrsets) listToAttrs nameValuePair;
   inherit (lib.strings) concatStringsSep fileContents;
 
   sysdLib = import ../../lib/systemd.nix { inherit lib; };
-  inherit (sysdLib) screenService waybarService;
+  inherit (sysdLib) swayService;
 
   font-size = config.wk.font.base-size;
 
@@ -174,7 +176,7 @@ in
     ];
   };
   systemd.user.services = {
-    waybar = screenService "Customizable bar for Wlroots based compositors"
+    waybar = swayService "Customizable bar for Wlroots based compositors"
       waybar
       {
         type = "dbus";
@@ -182,11 +184,12 @@ in
         restart = "always";
         restartSec = "1sec";
       };
-
-    nm-applet = waybarService "Network Manager Tray Applet"
+  } // lib.optionalAttrs cfg.app-indicators.network-manager {
+    nm-applet = swayService "Network Manager Tray Applet"
       "${pkgs.networkmanagerapplet}/bin/nm-applet --indicator"
       { };
-    pasystray = waybarService "PulseAudio Tray Applet"
+  } // lib.optionalAttrs cfg.app-indicators.pulse-audio {
+    pasystray = swayService "PulseAudio Tray Applet"
       "${pkgs.pasystray}/bin/pasystray"
       { };
   };

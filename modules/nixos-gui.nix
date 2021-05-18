@@ -45,6 +45,25 @@ in
         description = "Image filename found under ~/.config/swaylock/";
       };
     };
+    random-wallpapers = {
+      enable = mkEnableOption "Random wallpaper switching";
+      directory = mkOption {
+        type = types.str;
+        default = "${config.xdg.configHome}/wallpapers/";
+        example = "~/wallpapers/";
+        description = "Directory with  png and jpg images to be selected from";
+      };
+      switch-interval = mkOption {
+          type = types.str;
+          default = "1h";
+          example = "30m";
+          description = "Systemd time interval definition";
+      };
+    };
+    app-indicators = {
+     network-manager = mkEnableOption "Network Manager Tray Applet";
+     pulse-audio = mkEnableOption "PulseAudio Tray Applet";
+    };
   };
 
   imports = [

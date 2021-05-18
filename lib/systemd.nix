@@ -78,21 +78,4 @@ rec {
       PartOf = "graphical-session.target";
       WantedBy = "sway-session.target";
     } // extras);
-
-  screenService = desc: cmd: extras: mkService
-    ({
-      Description = desc;
-      ExecStart = cmd;
-      PartOf = "screen-powered.target";
-      WantedBy = "screen-powered.target";
-      After = "screen-powered.target";
-    } // extras);
-
-  waybarService = desc: cmd: extras: mkService
-    ({
-      Description = desc;
-      ExecStart = cmd;
-      PartOf = "waybar.service";
-      WantedBy = "waybar.service";
-    } // extras);
 }

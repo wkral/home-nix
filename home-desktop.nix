@@ -11,6 +11,11 @@
         lock = 3600;
         background-image = "MMvault.png";
       };
+      random-wallpapers.enable = true;
+      app-indicators = {
+        network-manager = true;
+        pulse-audio = true;
+      };
     };
     games.enable = true;
     music.enable = true;
