@@ -21,7 +21,7 @@ in
     programs.direnv = {
       enable = true;
       enableBashIntegration = true;
-      enableNixDirenvIntegration = true;
+      nix-direnv.enable = true;
     };
 
     services.lorri.enable = cfg.enableLorri;
