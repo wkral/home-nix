@@ -45,6 +45,13 @@ in
         description = "Image filename found under ~/.config/swaylock/";
       };
     };
+    session_cmds = mkOption {
+      type = types.str;
+      default = "";
+      example = ''
+        export WLR_NO_HARDWARE_CURSORS=1
+      '';
+      description = "Commands appended to sway.extraSessionCommands";
     random-wallpapers = {
       enable = mkEnableOption "Random wallpaper switching";
       directory = mkOption {
