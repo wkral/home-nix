@@ -101,6 +101,9 @@ nnoremap <leader>/ :Rg<space>
 nnoremap <expr> q (!&modifiable ? ':close!<CR>' : 'q')
 nnoremap <leader>. :Rg <cword><CR>
 
+vnoremap * y/\V<C-R>=escape(@",'/\')<CR><CR>
+vnoremap $ y?\V<C-R>=escape(@",'/\')<CR><CR>
+
 autocmd QuickFixCmdPost [^l]* nested cwindow
 autocmd QuickFixCmdPost    l* nested lwindow
 nnoremap <leader>m :make!<CR>
