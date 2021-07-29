@@ -1,8 +1,11 @@
-{ ... }:
+{ config,  ... }:
+let
+  cfg = config.wk.git;
+in
 {
   programs.git = {
     userName = "William Kral";
-    userEmail = "william.kral@gmail.com";
+    userEmail = cfg.user_email;
     extraConfig = {
       color = { ui = "auto"; };
       core = {

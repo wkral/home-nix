@@ -10,6 +10,7 @@
         export WLR_NO_HARDWARE_CURSORS=1
       '';
     };
+    git.user_email = "william.kral@netlync.com";
     mkpdf.enable = true;
     work.enable = true;
     zoom.enable = true;

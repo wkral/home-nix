@@ -10,6 +10,14 @@ with lib;
         description = "Base font size for GUI layout";
       };
     };
+    git = {
+      user_email = mkOption {
+        type = types.str;
+        default = "william.kral@gmail.com";
+        example = "user@example.com";
+        description = "User email for git config";
+      };
+    };
     vim = {
       ale-fixers = mkOption {
         type = with types; attrsOf (listOf str);
