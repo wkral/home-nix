@@ -8,6 +8,7 @@
       outputs.primary = "HDMI-A-1";
       session_cmds = ''
         export WLR_NO_HARDWARE_CURSORS=1
+        export WLR_RENDERER_ALLOW_SOFTWARE=1
       '';
     };
     git.user_email = "william.kral@netlync.com";

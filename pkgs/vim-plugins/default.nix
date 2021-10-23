@@ -5,6 +5,7 @@ in
 {
   colours = buildVimPluginFrom2Nix {
     name = "vim-colours";
+    pname = "vim-colours";
     src = fetchFromGitHub {
       owner = "wkral";
       repo = "vim-colours";
@@ -14,6 +15,7 @@ in
   };
   salt = buildVimPluginFrom2Nix {
     name = "salt-vim";
+    pname = "salt-vim";
     src = fetchFromGitHub {
       owner = "saltstack";
       repo = "salt-vim";
