@@ -163,7 +163,7 @@ in
     };
 
     home.file.".Xresources".text = ''
-      Xcursor.theme=Bibata_Ice
+      Xcursor.theme=Bibata-Modern-Ice
     '';
 
     xdg.configFile = {
@@ -180,7 +180,7 @@ in
         name = "Arc";
       };
       gtk3.extraConfig = {
-        gtk-cursor-theme-name = "Bibata_Ice";
+        gtk-cursor-theme-name = "Bibata-Modern-Ice";
       };
     };
 
