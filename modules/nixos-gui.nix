@@ -76,7 +76,7 @@ in
 
   imports = [
     ../config/alacritty.nix
-    ../config/pulseeffects.nix
+    ../config/easyeffects.nix
     ../config/sway
     ../config/mako.nix
     ../config/waybar

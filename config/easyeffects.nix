@@ -1,6 +1,6 @@
 { pkgs, ... }:
 let
-  package = pkgs.pulseeffects-legacy;
+  package = pkgs.easyeffects;
 in
 {
   home.packages = [ package pkgs.at-spi2-core ];
@@ -8,20 +8,20 @@ in
   # Will need to add `services.dbus.packages = with pkgs; [ gnome3.dconf ];`
   # to /etc/nixos/configuration.nix for daemon to work correctly
 
-  systemd.user.services.pulseeffects = {
+  systemd.user.services.easyeffects = {
     Unit = {
-      Description = "Pulseeffects daemon";
+      Description = "Easyeeffects daemon";
       Requires = [ "dbus.service" ];
-      After = [ "graphical-session-pre.target" ];
-      PartOf = [ "graphical-session.target" "pulseaudio.service" ];
+      After = [ "graphical-session-pre.target" "pipewire.service" ];
+      PartOf = [ "graphical-session.target" "pipewire.service" ];
     };
 
     Install = { WantedBy = [ "graphical-session.target" ]; };
 
     Service = {
       ExecStart =
-        "${package}/bin/pulseeffects --gapplication-service";
-      ExecStop = "${package}/bin/pulseeffects --quit";
+        "${package}/bin/easyeffects --gapplication-service";
+      ExecStop = "${package}/bin/easyeffects --quit";
       Restart = "on-failure";
       RestartSec = 5;
     };
