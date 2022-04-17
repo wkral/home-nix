@@ -102,6 +102,7 @@ with lib;
           source <("${pkgs.starship}/bin/starship" init bash --print-full-init)
         '';
       };
+      bottom.enable = true;
       broot = {
         enable = true;
         enableBashIntegration = true;
