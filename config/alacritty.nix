@@ -5,7 +5,10 @@
       env = {
         TERM = "xterm-256color";
       };
-      window.dynamic_title = true;
+      window = {
+        dynamic_title = true;
+        opacity = 0.9;
+      };
       mouse.hide_when_typeing = true;
       key_bindings = [
         {
@@ -14,7 +17,6 @@
           action = "SpawnNewInstance";
         }
       ];
-      background_opacity = 0.9;
       font = {
         normal.family = "Noto Sans Mono Condensed";
         bold.family = "Noto Sans Mono Condensed SemiBold";
