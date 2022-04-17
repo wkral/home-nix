@@ -3,7 +3,7 @@ let
   package = pkgs.easyeffects;
 in
 {
-  home.packages = [ package pkgs.at-spi2-core ];
+  home.packages = [ package pkgs.at-spi2-core pkgs.pulseaudio ];
 
   # Will need to add `services.dbus.packages = with pkgs; [ gnome3.dconf ];`
   # to /etc/nixos/configuration.nix for daemon to work correctly

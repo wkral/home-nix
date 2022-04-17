@@ -1,4 +1,4 @@
-{ stdenv, wofi, pulseaudio }:
+{ stdenv, wofi }:
 
 stdenv.mkDerivation {
   pname = "quickcmd";
@@ -10,7 +10,6 @@ stdenv.mkDerivation {
 
   buildInputs = [
     wofi
-    pulseaudio
   ];
 
   installPhase = ''
