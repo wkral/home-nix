@@ -44,6 +44,7 @@ with lib;
 
     ./config/vim
     ./config/git.nix
+    ./config/neovim
     ./config/htop.nix
   ];
 
@@ -115,6 +116,7 @@ with lib;
       git.enable = true;
       htop.enable = true;
       jq.enable = true;
+      neovim.enable = true;
       vim.enable = true;
     };
 
