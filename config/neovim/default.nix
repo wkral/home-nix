@@ -1,33 +1,81 @@
 { config, lib, pkgs, ... }:
 with lib;
-let
-  fixers = config.wk.vim.ale-fixers;
-  linters = config.wk.vim.ale-linters;
-  vim-str = str: "'${str}'";
-  vim-list = list: "[${concatMapStringsSep ", " vim-str list}]";
-  keyed-list = key: items: "\\   ${vim-str key}: ${vim-list items},";
-  ale-config = ''
-
-    let g:ale_fixers = {
-    \   '*': ['remove_trailing_lines', 'trim_whitespace'],
-    ${concatStringsSep "\n" (mapAttrsToList keyed-list fixers)}
-    \}
-
-    let g:ale_linters = {
-    ${concatStringsSep "\n" (mapAttrsToList keyed-list linters)}
-    \}
-  '';
-in
 {
   programs.neovim = {
     plugins = with pkgs.vimPlugins; [
+      {
+        plugin = dracula-vim;
+        config = ''
+          autocmd ColorScheme * highlight Normal ctermbg=None
+          autocmd ColorScheme * highlight NonText ctermbg=None
+          colorscheme dracula
+        '';
+      }
+      editorconfig-nvim
       fugitive
+      {
+        plugin = gitsigns-nvim;
+        type = "lua";
+        config = ''
+          require('gitsigns').setup()
+        '';
+      }
+      {
+        plugin = lualine-nvim;
+        type = "lua";
+        config = ''
+          require('lualine').setup {
+            options = {
+              theme = 'dracula'
+            },
+            sections = {
+              lualine_a = {
+                { 'mode', fmt = function(str) return str:sub(1,1) end }
+              },
+            }
+          }
+        '';
+      }
       plenary-nvim
       {
         plugin = nvim-lspconfig;
         type = "lua";
         config = ''
-          require'lspconfig'.rust_analyzer.setup{}
+          -- Mappings.
+          -- See `:help vim.diagnostic.*` for documentation on any of the below functions
+          vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, {})
+          vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, {})
+          vim.keymap.set('n', ']d', vim.diagnostic.goto_next, {})
+          vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, {})
+
+          -- Use an on_attach function to only map the following keys
+          -- after the language server attaches to the current buffer
+          local on_attach = function(client, bufnr)
+            -- Enable completion triggered by <c-x><c-o>
+            vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+            -- Mappings.
+            -- See `:help vim.lsp.*` for documentation on any of the below functions
+            local opts = { buffer=0 }
+            vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+            vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+            vim.keymap.set('n', 'K',  vim.lsp.buf.hover, opts)
+            vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+            vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, opts)
+            vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
+            vim.keymap.set('n', '<leader>ca', '<cmd>Telescope lsp_code_actions<CR>', opts)
+            vim.keymap.set('n', 'gr', '<cmd>Telescope lsp_references<CR>', opts)
+            vim.keymap.set('n', '<leader>f', vim.lsp.buf.formatting, opts)
+          end
+
+          -- Use a loop to conveniently call 'setup' on multiple servers and
+          -- map buffer local keybindings when the language server attaches
+          local servers = { 'rust_analyzer', 'rnix' }
+          for _, lsp in pairs(servers) do
+            require('lspconfig')[lsp].setup {
+              on_attach = on_attach,
+            }
+          end
         '';
       }
       {
@@ -40,6 +88,9 @@ in
               enable = true,
               additional_vim_regex_highlighting = false,
             },
+            indent = {
+                    enable = true,
+            }
           }
         '';
       }
@@ -53,27 +104,7 @@ in
           nnoremap <leader>/ <cmd>Telescope live_grep<cr>
         '';
       }
-      {
-        plugin = gitsigns-nvim;
-        type = "lua";
-        config = ''
-          require('gitsigns').setup()
-        '';
-      }
-      {
-        plugin = lualine-nvim;
-        type = "lua";
-        config = ''
-          require('lualine').setup {
-            sections = {
-              lualine_a = {
-                { 'mode', fmt = function(str) return str:sub(1,1) end }
-              },
-            }
-          }
-        '';
-      }
-      editorconfig-nvim
+      vim-polyglot
     ];
     withRuby = false;
     withPython3 = false;
@@ -85,6 +116,8 @@ in
       set linebreak "if you're going to wrap do it right
       set backspace=indent,eol,start "Let my backspace fly
       set nofoldenable "I don't like code folding
+      set cursorline "show which line I'm on
+      set colorcolumn=80 "better version of 80 column editing
 
       let mapleader=","
 
@@ -92,6 +125,18 @@ in
       nnoremap <silent> <c-j> :wincmd j<cr>
       nnoremap <silent> <c-k> :wincmd k<cr>
       nnoremap <silent> <c-l> :wincmd l<cr>
+
+      " Close the quickfix and other windows with a q
+      nnoremap <expr> q (!&modifiable ? ':close!<CR>' : 'q')
+
+      au BufNewFile,BufRead * match ExtraWhitespace /\s\s\+$/
+      match ExtraWhitespace /\s\s\+$/
+
+      "Spell checking
+      set spelllang=en_ca
+
+      autocmd Filetype markdown setlocal spell
+      autocmd Filetype gitcommit setlocal spell
     '';
   };
 }
