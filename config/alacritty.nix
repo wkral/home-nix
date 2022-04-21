@@ -27,9 +27,9 @@ in
         }
       ];
       font = {
-        normal.family = "Noto Sans Mono Condensed";
-        bold.family = "Noto Sans Mono Condensed SemiBold";
-        italic.family = "Noto Sans Mono Condensed Italic";
+        normal.family = "IBM Plex Mono";
+        bold.style = "SemiBold";
+        italic.style = "Light Italic";
         size = config.wk.font.base-size;
       };
       colors = {
