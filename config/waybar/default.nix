@@ -41,7 +41,7 @@ in
     style = concatStringsSep "\n\n" [
       ''
         * {
-            font-family: "Noto Sans";
+            font-family: "NotoSans Nerd Font";
             font-size: ${toString font-size}pt;
         }''
       (fileContents ./style.css)
