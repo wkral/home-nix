@@ -59,7 +59,7 @@ in
         type = types.str;
         default = "${config.xdg.configHome}/wallpapers/";
         example = "~/wallpapers/";
-        description = "Directory with  png and jpg images to be selected from";
+        description = "Directory with png and jpg images to be selected from";
       };
       switch-interval = mkOption {
           type = types.str;

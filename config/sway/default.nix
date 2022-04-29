@@ -12,6 +12,7 @@ in
 {
   imports = [
     ./dropdown-term.nix
+    ./idle.nix
     ./services.nix
   ];
   wayland.windowManager.sway = {
@@ -91,6 +92,9 @@ in
           xkb_options = "caps:escape";
         };
       };
+      seat."*" = {
+        xcursor_theme = "Bibata-Modern-Ice";
+      };
       startup = [
         {
           command = "${pkgs.firefox-wayland}/bin/firefox";
@@ -102,8 +106,6 @@ in
 
       titlebar_border_thickness 1
       titlebar_padding 5 2
-
-      seat seat0 xcursor_theme Bibata-Modern-Ice
 
       include config.d/*
     '';
@@ -118,10 +120,4 @@ in
     };
   };
 
-
-  xdg.configFile."swaylock/config".text = ''
-    ignore-empty-password
-    image=${configHome}/swaylock/${cfg.idle.background-image}
-    scaling=fill
-  '';
 }

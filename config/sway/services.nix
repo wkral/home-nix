@@ -7,7 +7,6 @@ let
 
   fd = "${pkgs.fd}/bin/fd";
 
-  swaylock = "${pkgs.swaylock}/bin/swaylock";
   swayidle = "${pkgs.swayidle}/bin/swayidle";
   swaymsg = "${pkgs.sway}/bin/swaymsg";
 in
@@ -23,15 +22,6 @@ in
           bg $(${fd} . -e png -e jpg ${cfg.random-wallpapers.directory} | shuf -n 1) fill"
       ''
         { Type = "oneshot"; };
-    } // lib.optionalAttrs cfg.idle.enable {
-      swayidle = swayService "Lock screen when idle" ''
-        ${swayidle} \
-            timeout ${toString cfg.idle.lock} '${swaylock}' \
-            timeout ${toString cfg.idle.screen-poweroff} \
-               '${swaymsg} "output * dpms off"' \
-               resume '${swaymsg} "output * dpms on"'
-      ''
-        { };
     };
     timers = { } // lib.optionalAttrs cfg.random-wallpapers.enable {
       set-random-background = swayTimer "Set a random background for Sway"
