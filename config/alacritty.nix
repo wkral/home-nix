@@ -21,8 +21,8 @@ in
       mouse.hide_when_typeing = true;
       key_bindings = [
         {
-          mods = "Control";
-          key = "N";
+          mods = "Control|Shift";
+          key = "Return";
           action = "SpawnNewInstance";
         }
       ];
