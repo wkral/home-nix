@@ -32,6 +32,9 @@ with lib;
               lualine_a = {
                 { 'mode', fmt = function(str) return str:sub(1,1) end }
               },
+              lualine_c = {
+                { 'filename', path = 1, shorting_target = 40 }
+              },
             }
           }
         '';
@@ -79,17 +82,16 @@ with lib;
         '';
       }
       {
-        plugin = nvim-treesitter;
+        plugin = (nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars));
         type = "lua";
         config = ''
           require('nvim-treesitter.configs').setup {
-            ensure_installed = "all",
             highlight = {
               enable = true,
               additional_vim_regex_highlighting = false,
             },
             indent = {
-                    enable = true,
+              enable = true,
             }
           }
         '';
@@ -118,6 +120,7 @@ with lib;
       set nofoldenable "I don't like code folding
       set cursorline "show which line I'm on
       set colorcolumn=80 "better version of 80 column editing
+      set clipboard=unnamedplus "Use system clipboard
 
       let mapleader=","
 
