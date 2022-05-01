@@ -12,8 +12,8 @@ in {
     timeouts = [
       {
         timeout = cfg.screen-poweroff;
-        command = "${swaymsg} \"ouput * dpms off\"";
-        resumeCommand = "${swaymsg} \"ouput * dpms on\"";
+        command = "${swaymsg} \"output * dpms off\"";
+        resumeCommand = "${swaymsg} \"output * dpms on\"";
       }
       {
         timeout = cfg.lock;
