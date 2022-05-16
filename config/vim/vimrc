@@ -39,7 +39,7 @@ function! LightlineFilename()
 endfunction
 
 function! GitBranchStats()
-    let branch = fugitive#head()
+    let branch = FugitiveHead()
     if branch == ''
         return ''
     endif
