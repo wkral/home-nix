@@ -12,6 +12,7 @@ with lib;
 
     home.packages = with pkgs; [
       teams
+      ungoogled-chromium
 
       pandoc
       graphviz
