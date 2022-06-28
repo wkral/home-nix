@@ -108,69 +108,67 @@ in
           "tray"
           "clock"
         ];
-        modules = {
-          #          battery = {
-          #            format = "";
-          #            format-charging = "";
-          #            format-discharging = "";
-          #            format-discharging-percent0 = "";
-          #            format-discharging-percent10 = "";
-          #            format-discharging-percent15 = "";
-          #            format-discharging-percent5 = "";
-          #            format-full = "";
-          #            states = stepped-states;
-          #          };
-          clock = {
-            format = " {:%a, %b %d %H:%M}";
+        #          battery = {
+        #            format = "";
+        #            format-charging = "";
+        #            format-discharging = "";
+        #            format-discharging-percent0 = "";
+        #            format-discharging-percent10 = "";
+        #            format-discharging-percent15 = "";
+        #            format-discharging-percent5 = "";
+        #            format-full = "";
+        #            states = stepped-states;
+        #          };
+        clock = {
+          format = " {:%a, %b %d %H:%M}";
+        };
+        cpu = {
+          format = "";
+          interval = 5;
+          max-length = 10;
+          states = stepped-states;
+        };
+        idle_inhibitor = {
+          format = "{icon}";
+          format-icons = {
+            activated = "";
+            deactivated = "";
           };
-          cpu = {
-            format = "";
-            interval = 5;
-            max-length = 10;
-            states = stepped-states;
+        };
+        #          memory = {
+        #            format = "";
+        #            states = stepped-states;
+        #          };
+        pulseaudio = {
+          format = "{icon}";
+          format-bluetooth = "{volume}% {icon}";
+          format-icons = {
+            car = "";
+            default = [ "" "" ];
+            hands-free = "";
+            headphone = "";
+            headset = "";
+            phone = "";
+            portable = "";
           };
-          idle_inhibitor = {
-            format = "{icon}";
-            format-icons = {
-              activated = "";
-              deactivated = "";
-            };
+          format-muted = "";
+          states = stepped-states;
+        };
+        "sway/window" = {
+          max-length = 70;
+        };
+        "sway/workspaces" = {
+          disable-scroll = true;
+          format = "{icon} {name}";
+          format-icons = {
+            "1" = "";
+            default = "";
+            urgent = "";
           };
-          #          memory = {
-          #            format = "";
-          #            states = stepped-states;
-          #          };
-          pulseaudio = {
-            format = "{icon}";
-            format-bluetooth = "{volume}% {icon}";
-            format-icons = {
-              car = "";
-              default = [ "" "" ];
-              hands-free = "";
-              headphone = "";
-              headset = "";
-              phone = "";
-              portable = "";
-            };
-            format-muted = "";
-            states = stepped-states;
-          };
-          "sway/window" = {
-            max-length = 70;
-          };
-          "sway/workspaces" = {
-            disable-scroll = true;
-            format = "{icon} {name}";
-            format-icons = {
-              "1" = "";
-              default = "";
-              urgent = "";
-            };
-          };
-          tray = {
-            icon-size = (font-size - 1) * 2;
-            spacing = font-size / 2;
-          };
+        };
+        tray = {
+          icon-size = (font-size - 1) * 2;
+          spacing = font-size / 2;
         };
       }
     ];

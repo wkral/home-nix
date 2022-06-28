@@ -78,6 +78,7 @@ with lib;
       file = {
         ".inputrc".source = ./config/inputrc;
       };
+      stateVersion = "22.11";
     };
 
     xdg = {
