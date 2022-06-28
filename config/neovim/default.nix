@@ -112,7 +112,9 @@ with lib;
     withPython3 = false;
     extraConfig = ''
 
-      set title "Window title for vim
+      " disable until https://github.com/neovim/neovim/issues/18573 resolved
+      " set title "Window title for vim
+
       set smartindent "Indentation that doesn't suck
       set wildmode=longest,list "more bashy tab competion for file paths
       set linebreak "if you're going to wrap do it right
