@@ -43,8 +43,8 @@ in
         "${modifier}+Mod1+l" = "move workspace to output right";
 
         # audio media keys, would like to decouple from Sway
-        "XF86AudioRaiseVolume" = pactl "set-sink-volume @DEFAULT_SINK@ +5%";
-        "XF86AudioLowerVolume" = pactl "set-sink-volume @DEFAULT_SINK@ -5%";
+        "XF86AudioRaiseVolume" = pactl "set-sink-volume @DEFAULT_SINK@ +3%";
+        "XF86AudioLowerVolume" = pactl "set-sink-volume @DEFAULT_SINK@ -3%";
         "XF86AudioMute" = pactl "set-sink-mute @DEFAULT_SINK@ toggle";
         "XF86AudioMicMute" = pactl "set-source-mute @DEFAULT_SOURCE@ toggle";
       };
