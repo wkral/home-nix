@@ -2,6 +2,7 @@
 {
   imports = [
     ./cad.nix
+    ./calibre.nix
     ./clojure.nix
     ./games.nix
     ./music.nix

@@ -21,6 +21,7 @@
     music.enable = true;
     mkpdf.enable = true;
     signal.enable = true;
+    calibre.enable = true;
     cad.enable = true;
     zoom.enable = true;
     python.enable = true;
