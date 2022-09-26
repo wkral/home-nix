@@ -1,0 +1,19 @@
+keys:
+  - &admin_wkral age165akwthnnscg66nlmpmvxj0rexyjqh2t7drem8rmdhxy4l363sps6cpa87
+  - &host_livingroom age1tnv6rp0km4y62w3hvap7yea0ulhxquqxjn7f6ert8kfzpcghkcvqnw5k6c
+  - &host_work-vm age1zv9njl766480ty05sml58nnseax3wp5pxdxq3udpdwe5928fqpmsje07uh
+creation_rules:
+  - path_regex: hosts/[^/]+/secrets\.yaml$
+    key_groups:
+    - age:
+      - *admin_wkral
+  - path_regex: hosts/livingroom/secrets\.yaml$
+    key_groups:
+    - age:
+      - *admin_wkral
+      - *host_livingroom
+  - path_regex: hosts/work-vm/secrets\.yaml$
+    key_groups:
+    - age:
+      - *admin_wkral
+      - *host_work-vm
