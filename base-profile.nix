@@ -105,10 +105,6 @@ with lib;
         '';
       };
       bottom.enable = true;
-      broot = {
-        enable = true;
-        enableBashIntegration = true;
-      };
       fzf = {
         enable = true;
         defaultCommand = "rg --files --follow --no-ignore-exclude";

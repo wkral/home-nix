@@ -94,19 +94,19 @@ in
     home.packages = with pkgs; [
       evince # pdf viewer
       firefox-wayland
-      gnome3.nautilus # file manager
-      gnome3.dconf-editor
+      gnome.nautilus # file manager
+      gnome.dconf-editor
       libreoffice #office
       wireshark
       networkmanagerapplet
       font-manager
       zbar
       imv
-      gnome3.eog
+      gnome.eog
       pavucontrol
-      alsaUtils
-      pinentry_gnome
-      xdg_utils
+      alsa-utils
+      pinentry-gnome
+      xdg-utils
 
       wk.quickcmd
 
@@ -122,7 +122,7 @@ in
       #wofi
       wofi
       hicolor-icon-theme
-      gnome3.adwaita-icon-theme
+      gnome.adwaita-icon-theme
 
       libsForQt5.qtstyleplugins
       libsForQt5.qtstyleplugin-kvantum
