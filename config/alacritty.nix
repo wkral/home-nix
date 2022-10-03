@@ -3,8 +3,8 @@ let
   dracula = pkgs.fetchFromGitHub {
     owner = "dracula";
     repo = "alacritty";
-    rev = "05faff15c0158712be87d200081633d9f4850a7d";
-    sha256 = "sha256-Pb6KLNq90P1s8M08avKlf6D7DHbuNOsp9k6mZmpA+Fg=";
+    rev = "77aff04b9f2651eac10e5cfa80a3d85ce43e7985";
+    sha256 = "sha256-eJkVxcaDiIbTrI1Js5j+Nl88gawTE/mfVjstjqQOOdU=";
   };
 in
 {
