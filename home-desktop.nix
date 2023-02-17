@@ -22,7 +22,7 @@
     mkpdf.enable = true;
     signal.enable = true;
     calibre.enable = true;
-    cad.enable = true;
+    cad.enable = false;
     zoom.enable = true;
     python.enable = true;
     rust.enable = true;
