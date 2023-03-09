@@ -91,7 +91,10 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
+  services.openssh = {
+    enable = true;
+    settings.PasswordAuthentication = false;
+  };
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
@@ -182,6 +185,7 @@
       ];
       openssh.authorizedKeys.keys = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBSsYbuCFzk+qWYhj1C+bPkcfUKQQw9J51bt6FszVZaD"
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILU/4DYvPYGqa8/jmoDo8rC1Yn3uEVfbTwXPhzZh8ZHX"
       ];
     };
     users.greeter.group = "greeter";
