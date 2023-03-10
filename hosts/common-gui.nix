@@ -4,6 +4,12 @@
     (self: super: {
       pass = super.pass.override { waylandSupport = true; };
       waybar = super.waybar.override { pulseSupport = true; };
+      nerdfonts = super.nerdfonts.override {
+        fonts = [
+          "IBMPlexMono"
+          "Noto"
+        ];
+      };
     })
   ];
 

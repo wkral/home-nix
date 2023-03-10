@@ -28,7 +28,7 @@ in
         }
       ];
       font = {
-        normal.family = "IBM Plex Mono";
+        normal.family = "BlexMono Nerd Font";
         bold.style = "SemiBold";
         italic.style = "Light Italic";
         size = config.wk.gui.font.base-size;
