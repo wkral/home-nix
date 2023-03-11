@@ -141,16 +141,8 @@
   };
   nixpkgs.config.allowUnfree = true;
   hardware.steam-hardware.enable = true;
+  services.pipewire.alsa.support32Bit = true; # required for steam
 
-  # Pipewire sound.
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true; # required for steam
-    pulse.enable = true;
-    wireplumber.enable = true;
-    media-session.enable = false;
-  };
   xdg.portal = {
     enable = true;
     extraPortals = [

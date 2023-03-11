@@ -39,4 +39,13 @@
 
   environment.variables.TERMINAL = "alacritty";
   programs.sway.enable = true;
+
+  # Pipewire sound.
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    pulse.enable = true;
+    wireplumber.enable = true;
+    media-session.enable = false;
+  };
 }
