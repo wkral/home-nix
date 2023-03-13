@@ -10,10 +10,8 @@ creation_rules:
   - path_regex: hosts/livingroom/secrets\.yaml$
     key_groups:
     - age:
-      - *admin_wkral
       - *host_livingroom
   - path_regex: hosts/work-vm/secrets\.yaml$
     key_groups:
     - age:
-      - *admin_wkral
       - *host_work-vm
