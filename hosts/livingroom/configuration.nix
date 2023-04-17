@@ -12,13 +12,9 @@
   ];
   # Use the systemd-boot EFI boot loader.
   boot = {
-    loader = {
-      systemd-boot = {
-        enable = true;
-        consoleMode = "1";
-      };
-      efi.canTouchEfiVariables = true;
-    };
+    initrd.systemd.enable = true;
+    loader.systemd-boot.enable = true;
+    loader.efi.canTouchEfiVariables = true;
     plymouth.enable = true;
   };
 
@@ -77,6 +73,11 @@
   environment.systemPackages = with pkgs; [
     lm_sensors
     qemu_kvm
+
+    # Theme for display manager
+    dracula-theme
+    bibata-cursors
+    tela-circle-icon-theme
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -121,12 +122,25 @@
     SUBSYSTEM=="usb", ATTRS{idVendor}=="0bda", ATTRS{idProduct}=="58b0*", MODE="0666"
   '';
 
-  services.greetd = {
+  programs.regreet = 
+  let
+    background = pkgs.fetchurl {
+      url = "https://w.wallhaven.cc/full/4o/wallhaven-4owxz7.jpg";
+      sha256 = "1cga9vzwbaa63xcfh8i6j8c88rrlxv5gv5awl3409swfhqfd6c3b";
+    };
+  in {
     enable = true;
     settings = {
-      default_session = {
-        command = ''${pkgs.cage}/bin/cage -s -- ${pkgs.greetd.gtkgreet}/bin/gtkgreet -c sway'';
-        user = "greeter";
+      background = {
+        path = background;
+        fit = "Cover";
+      };
+      GTK = {
+        font_name = "Noto Sans 18";
+        theme_name = "Dracula";
+        icon_theme_name = "dracula";
+        cursor_theme_name = "Bivata-Modern-Ice";
+        application_prefer_dark_theme = true;
       };
     };
   };
@@ -180,7 +194,6 @@
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILU/4DYvPYGqa8/jmoDo8rC1Yn3uEVfbTwXPhzZh8ZHX"
       ];
     };
-    users.greeter.group = "greeter";
   };
 
   # This value determines the NixOS release from which the default

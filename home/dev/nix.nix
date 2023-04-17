@@ -12,5 +12,6 @@
     enable = true;
     enableBashIntegration = true;
     nix-direnv.enable = true;
+    stdlib = (builtins.readFile ./direnvrc);
   };
 }

@@ -10,6 +10,8 @@
           "Noto"
         ];
       };
+      tela-circle-icon-theme = super.tela-circle-icon-theme.override
+        { colorVariants = [ "dracula" ]; };
     })
   ];
 
@@ -38,7 +40,20 @@
   };
 
   environment.variables.TERMINAL = "alacritty";
-  programs.sway.enable = true;
+  programs.sway = {
+    enable = true;
+    extraSessionCommands = ''
+      export QT_QPA_PLATFORM=wayland
+      export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
+      export QT_FONT_DPI=144
+    '';
+    wrapperFeatures = {
+      base = true;
+      gtk = true;
+    };
+  };
+  services.gnome.at-spi2-core.enable = true;
+  programs.dconf.enable = true;
 
   # Pipewire sound.
   services.pipewire = {
@@ -46,6 +61,5 @@
     alsa.enable = true;
     pulse.enable = true;
     wireplumber.enable = true;
-    media-session.enable = false;
   };
 }

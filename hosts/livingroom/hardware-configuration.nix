@@ -9,6 +9,7 @@
   boot.initrd.kernelModules = [];
   boot.kernelModules = [ "kvm-amd" "k10temp" ];
   boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelParams = [ "quiet" ];
   boot.extraModulePackages = with pkgs.linuxPackages_latest; [];
 
   boot.initrd.luks.devices."crypted".device = "/dev/disk/by-partlabel/nixos";

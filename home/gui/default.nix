@@ -125,9 +125,6 @@ in
       libsForQt5.qtstyleplugin-kvantum
 
       # Theming
-      matcha-gtk-theme
-      arc-icon-theme
-      bibata-cursors
       gnome-themes-extra
       gsettings-desktop-schemas
     ];
@@ -155,7 +152,6 @@ in
 
     home.sessionVariables = {
       BROWSER = "firefox";
-      XDG_CURRENT_DESKTOP = "sway";
     };
 
     home.file.".Xresources".text = ''
@@ -168,15 +164,17 @@ in
 
     gtk = {
       theme = {
-        package = pkgs.matcha-gtk-theme;
-        name = "Matcha-dark-azul";
+        package = pkgs.dracula-theme;
+        name = "Dracula";
       };
       iconTheme = {
-        package = pkgs.arc-icon-theme;
-        name = "Arc";
+        package = pkgs.tela-circle-icon-theme;
+        name = "Tela-circle-dracula-dark";
       };
-      gtk3.extraConfig = {
-        gtk-cursor-theme-name = "Bibata-Modern-Ice";
+      cursorTheme = {
+        package = pkgs.bibata-cursors;
+        name = "Bibata-Modern-Ice";
+        size = 24;
       };
     };
 

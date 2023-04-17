@@ -16,6 +16,7 @@ in
     ./services.nix
   ];
   wayland.windowManager.sway = {
+    package = null;
     config = {
       modifier = modifier;
       menu = "${pkgs.wofi}/bin/wofi --show drun";
@@ -35,6 +36,13 @@ in
           -b 'Restart' 'systemctl reboot' \
           -b 'Shutdown' 'systemctl poweroff'
         '';
+        "${modifier}+Shift+p" = "exec systemctl suspend";
+
+        # Screen shot hot keys
+        "${modifier}+Print" = "exec ${pkgs.grim}/bin/grim";
+        "${modifier}+Shift+Print" = ''
+          exec ${pkgs.grim}/bin/grim \
+          -g "$(${pkgs.slurp}/bin/slurp)'';
 
         # Move workspace around with logo+alt+direction
         "${modifier}+Mod1+h" = "move workspace to output left";
@@ -109,15 +117,6 @@ in
 
       include config.d/*
     '';
-    extraSessionCommands = ''
-      export QT_QPA_PLATFORM=wayland
-      export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
-      export QT_FONT_DPI=144
-    '' + cfg.session_cmds;
-    wrapperFeatures = {
-      base = true;
-      gtk = true;
-    };
   };
 
 }
