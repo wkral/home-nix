@@ -18,6 +18,8 @@
     git.user_email = "william.kral@netlync.com";
   };
   home.packages = with pkgs; [
+    teams
+
     pandoc
     graphviz
     plantuml
