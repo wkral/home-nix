@@ -67,6 +67,13 @@
     };
   };
 
+  programs.sway.extraSessionCommands = ''
+    export QT_QPA_PLATFORM=wayland
+    export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
+    export QT_FONT_DPI=144
+    export WLR_NO_HARDWARE_CURSORS=1
+  '';
+
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
