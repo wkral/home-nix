@@ -7,7 +7,6 @@
       nerdfonts = super.nerdfonts.override {
         fonts = [
           "IBMPlexMono"
-          "Noto"
         ];
       };
       tela-circle-icon-theme = super.tela-circle-icon-theme.override
