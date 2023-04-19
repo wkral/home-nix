@@ -2,6 +2,8 @@
 let
   cfg = config.wk.gui;
   fd = "${pkgs.fd}/bin/fd";
+  wlrctl = "${pkgs.wlrctl}/bin/wlrctl";
+  bash = "${pkgs.bash}/bin/bash";
 
   swaymsg = "${pkgs.sway}/bin/swaymsg";
 in
@@ -73,6 +75,7 @@ in
         WantedBy = [ "graphical-session.target" ];
       };
       Service = {
+        ExecCondition = "${bash} -c '! ${wlrctl} toplevel find state:fullscreen state:active'";
         ExecStart = ''
           ${swaymsg} "output '*' \
             bg $(${fd} . -e png -e jpg ${cfg.random-wallpapers.directory} | shuf -n 1) fill"
