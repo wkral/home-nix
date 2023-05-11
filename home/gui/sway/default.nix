@@ -42,7 +42,7 @@ in
         "${modifier}+Print" = "exec ${pkgs.grim}/bin/grim";
         "${modifier}+Shift+Print" = ''
           exec ${pkgs.grim}/bin/grim \
-          -g "$(${pkgs.slurp}/bin/slurp)'';
+          -g "$(${pkgs.slurp}/bin/slurp)"'';
 
         # Move workspace around with logo+alt+direction
         "${modifier}+Mod1+h" = "move workspace to output left";

@@ -16,10 +16,10 @@ in
           command = "${systemctl} --user stop screen-on.target";
           resumeCommand = "${systemctl} --user start screen-on.target";
         }
-        {
-          timeout = cfg.lock;
-          command = "${swaylock} -f";
-        }
+#        {
+#          timeout = cfg.lock;
+#          command = "${swaylock} -f";
+#        }
       ];
     };
 
