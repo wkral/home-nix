@@ -5,7 +5,7 @@ let
   modifier = "Mod4";
   inherit (config.xdg) configHome;
 
-  pactl = action: "exec '${pkgs.pulseaudio}/bin/pactl ${action}'";
+  wpctl = action: "exec '${pkgs.wireplumber}/bin/wpctl ${action}'";
   sysd = target: action: "exec 'systemctl --user ${action} ${target}'";
   session = sysd "graphical-session.target";
 in
@@ -51,10 +51,10 @@ in
         "${modifier}+Mod1+l" = "move workspace to output right";
 
         # audio media keys, would like to decouple from Sway
-        "XF86AudioRaiseVolume" = pactl "set-sink-volume @DEFAULT_SINK@ +3%";
-        "XF86AudioLowerVolume" = pactl "set-sink-volume @DEFAULT_SINK@ -3%";
-        "XF86AudioMute" = pactl "set-sink-mute @DEFAULT_SINK@ toggle";
-        "XF86AudioMicMute" = pactl "set-source-mute @DEFAULT_SOURCE@ toggle";
+        "XF86AudioRaiseVolume" = wpctl "set-volume @DEFAULT_AUDIO_SINK@ 3%+";
+        "XF86AudioLowerVolume" = wpctl "set-volume @DEFAULT_AUDIO_SINK@ 3%-";
+        "XF86AudioMute" = wpctl "set-mute @DEFAULT_AUDIO_SINK@ toggle";
+        "XF86AudioMicMute" = wpctl "set-mute @DEFAULT_AUDIO_SOURCE@ toggle";
       };
       window.border = 0;
       focus.followMouse = false;

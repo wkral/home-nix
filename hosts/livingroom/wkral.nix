@@ -23,7 +23,6 @@
       random-wallpapers.enable = true;
       app-indicators = {
         network-manager = true;
-        pulse-audio = true;
       };
     };
   };

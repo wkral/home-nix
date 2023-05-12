@@ -69,7 +69,6 @@ in
     };
     app-indicators = {
       network-manager = mkEnableOption "Network Manager Tray Applet";
-      pulse-audio = mkEnableOption "PulseAudio Tray Applet";
     };
   };
 

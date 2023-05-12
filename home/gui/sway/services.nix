@@ -97,21 +97,6 @@ in
         ExecStart = "${pkgs.networkmanagerapplet}/bin/nm-applet --indicator";
       };
     };
-  } // lib.optionalAttrs cfg.app-indicators.pulse-audio {
-    pulseaudio-systray = {
-
-      Unit = {
-        Description = "PulseAudio Tray Applet";
-        BindsTo = [ "waybar.service" ];
-        After = [ "waybar.service" ];
-      };
-      Install = {
-        WantedBy = [ "waybar.service" ];
-      };
-      Service = {
-        ExecStart = "${pkgs.pasystray}/bin/pasystray";
-      };
-    };
   };
 
   systemd.user.timers = { } // lib.optionalAttrs cfg.random-wallpapers.enable {
