@@ -7,6 +7,7 @@
       nerdfonts = super.nerdfonts.override {
         fonts = [
           "IBMPlexMono"
+          "Noto"
         ];
       };
       tela-circle-icon-theme = super.tela-circle-icon-theme.override
@@ -16,9 +17,9 @@
 
   fonts = {
     fontconfig.defaultFonts = {
-      monospace = [ "Noto Sans Mono" ];
-      sansSerif = [ "Noto Sans" ];
-      serif = [ "Noto Serif" ];
+      monospace = [ "NotoSansM Nerd Font" ];
+      sansSerif = [ "NotoSans Nerd Font" ];
+      serif = [ "NotoSerif Nerd Font" ];
     };
     fonts = with pkgs; [
       fira
