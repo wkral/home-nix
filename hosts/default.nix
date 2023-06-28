@@ -1,7 +1,7 @@
-{system, nixpkgs, sops-nix, home-manager, ... }:
+{ nixpkgs, sops-nix, home-manager, ... }:
 {
   livingroom = nixpkgs.lib.nixosSystem {
-    inherit system;
+    system = "x86_64-linux";
     modules = [
       nixpkgs.nixosModules.notDetected
       sops-nix.nixosModules.sops
@@ -18,7 +18,7 @@
     ];
   };
   work-vm = nixpkgs.lib.nixosSystem {
-    inherit system;
+    system = "x86_64-linux";
     modules = [
       nixpkgs.nixosModules.notDetected
       sops-nix.nixosModules.sops

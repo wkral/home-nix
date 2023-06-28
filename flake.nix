@@ -22,7 +22,7 @@
     in
     {
       nixosConfigurations = import ./hosts {
-        inherit nixpkgs system sops-nix home-manager;
+        inherit nixpkgs sops-nix home-manager;
       };
       devShells.${system}.default = pkgs.mkShell {
         buildInputs = [
