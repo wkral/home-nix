@@ -9,7 +9,7 @@
   wk = {
     gui = {
       font.base-size = 14;
-      outputs.primary = "HDMI-A-1";
+      outputs.primary = "eDP-1";
       app-indicators = {
         network-manager = true;
       };
