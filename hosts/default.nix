@@ -17,6 +17,23 @@
       }
     ];
   };
+  deck = nixpkgs.lib.nixosSystem {
+    system = "x86_64-linux";
+    modules = [
+      nixpkgs.nixosModules.notDetected
+      sops-nix.nixosModules.sops
+      ./common.nix
+      ./common-gui.nix
+      ./deck/configuration.nix
+      ./deck/hardware-configuration.nix
+      home-manager.nixosModules.home-manager
+      {
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
+        home-manager.users.wkral = import ./deck/wkral.nix;
+      }
+    ];
+  };
   work-vm = nixpkgs.lib.nixosSystem {
     system = "x86_64-linux";
     modules = [
