@@ -1,4 +1,4 @@
-{ nixpkgs, sops-nix, home-manager, ... }:
+{ nixpkgs, sops-nix, home-manager, jovian,  ... }:
 {
   livingroom = nixpkgs.lib.nixosSystem {
     system = "x86_64-linux";
@@ -26,6 +26,7 @@
       ./common-gui.nix
       ./deck/configuration.nix
       ./deck/hardware-configuration.nix
+      (jovian + "/modules")
       home-manager.nixosModules.home-manager
       {
         home-manager.useGlobalPkgs = true;

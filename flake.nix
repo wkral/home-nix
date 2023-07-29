@@ -11,9 +11,14 @@
       url = github:nix-community/home-manager;
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    jovian = {
+      url = github:Jovian-Experiments/Jovian-NixOS;
+      flake = false;
+    };
   };
 
-  outputs = inputs @ { self, nixpkgs, home-manager, sops-nix }:
+  outputs = inputs @ { self, nixpkgs, home-manager, sops-nix, jovian }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -22,7 +27,7 @@
     in
     {
       nixosConfigurations = import ./hosts {
-        inherit nixpkgs sops-nix home-manager;
+        inherit nixpkgs sops-nix home-manager jovian;
       };
       devShells.${system}.default = pkgs.mkShell {
         buildInputs = [
