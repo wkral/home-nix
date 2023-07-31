@@ -57,6 +57,7 @@ in
         "XF86AudioMicMute" = wpctl "set-mute @DEFAULT_AUDIO_SOURCE@ toggle";
       };
       window.border = 0;
+      window.titlebar = false;
       focus.followMouse = false;
       colors = {
         focused = {
