@@ -14,19 +14,39 @@
     "/crypto_keyfile.bin" = null;
   };
 
-  networking.hostName = "deck"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
   jovian.steam.enable = true;
   jovian.devices.steamdeck.enable = true;
 
-  # Enable networking
-  networking.networkmanager.enable = true;
+  networking = {
+    hostName = "deck"; # Define your hostname.
+    networkmanager.enable = true;
+    firewall.allowedUDPPorts = [ 51820 ];
+  };
 
+  systemd.network = {
+    enable = true;
+    netdevs."10-wg0" = {
+      netdevConfig = {
+        Kind = "wireguard";
+        Name = "wg0";
+      };
+      wireguardConfig = {
+        PrivateKeyFile = config.sops.secrets.wireguard_key.path;
+        ListenPort = 51820;
+      };
+      wireguardPeers = [{
+        wireguardPeerConfig = {
+          PublicKey = "TGSPCrfg+jf5dcnXs1+z9/LYE6f7iHQ1AU9ubt7CAEs=";
+          AllowedIPs = [ "10.100.0.1/32" ];
+          Endpoint = "69.172.157.122:51820";
+        };
+      }];
+    };
+    networks.wg0 = {
+      matchConfig.Name = "wg0";
+      address = [ "10.100.0.2/24" ];
+    };
+  };
   # Set your time zone.
   time.timeZone = "America/Vancouver";
 
@@ -54,16 +74,12 @@
     powerOnBoot = true;
   };
 
-
   services.openssh = {
     enable = true;
     settings.PasswordAuthentication = false;
   };
 
   services.pipewire.alsa.support32Bit = true;
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
 
   programs.gnupg.agent = {
     enable = true;
@@ -77,6 +93,11 @@
     defaultSopsFile = ./secrets.yaml;
     age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
     secrets.wkral_password.neededForUsers = true;
+    secrets.wireguard_key = {
+      mode = "0440";
+      owner = config.users.users.systemd-network.name;
+      group = config.users.users.systemd-network.group;
+    };
   };
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users = {
@@ -96,31 +117,10 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
+  # List packages installed in system profile
   environment.systemPackages = with pkgs; [
-    #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    #  wget
   ];
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

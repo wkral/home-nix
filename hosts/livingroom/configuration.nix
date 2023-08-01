@@ -65,6 +65,31 @@
     interfaces.wlp5s0.useDHCP = true;
     networkmanager.enable = true;
     nameservers = [ "1.1.1.1" "1.0.0.1" ];
+    firewall.allowedUDPPorts = [ 51820 ];
+  };
+
+  systemd.network = {
+    enable = true;
+    netdevs."10-wg0" = {
+      netdevConfig = {
+        Kind = "wireguard";
+        Name = "wg0";
+      };
+      wireguardConfig = {
+        PrivateKeyFile = config.sops.secrets.wireguard_key.path;
+        ListenPort = 51820;
+      };
+      wireguardPeers = [{
+        wireguardPeerConfig = {
+          PublicKey = "QlckeDNPkP5JhfMI13ginVxnDtg+mUE2HH/0ex7qu2Y=";
+          AllowedIPs = [ "10.100.0.2/32" ];
+        };
+      }];
+    };
+    networks.wg0 = {
+      matchConfig.Name = "wg0";
+      address = [ "10.100.0.1/24" ];
+    };
   };
 
   # Configure network proxy if necessary
@@ -104,12 +129,6 @@
     settings.PasswordAuthentication = false;
   };
 
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-
   # Enable CUPS to print documents.
   services = {
     printing = {
@@ -129,28 +148,30 @@
     SUBSYSTEM=="usb", ATTRS{idVendor}=="0bda", ATTRS{idProduct}=="58b0*", MODE="0666"
   '';
 
-  programs.regreet = 
-  let
-    background = pkgs.fetchurl {
-      url = "https://w.wallhaven.cc/full/4o/wallhaven-4owxz7.jpg";
-      sha256 = "1cga9vzwbaa63xcfh8i6j8c88rrlxv5gv5awl3409swfhqfd6c3b";
-    };
-  in {
-    enable = true;
-    settings = {
-      background = {
-        path = background;
-        fit = "Cover";
+  programs.regreet =
+    let
+      background = pkgs.fetchurl
+        {
+          url = "https://w.wallhaven.cc/full/4o/wallhaven-4owxz7.jpg";
+          sha256 = "1cga9vzwbaa63xcfh8i6j8c88rrlxv5gv5awl3409swfhqfd6c3b";
+        };
+    in
+    {
+      enable = true;
+      settings = {
+        background = {
+          path = background;
+          fit = "Cover";
+        };
+        GTK = {
+          font_name = "Noto Sans 18";
+          theme_name = "Dracula";
+          icon_theme_name = "dracula";
+          cursor_theme_name = "Bivata-Modern-Ice";
+          application_prefer_dark_theme = true;
+        };
       };
-      GTK = {
-        font_name = "Noto Sans 18";
-        theme_name = "Dracula";
-        icon_theme_name = "dracula";
-        cursor_theme_name = "Bivata-Modern-Ice";
-        application_prefer_dark_theme = true;
-      };
     };
-  };
 
   # Enable Steam
   hardware.opengl = {
@@ -180,6 +201,11 @@
     defaultSopsFile = ./secrets.yaml;
     age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
     secrets.wkral_password.neededForUsers = true;
+    secrets.wireguard_key = {
+      mode = "0440";
+      owner = config.users.users.systemd-network.name;
+      group = config.users.users.systemd-network.group;
+    };
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
