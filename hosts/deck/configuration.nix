@@ -65,6 +65,12 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+    pinentryFlavor = "gnome3";
+  };
+
   security.sudo.wheelNeedsPassword = false;
 
   sops = {
