@@ -32,6 +32,8 @@
       devShells.${system}.default = pkgs.mkShell {
         buildInputs = [
           pkgs.sops
+          pkgs.wireguard-tools
+          pkgs.ssh-to-age
         ];
       };
     };

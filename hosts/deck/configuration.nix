@@ -66,15 +66,25 @@
   # services.xserver.libinput.enable = true;
 
   security.sudo.wheelNeedsPassword = false;
+
+  sops = {
+    defaultSopsFile = ./secrets.yaml;
+    age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
+    secrets.wkral_password.neededForUsers = true;
+  };
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.wkral = {
-    isNormalUser = true;
-    description = "William Kral";
-    shell = pkgs.bashInteractive;
-    extraGroups = [ "networkmanager" "wheel" "sway" "audio" ];
-    openssh.authorizedKeys.keys = [
+  users = {
+    mutableUsers = false;
+    users.wkral = {
+      isNormalUser = true;
+      description = "William Kral";
+      passwordFile = config.sops.secrets.wkral_password.path;
+      shell = pkgs.bashInteractive;
+      extraGroups = [ "networkmanager" "wheel" "sway" "audio" ];
+      openssh.authorizedKeys.keys = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGfvCLm5qbfNligZ/AKOydr1OovDaTdje4NBwnJr5EAc wkral@livingroom"
-    ];
+      ];
+    };
   };
 
   # Allow unfree packages
@@ -83,8 +93,8 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
+    #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    #  wget
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
