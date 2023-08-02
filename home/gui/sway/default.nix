@@ -8,6 +8,7 @@ let
   wpctl = action: "exec '${pkgs.wireplumber}/bin/wpctl ${action}'";
   sysd = target: action: "exec 'systemctl --user ${action} ${target}'";
   session = sysd "graphical-session.target";
+  brightnessctl = action: "exec '${pkgs.brightnessctl}/bin/brightnessctl ${action}'";
 in
 {
   imports = [
@@ -26,7 +27,7 @@ in
         style = "Regular";
         size = 0.0 + font-size;
       };
-      keybindings = lib.mkOptionDefault {
+      keybindings = lib.mkOptionDefault ({
         "${modifier}+grave" = "exec ${pkgs.wk.quickcmd}/bin/quickcmd";
         "${modifier}+x" = "splith";
         "${modifier}+Shift+c" = "${session "restart"}; reload";
@@ -55,7 +56,10 @@ in
         "XF86AudioLowerVolume" = wpctl "set-volume @DEFAULT_AUDIO_SINK@ 3%-";
         "XF86AudioMute" = wpctl "set-mute @DEFAULT_AUDIO_SINK@ toggle";
         "XF86AudioMicMute" = wpctl "set-mute @DEFAULT_AUDIO_SOURCE@ toggle";
-      };
+      } // lib.optionalAttrs cfg.backlight-control.enable {
+        "XF86MonBrightnessUp" = brightnessctl "set +5%";
+        "XF86MonBrightnessDown" = brightnessctl "set 5%-";
+      });
       window.border = 0;
       window.titlebar = false;
       focus.followMouse = false;

@@ -23,6 +23,7 @@ in
         description = "Secondary display source";
       };
     };
+    backlight-control.enable = mkEnableOption "Enable controlls for screen backlight";
     font = {
       base-size = mkOption {
         type = types.int;

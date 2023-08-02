@@ -6,6 +6,7 @@ let
   bash = "${pkgs.bash}/bin/bash";
 
   swaymsg = "${pkgs.sway}/bin/swaymsg";
+  brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";
 in
 {
   systemd.user.targets.screen-on = {
@@ -95,6 +96,22 @@ in
       };
       Service = {
         ExecStart = "${pkgs.networkmanagerapplet}/bin/nm-applet --indicator";
+      };
+    };
+  } // lib.optionalAttrs cfg.backlight-control.enable {
+    backlight-save-restore = {
+      Unit = {
+        Description = "Restore backlight to levels before powering off";
+        BindsTo = [ "screen-on.target" ];
+        After = [ "power-screen.service" "screen-on.target"];
+      };
+      Install = { WantedBy = [ "screen-on.target" ]; };
+      Service = {
+        Type = "oneshot";
+        ExecStart = "${brightnessctl} -r";
+        ExecStop = "${brightnessctl} -s";
+        ExecStopPost = "${brightnessctl} set 0";
+        RemainAfterExit = "yes";
       };
     };
   };
