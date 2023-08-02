@@ -39,6 +39,7 @@
           PublicKey = "TGSPCrfg+jf5dcnXs1+z9/LYE6f7iHQ1AU9ubt7CAEs=";
           AllowedIPs = [ "10.100.0.1/32" ];
           Endpoint = "69.172.157.122:51820";
+          PersistentKeepalive = 25;
         };
       }];
     };
