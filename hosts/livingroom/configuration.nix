@@ -99,11 +99,6 @@
   environment.systemPackages = with pkgs; [
     lm_sensors
     qemu_kvm
-
-    # Theme for display manager
-    dracula-theme
-    bibata-cursors
-    tela-circle-icon-theme
   ];
 
   programs.sway.extraSessionCommands = ''

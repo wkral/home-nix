@@ -15,6 +15,13 @@
     })
   ];
 
+  environment.systemPackages = with pkgs; [
+    # Theme packages
+    dracula-theme
+    bibata-cursors
+    tela-circle-icon-theme
+  ];
+
   fonts = {
     fontconfig.defaultFonts = {
       monospace = [ "NotoSansM Nerd Font" ];
