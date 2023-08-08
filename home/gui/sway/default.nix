@@ -33,7 +33,8 @@ in
         "${modifier}+Shift+c" = "${session "restart"}; reload";
         "${modifier}+Shift+e" = ''
           exec swaynag -t warning -m 'Exit sway?' \
-          -b 'Logout' 'swaymsg exit' \
+          -b 'Logout' 'systemctl --user stop sway-session.target; swaymsg exit' \
+          -b 'Suspend' 'systemctl suspend' \
           -b 'Restart' 'systemctl reboot' \
           -b 'Shutdown' 'systemctl poweroff'
         '';
