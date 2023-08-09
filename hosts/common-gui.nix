@@ -28,7 +28,7 @@
       sansSerif = [ "NotoSans Nerd Font" ];
       serif = [ "NotoSerif Nerd Font" ];
     };
-    fonts = with pkgs; [
+    packages = with pkgs; [
       fira
       fira-code
       font-awesome_5

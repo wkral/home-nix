@@ -9,6 +9,7 @@
     ../../home/gui/signal.nix
     ../../home/gui/calibre.nix
     ../../home/gui/zoom.nix
+    ./disable-auto-mute.nix
   ];
   wk = {
     gui = {

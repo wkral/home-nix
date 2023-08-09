@@ -4,11 +4,6 @@
 
 { config, lib, pkgs, ... }:
 {
-
-  imports = [
-    ./disable-auto-mute.nix
-  ];
-
   nixpkgs.overlays = [
     (final: prev: {
       virglrenderer = pkgs.callPackage ./virglrenderer-0_9_1.nix { };
