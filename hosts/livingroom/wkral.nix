@@ -9,12 +9,12 @@
     ../../home/gui/signal.nix
     ../../home/gui/calibre.nix
     ../../home/gui/zoom.nix
+    ./monitors.nix
     ./disable-auto-mute.nix
   ];
   wk = {
     gui = {
       font.base-size = 14;
-      outputs.primary = "HDMI-A-1";
       idle = {
         enable = true;
         screen-poweroff = 1200;

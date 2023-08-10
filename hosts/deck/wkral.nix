@@ -5,6 +5,7 @@
     ../../home/gui
     ../../home/gui/music.nix
     ../../home/gui/signal.nix
+    ./monitors.nix
   ];
   wk = {
     gui = {
@@ -16,7 +17,6 @@
       };
       backlight-control.enable = true;
       font.base-size = 14;
-      outputs.primary = "eDP-1";
       app-indicators = {
         network-manager = true;
       };

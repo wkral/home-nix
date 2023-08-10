@@ -9,31 +9,27 @@ let
   brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";
 in
 {
-  systemd.user.targets.screen-on = {
-    Unit = {
-      Description = "Screen powered on target";
-      BindsTo = [ "graphical-session.target" ];
-      Wants = [ "graphical-session.target" ];
-      After = [ "graphical-session.target" ];
+  systemd.user.targets = {
+    screen-on = {
+      Unit = {
+        Description = "Screen powered on target";
+        BindsTo = [ "graphical-session.target" ];
+        Wants = [ "graphical-session.target" ];
+        After = [ "graphical-session.target" ];
+      };
+      Install = { WantedBy = [ "graphical-session.target" ]; };
     };
-    Install = { WantedBy = [ "graphical-session.target" ]; };
+    screen-off = {
+      Unit = {
+        Description = "Screen powered off target";
+        Conflicts = [ "screen-on.target" ];
+        After = [ "screen-on.target" ];
+      };
+      Install = { WantedBy = [ "graphical-session.target" ]; };
+    };
   };
 
   systemd.user.services = {
-    kanshi = {
-      Unit = {
-        Description = "Display output dynamic configuration for Sway";
-        PartOf = [ "graphical-session.target" ];
-        After = [ "graphical-session.target" ];
-      };
-
-      Install = { WantedBy = [ "graphical-session.target" ]; };
-
-      Service = {
-        ExecStart = "${pkgs.kanshi}/bin/kanshi";
-      };
-    };
-
     power-screen = {
       Unit = {
         Description = "Activate power to screen in sway";
@@ -103,7 +99,7 @@ in
       Unit = {
         Description = "Restore backlight to levels before powering off";
         BindsTo = [ "screen-on.target" ];
-        After = [ "power-screen.service" "screen-on.target"];
+        After = [ "power-screen.service" "screen-on.target" ];
       };
       Install = { WantedBy = [ "screen-on.target" ]; };
       Service = {

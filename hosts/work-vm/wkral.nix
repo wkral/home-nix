@@ -10,7 +10,6 @@
     gui = {
       enable = true;
       font.base-size = 14;
-      outputs.primary = "HDMI-A-1";
     };
     git.user_email = "william.kral@netlync.com";
   };

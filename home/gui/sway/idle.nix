@@ -13,7 +13,7 @@ in
       timeouts = [
         {
           timeout = cfg.screen-poweroff;
-          command = "${systemctl} --user stop screen-on.target";
+          command = "${systemctl} --user start screen-off.target";
           resumeCommand = "${systemctl} --user start screen-on.target";
         }
 #        {

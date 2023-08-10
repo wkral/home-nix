@@ -9,20 +9,6 @@ in
 {
   options.wk.gui = {
     enable = mkEnableOption "configured Sway GUI";
-    outputs = {
-      primary = mkOption {
-        type = types.str;
-        default = "eDP-1";
-        example = "HDMI-A-1";
-        description = "Primary display source";
-      };
-      secondary = mkOption {
-        type = types.str;
-        default = "HDMI-A-1";
-        example = "eDP-1";
-        description = "Secondary display source";
-      };
-    };
     backlight-control.enable = mkEnableOption "Enable controlls for screen backlight";
     font = {
       base-size = mkOption {
@@ -123,6 +109,11 @@ in
 
     wayland.windowManager.sway.enable = true;
 
+    services.kanshi = {
+      enable = true;
+      systemdTarget = "sway-session.target";
+    };
+
     systemd.user.startServices = true;
 
     programs = {
@@ -149,10 +140,6 @@ in
     home.file.".Xresources".text = ''
       Xcursor.theme=Bibata-Modern-Ice
     '';
-
-    xdg.configFile = {
-      "kanshi/config".source = ./kanshi.conf;
-    };
 
     gtk = {
       theme = {
