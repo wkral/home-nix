@@ -6,6 +6,7 @@
         {
           criteria = "eDP-1";
           status = "enable";
+          scale = 1.0;
           mode = "800x1280@60Hz";
           transform = "270";
         }
