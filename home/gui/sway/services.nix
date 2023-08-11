@@ -24,8 +24,8 @@ in
         Description = "Screen powered off target";
         Conflicts = [ "screen-on.target" ];
         After = [ "screen-on.target" ];
+        StopWhenUnneeded = true;
       };
-      Install = { WantedBy = [ "graphical-session.target" ]; };
     };
   };
 
