@@ -61,7 +61,6 @@ in
 
   imports = [
     ./alacritty.nix
-    ./audio.nix
     ./sway
     ./mako.nix
     ./waybar
