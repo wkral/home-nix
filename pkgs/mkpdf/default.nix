@@ -1,7 +1,8 @@
-{ stdenv, writeShellScriptBin, pandoc, graphviz, librsvg, plantuml, jre, wk }:
+{ lib, stdenv, writeShellScriptBin, pandoc, graphviz, librsvg, plantuml, jre, wk }:
 let
   tmpldir = builtins.path { path = ./templates; name = "templates"; };
   filters = builtins.path { path = ./lua-filters; name = "lua-filters"; };
+  binPath = lib.strings.makeBinPath [ graphviz librsvg jre plantuml ];
 in
 writeShellScriptBin "mkpdf" ''
   __usage="
@@ -54,7 +55,7 @@ writeShellScriptBin "mkpdf" ''
 
   [ "$outfile" != "" ] || outfile="''${infile%%.*}.pdf";
 
-  PATH=$PATH:${graphviz}/bin:${librsvg}/bin:${jre}/bin:${plantuml}/bin
+  PATH=$PATH:${binPath}
   export JAVA_HOME=${jre}
   export PLANTUML=${plantuml}/lib/plantuml.jar
 
