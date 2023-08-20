@@ -20,6 +20,7 @@
     dracula-theme
     bibata-cursors
     tela-circle-icon-theme
+    pulseaudio
   ];
 
   fonts = {
