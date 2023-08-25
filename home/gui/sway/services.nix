@@ -80,7 +80,7 @@ in
         Type = "oneshot";
       };
     };
-  } // lib.optionalAttrs cfg.app-indicators.network-manager {
+  } // lib.optionalAttrs cfg.tray.network-manager {
     networkmanager-applet = {
       Unit = {
         Description = "Network Manager Tray Applet";

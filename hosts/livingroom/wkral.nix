@@ -22,7 +22,7 @@
         background-image = "MMvault.png";
       };
       random-wallpapers.enable = true;
-      app-indicators = {
+      tray = {
         network-manager = true;
       };
     };

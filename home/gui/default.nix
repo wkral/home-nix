@@ -54,8 +54,9 @@ in
         description = "Systemd time interval definition";
       };
     };
-    app-indicators = {
+    tray = {
       network-manager = mkEnableOption "Network Manager Tray Applet";
+      battery = mkEnableOption "Waybar battery indicator";
     };
   };
 

@@ -93,7 +93,7 @@ in
       (fillBgSteps "pulseaudio" (constSteps "884aa2"))
     ];
     settings = [
-      {
+      ({
         layer = "top";
         modules-left = [ "sway/workspaces" "sway/mode" ];
         modules-center = [ "sway/window" ];
@@ -101,20 +101,11 @@ in
           "idle_inhibitor"
           "pulseaudio"
           "cpu"
+        ] ++ lib.lists.optional cfg.tray.battery "battery" ++
+        [
           "tray"
           "clock"
         ];
-        #          battery = {
-        #            format = "";
-        #            format-charging = "";
-        #            format-discharging = "";
-        #            format-discharging-percent0 = "";
-        #            format-discharging-percent10 = "";
-        #            format-discharging-percent15 = "";
-        #            format-discharging-percent5 = "";
-        #            format-full = "";
-        #            states = stepped-states;
-        #          };
         clock = {
           format = " {:%a, %b %d %H:%M}";
         };
@@ -166,7 +157,21 @@ in
           icon-size = (font-size - 1) * 2;
           spacing = font-size / 2;
         };
-      }
+      } // lib.optionalAttrs
+        cfg.tray.battery
+        {
+          battery = {
+            format = "";
+            format-charging = "";
+            format-discharging = "";
+            format-discharging-percent0 = "";
+            format-discharging-percent10 = "";
+            format-discharging-percent15 = "";
+            format-discharging-percent5 = "";
+            format-full = "";
+            states = stepped-states;
+          };
+        })
     ];
   };
 }

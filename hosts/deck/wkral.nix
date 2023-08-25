@@ -17,8 +17,9 @@
       };
       backlight-control.enable = true;
       font.base-size = 14;
-      app-indicators = {
+      tray = {
         network-manager = true;
+        battery = true;
       };
     };
   };
