@@ -28,7 +28,7 @@ in
     system = "x86_64-linux";
     extraModules = [
       ./common-gui.nix
-      (jovian + "/modules")
+      jovian.nixosModules.jovian
     ];
   };
   work-vm = host {

@@ -12,10 +12,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    jovian = {
-      url = github:Jovian-Experiments/Jovian-NixOS;
-      flake = false;
-    };
+    jovian.url = github:Jovian-Experiments/Jovian-NixOS;
   };
 
   outputs = inputs @ { self, nixpkgs, home-manager, sops-nix, jovian }:
