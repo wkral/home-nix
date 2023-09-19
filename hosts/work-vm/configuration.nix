@@ -52,7 +52,7 @@
     users.wkral = {
       isNormalUser = true;
       extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-      passwordFile = config.sops.secrets.wkral_password.path;
+      hashedPasswordFile = config.sops.secrets.wkral_password.path;
     };
   };
 

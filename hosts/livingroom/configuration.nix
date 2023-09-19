@@ -207,7 +207,7 @@
     mutableUsers = false;
     users.wkral = {
       isNormalUser = true;
-      passwordFile = config.sops.secrets.wkral_password.path;
+      hashedPasswordFile = config.sops.secrets.wkral_password.path;
       shell = pkgs.bashInteractive;
       extraGroups = [
         "wheel"

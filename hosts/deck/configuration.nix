@@ -106,7 +106,7 @@
     users.wkral = {
       isNormalUser = true;
       description = "William Kral";
-      passwordFile = config.sops.secrets.wkral_password.path;
+      hashedPasswordFile = config.sops.secrets.wkral_password.path;
       shell = pkgs.bashInteractive;
       extraGroups = [ "networkmanager" "wheel" "sway" "audio" ];
       openssh.authorizedKeys.keys = [
