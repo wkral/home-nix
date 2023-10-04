@@ -4,11 +4,11 @@
 
 { config, lib, pkgs, ... }:
 {
-  nixpkgs.overlays = [
-    (final: prev: {
-      virglrenderer = pkgs.callPackage ./virglrenderer-0_9_1.nix { };
-    })
-  ];
+#  nixpkgs.overlays = [
+#    (final: prev: {
+#      virglrenderer = pkgs.callPackage ./virglrenderer-0_9_1.nix { };
+#    })
+#  ];
   # Use the systemd-boot EFI boot loader.
   boot = {
     initrd.systemd.enable = true;

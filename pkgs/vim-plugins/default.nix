@@ -1,9 +1,9 @@
 { fetchFromGitHub, vim, vimUtils }:
 let
-  inherit (vimUtils.override { inherit vim; }) buildVimPluginFrom2Nix;
+  inherit (vimUtils.override { inherit vim; }) buildVimPlugin;
 in
 {
-  colours = buildVimPluginFrom2Nix {
+  colours = buildVimPlugin {
     name = "vim-colours";
     pname = "vim-colours";
     src = fetchFromGitHub {
@@ -13,7 +13,7 @@ in
       sha256 = "0ihy6jp9chy7a8v4i6yj1zfbnj1h56hw9sbigzpykcfiqrzipkli";
     };
   };
-  salt = buildVimPluginFrom2Nix {
+  salt = buildVimPlugin {
     name = "salt-vim";
     pname = "salt-vim";
     src = fetchFromGitHub {
