@@ -8,6 +8,7 @@
     ../../home/gui/mkpdf.nix
     ../../home/gui/signal.nix
     ../../home/gui/calibre.nix
+    ../../home/gui/wpaperd.nix
     ../../home/gui/zoom.nix
     ./monitors.nix
     ./disable-auto-mute.nix
@@ -21,7 +22,7 @@
         lock = 3600;
         background-image = "MMvault.png";
       };
-      random-wallpapers.enable = true;
+      random-wallpapers.enable = false;
       tray = {
         network-manager = true;
       };
