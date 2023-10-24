@@ -121,6 +121,7 @@ in
       extraGroups = [ "networkmanager" "wheel" "sway" "audio" ];
       openssh.authorizedKeys.keys = [
         ids.livingroom.ssh.wkral
+        ids.framework.ssh.wkral
       ];
     };
   };

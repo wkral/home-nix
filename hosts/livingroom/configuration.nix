@@ -227,9 +227,10 @@ in
         "wireshark"
       ];
       openssh.authorizedKeys.keys = [
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOe6prMbcOivp+6bgN/QZixvljrxRMU9gh0l2TJL2uTt wkral@deck"
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBSsYbuCFzk+qWYhj1C+bPkcfUKQQw9J51bt6FszVZaD"
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILU/4DYvPYGqa8/jmoDo8rC1Yn3uEVfbTwXPhzZh8ZHX"
+        ids.framework.ssh.wkral
+        ids.deck.ssh.wkral
+        ids.macbook.ssh.wkral
+        ids.work-vm.ssh.wkral
       ];
     };
   };
