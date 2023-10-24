@@ -20,6 +20,7 @@
         lock = 720;
         background-image = "MMvault.png";
       };
+      backlight-control.enable = true;
       random-wallpapers.enable = false;
       tray = {
         network-manager = true;
