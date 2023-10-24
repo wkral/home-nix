@@ -162,6 +162,9 @@ in
         font-name = "Noto Sans " + font-base;
         document-font-name = "Noto Sans Light " + font-base;
         monospace-font-name = "Noto Sans Mono Medium Semi-Condensed " + font-down;
+        gtk-theme = "Dracula";
+        cursor-theme = "Bibata-Modern-Ice";
+        icon-theme = "Tela-circle-dracula-dark";
 
       };
       "org/gnome/desktop/wm/preferences" = {
