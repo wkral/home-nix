@@ -1,7 +1,3 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { config, pkgs, ... }:
 
 let ids = import ../ids.nix;
@@ -16,11 +12,9 @@ in
     "/crypto_keyfile.bin" = null;
   };
 
-  jovian.steam.enable = true;
-  jovian.devices.steamdeck.enable = true;
 
   networking = {
-    hostName = "deck"; # Define your hostname.
+    hostName = "framework"; # Define your hostname.
     networkmanager.enable = true;
     firewall.allowedUDPPorts = [ 51820 ];
   };
@@ -39,15 +33,15 @@ in
       wireguardPeers = [{
         wireguardPeerConfig = {
           PublicKey = "TGSPCrfg+jf5dcnXs1+z9/LYE6f7iHQ1AU9ubt7CAEs=";
-          AllowedIPs = [ ids.livingroom.wg-ip ids.framework.wg-ip ];
-          Endpoint = "69.172.157.122:51820";
+          AllowedIPs = [ ids.livingroom.wg-ip ids.deck.wg-ip ];
+          Endpoint = ids.wireguard-endpoint;
           PersistentKeepalive = 25;
         };
       }];
     };
     networks.wg0 = {
       matchConfig.Name = "wg0";
-      address = [ "10.100.0.2/24" ];
+      address = [ "10.100.0.3/24" ];
     };
   };
   # Set your time zone.
@@ -56,20 +50,11 @@ in
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-
   xdg.portal = {
     enable = true;
     extraPortals = [
       pkgs.xdg-desktop-portal-wlr
     ];
-  };
-
-  # Configure keymap in X11
-  services.xserver = {
-    layout = "us";
-    xkbVariant = "";
   };
 
   hardware.bluetooth = {

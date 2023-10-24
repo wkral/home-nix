@@ -3,12 +3,18 @@ keys:
   - &host_livingroom age1tnv6rp0km4y62w3hvap7yea0ulhxquqxjn7f6ert8kfzpcghkcvqnw5k6c
   - &host_work-vm age1zv9njl766480ty05sml58nnseax3wp5pxdxq3udpdwe5928fqpmsje07uh
   - &host_deck age17wfmj7me8kmgq2z56qr98zcf4lkunt0veegqju8fn8sujfd5k32qdn0ept
+  - &host_framework age1my7f9e4f7fhwdcsul8v5v9z2x55zswgjt00un53g6tzxhrn95g2sdyveq0
 creation_rules:
   - path_regex: hosts/livingroom/secrets\.yaml$
     key_groups:
     - age:
       - *admin_wkral
       - *host_livingroom
+  - path_regex: hosts/framework/secrets\.yaml$
+    key_groups:
+    - age:
+      - *admin_wkral
+      - *host_framework
   - path_regex: hosts/deck/secrets\.yaml$
     key_groups:
     - age:

@@ -3,12 +3,14 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, lib, pkgs, ... }:
+let ids = import ../ids.nix;
+in
 {
-#  nixpkgs.overlays = [
-#    (final: prev: {
-#      virglrenderer = pkgs.callPackage ./virglrenderer-0_9_1.nix { };
-#    })
-#  ];
+  #  nixpkgs.overlays = [
+  #    (final: prev: {
+  #      virglrenderer = pkgs.callPackage ./virglrenderer-0_9_1.nix { };
+  #    })
+  #  ];
   # Use the systemd-boot EFI boot loader.
   boot = {
     initrd.systemd.enable = true;
@@ -80,8 +82,8 @@
       };
       wireguardPeers = [{
         wireguardPeerConfig = {
-          PublicKey = "QlckeDNPkP5JhfMI13ginVxnDtg+mUE2HH/0ex7qu2Y=";
-          AllowedIPs = [ "10.100.0.2/32" ];
+          PublicKey = ids.livingroom.wg-pubkey;
+          AllowedIPs = [ ids.deck.wg-ip ids.framework.wg-ip ];
         };
       }];
     };
