@@ -23,7 +23,7 @@ in
           fit = "Cover";
         };
         GTK = {
-          font_name = "Noto Sans 18";
+          font_name = "Noto Sans 11";
           theme_name = "Dracula";
           icon_theme_name = "dracula";
           cursor_theme_name = "Bivata-Modern-Ice";
@@ -51,7 +51,7 @@ in
       };
       wireguardPeers = [{
         wireguardPeerConfig = {
-          PublicKey = "TGSPCrfg+jf5dcnXs1+z9/LYE6f7iHQ1AU9ubt7CAEs=";
+          PublicKey = ids.framework.wg-pubkey;
           AllowedIPs = [ ids.livingroom.wg-ip ids.deck.wg-ip ];
           Endpoint = ids.wireguard-endpoint;
           PersistentKeepalive = 25;
