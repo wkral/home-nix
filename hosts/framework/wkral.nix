@@ -13,7 +13,7 @@
   ];
   wk = {
     gui = {
-      font.base-size = 10;
+      font.base-size = 9;
       idle = {
         enable = true;
         screen-poweroff = 600;
