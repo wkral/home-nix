@@ -49,14 +49,22 @@ in
         PrivateKeyFile = config.sops.secrets.wireguard_key.path;
         ListenPort = 51820;
       };
-      wireguardPeers = [{
-        wireguardPeerConfig = {
-          PublicKey = ids.framework.wg-pubkey;
-          AllowedIPs = [ ids.livingroom.wg-ip ids.deck.wg-ip ];
-          Endpoint = ids.wireguard-endpoint;
-          PersistentKeepalive = 25;
-        };
-      }];
+      wireguardPeers = [
+        {
+          wireguardPeerConfig = {
+            PublicKey = ids.livingroom.wg-pubkey;
+            AllowedIPs = [ ids.livingroom.wg-ip ];
+            Endpoint = ids.wireguard-endpoint;
+            PersistentKeepalive = 25;
+          };
+        }
+        {
+          wireguardPeerConfig = {
+            PublicKey = ids.deck.wg-pubkey;
+            AllowedIPs = [ ids.deck.wg-ip ];
+          };
+        }
+      ];
     };
     networks.wg0 = {
       matchConfig.Name = "wg0";
