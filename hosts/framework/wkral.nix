@@ -24,6 +24,7 @@
       random-wallpapers.enable = false;
       tray = {
         network-manager = true;
+        battery = true;
       };
     };
   };
