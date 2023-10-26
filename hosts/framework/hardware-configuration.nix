@@ -5,27 +5,39 @@
 
 {
   imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
+    [
+      (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "thunderbolt" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelParams = [ "amd_pstate=active" ]; # kernel >= 6.3 
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/3a8af341-cde1-45c1-a064-3598291525b6";
+    {
+      device = "/dev/disk/by-uuid/3a8af341-cde1-45c1-a064-3598291525b6";
       fsType = "ext4";
     };
 
   boot.initrd.luks.devices."luks-bc1fc1a1-c645-4c70-82fd-6580dd9c5280".device = "/dev/disk/by-uuid/bc1fc1a1-c645-4c70-82fd-6580dd9c5280";
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/6B05-23C7";
+    {
+      device = "/dev/disk/by-uuid/6B05-23C7";
       fsType = "vfat";
     };
 
   swapDevices = [ ];
+
+  # AMD has better battery life with PPD over TLP:
+  # https://community.frame.work/t/responded-amd-7040-sleep-states/38101/13
+  services.power-profiles-daemon.enable = true;
+  services.fstrim.enable = true;
+  # Needed for desktop environments to detect/manage display brightness
+  hardware.sensor.iio.enable = true;
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's

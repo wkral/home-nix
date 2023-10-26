@@ -39,6 +39,8 @@
     }
   ];
 
+  services.fstrim.enable = true;
+
   hardware.cpu.amd.updateMicrocode = true;
 
   nix.settings.max-jobs = lib.mkDefault 12;
