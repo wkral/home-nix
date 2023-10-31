@@ -6,11 +6,11 @@
 {
 
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
-  boot.initrd.kernelModules = [];
+  boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" "k10temp" ];
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernelParams = [ "quiet" ];
-  boot.extraModulePackages = with pkgs.linuxPackages_latest; [];
+  boot.extraModulePackages = with pkgs.linuxPackages_latest; [ ];
 
   boot.initrd.luks.devices."crypted".device = "/dev/disk/by-partlabel/nixos";
 
@@ -24,6 +24,7 @@
     {
       device = "/dev/disk/by-label/3TB";
       fsType = "ext4";
+      options = [ "nofail" ];
     };
 
   fileSystems."/boot" =
