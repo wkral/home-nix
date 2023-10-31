@@ -24,7 +24,7 @@
     {
       device = "/dev/disk/by-label/3TB";
       fsType = "ext4";
-      options = [ "nofail" ];
+      options = [ "nofail" "x-systemd.automount" ];
     };
 
   fileSystems."/boot" =
