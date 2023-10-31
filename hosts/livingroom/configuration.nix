@@ -22,30 +22,30 @@ in
 
   console = {
     #earlySetup = true;
-    font = "ter-powerline-v24b";
+    #font = "ter-powerline-v24b";
     keyMap = "us";
-    packages = [
-      pkgs.terminus_font
-      pkgs.powerline-fonts
-    ];
-    colors = [
-      "282a36"
-      "6272a4"
-      "ff5555"
-      "ff7777"
-      "50fa7b"
-      "70fa9b"
-      "f1fa8c"
-      "ffb86c"
-      "bd93f9"
-      "cfa9ff"
-      "ff79c6"
-      "ff88e8"
-      "8be9fd"
-      "97e2ff"
-      "f8f8f2"
-      "ffffff"
-    ];
+    #packages = [
+    #  pkgs.terminus_font
+    #  pkgs.powerline-fonts
+    #];
+    #colors = [
+    #  "282a36"
+    #  "6272a4"
+    #  "ff5555"
+    #  "ff7777"
+    #  "50fa7b"
+    #  "70fa9b"
+    #  "f1fa8c"
+    #  "ffb86c"
+    #  "bd93f9"
+    #  "cfa9ff"
+    #  "ff79c6"
+    #  "ff88e8"
+    #  "8be9fd"
+    #  "97e2ff"
+    #  "f8f8f2"
+    #  "ffffff"
+    #];
   };
 
   security.sudo.wheelNeedsPassword = false;
