@@ -53,19 +53,19 @@ in
         };
       };
     };
-    random-wallpapers = {
+    wallpapers = {
       enable = mkEnableOption "Random wallpaper switching";
       directory = mkOption {
-        type = types.str;
-        default = "${config.xdg.configHome}/wallpapers/";
+        type = types.path;
+        default = "${config.home.homeDirectory}/wallpapers/";
         example = "~/wallpapers/";
         description = "Directory with png and jpg images to be selected from";
       };
-      switch-interval = mkOption {
+      interval = mkOption {
         type = types.str;
-        default = "1h";
-        example = "30m";
-        description = "Systemd time interval definition";
+        default = "30m";
+        example = "1h";
+        description = "How long to wait to switch";
       };
     };
     tray = {
@@ -80,6 +80,7 @@ in
     ./mako.nix
     ./waybar
     ./wofi
+    ./wpaperd.nix
   ];
 
   config = {

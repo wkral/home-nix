@@ -7,7 +7,6 @@
     ../../home/gui/music.nix
     ../../home/gui/mkpdf.nix
     ../../home/gui/signal.nix
-    ../../home/gui/wpaperd.nix
     ../../home/gui/zoom.nix
     ./monitors.nix
   ];
@@ -22,11 +21,11 @@
         lock.enable = true;
       };
       backlight-control.enable = true;
-      random-wallpapers.enable = false;
       tray = {
         network-manager = true;
         battery = true;
       };
+      wallpapers.enable = true;
     };
   };
   home.stateVersion = "23.11";

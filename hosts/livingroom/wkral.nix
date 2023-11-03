@@ -8,7 +8,6 @@
     ../../home/gui/mkpdf.nix
     ../../home/gui/signal.nix
     ../../home/gui/calibre.nix
-    ../../home/gui/wpaperd.nix
     ../../home/gui/zoom.nix
     ./monitors.nix
     ./disable-auto-mute.nix
@@ -20,10 +19,10 @@
         enable = true;
         timeout = 1200;
       };
-      random-wallpapers.enable = false;
       tray = {
         network-manager = true;
       };
+      wallpapers.enable = true;
     };
   };
   home.stateVersion = "22.11";

@@ -5,7 +5,6 @@
     ../../home/gui
     ../../home/gui/music.nix
     ../../home/gui/signal.nix
-    ../../home/gui/wpaperd.nix
     ./monitors.nix
   ];
   wk = {
@@ -21,6 +20,7 @@
         network-manager = true;
         battery = true;
       };
+      wallpapers.enable = true;
     };
   };
   home.stateVersion = "23.05";

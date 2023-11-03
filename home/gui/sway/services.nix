@@ -60,26 +60,6 @@ in
         RestartSec = "1sec";
       };
     };
-  } // lib.optionalAttrs cfg.random-wallpapers.enable {
-
-    set-random-background = {
-      Unit = {
-        Description = "Set a random background for Sway";
-        PartOf = [ "graphical-session.target" ];
-        After = [ "graphical-session.target" ];
-      };
-      Install = {
-        WantedBy = [ "graphical-session.target" ];
-      };
-      Service = {
-        ExecCondition = "${bash} -c '! ${wlrctl} toplevel find state:fullscreen state:active'";
-        ExecStart = ''
-          ${swaymsg} "output '*' \
-            bg $(${fd} . -e png -e jpg ${cfg.random-wallpapers.directory} | shuf -n 1) fill"
-        '';
-        Type = "oneshot";
-      };
-    };
   } // lib.optionalAttrs cfg.tray.network-manager {
     networkmanager-applet = {
       Unit = {
@@ -112,19 +92,5 @@ in
     };
   };
 
-  systemd.user.timers = { } // lib.optionalAttrs cfg.random-wallpapers.enable {
-    set-random-background = {
-      Unit = {
-        Description = "Set a random background for Sway";
-        PartOf = [ "graphical-session.target" ];
-      };
-      Install = {
-        WantedBy = [ "graphical-session.target" ];
-      };
-      Timer = {
-        OnUnitActiveSec = cfg.random-wallpapers.switch-interval;
-      };
-    };
-  };
 } 
 
