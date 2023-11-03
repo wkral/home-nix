@@ -19,24 +19,38 @@ in
       };
     };
     idle = {
-      enable = mkEnableOption "Idle screen lock/poweroff";
-      screen-poweroff = mkOption {
-        type = types.int;
-        default = 540;
-        example = 1200;
-        description = "idle time in seconds until screen poweroff";
+      lock = {
+        enable = mkEnableOption "Screen locking when idle";
+        timeout = mkOption {
+          type = types.int;
+          default = 720;
+          example = 3600;
+          description = "Idle time in seconds until screen lock is started";
+        };
+        background = mkOption {
+          type = types.path;
+          default = "${config.home.homeDirectory}/wallpapers/lock.jpg";
+          example = "~/$HOME/background.png";
+          description = "path to an image file to use as lock backgroun";
+        };
       };
-      lock = mkOption {
-        type = types.int;
-        default = 600;
-        example = 3600;
-        description = "idle time in seconds until screen lock is started";
+      suspend = {
+        enable = mkEnableOption "Suspend when idle";
+        timeout = mkOption { 
+          type = types.int;
+          default = 720;
+          example = 3600;
+          description = "Idle time in seconds until system is suspended";
+        };
       };
-      background-image = mkOption {
-        type = types.str;
-        default = "background.jpg";
-        example = "background.png";
-        description = "Image filename found under ~/.config/swaylock/";
+      screen-off = {
+        enable = mkEnableOption "Power off screen when idle";
+        timeout = mkOption {
+          type = types.int;
+          default = 600;
+          example = 1200;
+          description = "Idle time in seconds until screen poweroff";
+        };
       };
     };
     random-wallpapers = {

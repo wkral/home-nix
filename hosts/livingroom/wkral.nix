@@ -16,11 +16,9 @@
   wk = {
     gui = {
       font.base-size = 14;
-      idle = {
+      idle.screen-off = {
         enable = true;
-        screen-poweroff = 1200;
-        lock = 3600;
-        background-image = "MMvault.png";
+        timeout = 1200;
       };
       random-wallpapers.enable = false;
       tray = {

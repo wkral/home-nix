@@ -1,4 +1,4 @@
-{ ... }:
+{ config, ... }:
 {
   imports = [
     ../../home/console
@@ -15,10 +15,11 @@
     gui = {
       font.base-size = 9;
       idle = {
-        enable = true;
-        screen-poweroff = 600;
-        lock = 720;
-        background-image = "MMvault.png";
+        suspend = {
+          enable = true;
+          timeout = 600;
+        };
+        lock.enable = true;
       };
       backlight-control.enable = true;
       random-wallpapers.enable = false;
