@@ -172,7 +172,7 @@ in
   };
 
   hardware.bluetooth = {
-    enable = false; # bluetooth controller on MB isn't so great
+    enable = true;
     powerOnBoot = true;
   };
 
