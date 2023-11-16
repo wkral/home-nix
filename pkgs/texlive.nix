@@ -5,6 +5,8 @@ texlive.combine {
     collection-fontsextra
     collection-latexextra
     collection-fontsrecommended
+    lualatex-math
+    selnolig
     cm-super
     ;
 }
