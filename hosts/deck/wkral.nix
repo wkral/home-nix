@@ -6,6 +6,7 @@
     ../../home/gui/music.nix
     ../../home/gui/signal.nix
     ./monitors.nix
+    ./inputs.nix
   ];
   wk = {
     gui = {
