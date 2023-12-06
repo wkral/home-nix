@@ -110,6 +110,10 @@ in
   environment.systemPackages = with pkgs; [
   ];
 
+  programs.captive-browser = {
+    enable = true;
+    interface = "wlp1s0";
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
