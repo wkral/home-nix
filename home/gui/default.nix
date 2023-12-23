@@ -136,7 +136,7 @@ in
         enable = true;
         config = {
           cache = "yes";
-          cache-secs = 5;
+          cache-secs = 10;
         };
       };
       zathura = {
