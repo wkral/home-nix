@@ -1,4 +1,4 @@
-{ lib, stdenv, writeShellScriptBin, pandoc, graphviz, librsvg, plantuml, jre, wk }:
+{ lib, stdenv, writeShellScriptBin, pandoc, graphviz, librsvg, plantuml, jre, pandoc-lua-filters, wk }:
 let
   tmpldir = builtins.path { path = ./templates; name = "templates"; };
   filters = builtins.path { path = ./lua-filters; name = "lua-filters"; };
@@ -61,7 +61,7 @@ writeShellScriptBin "mkpdf" ''
 
   ${pandoc}/bin/pandoc $infile \
     --lua-filter=${filters}/include.lua \
-    --lua-filter=${wk.lua-filters}/diagram-generator.lua \
+    --lua-filter=${pandoc-lua-filters}/share/pandoc/filters/diagram-generator.lua \
     --pdf-engine=${wk.texlive}/bin/lualatex \
     --highlight-style ${tmpldir}/$template/code-style.theme \
     --metadata=template-dir=${tmpldir}/$template/ \

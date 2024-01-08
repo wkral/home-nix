@@ -4,7 +4,6 @@ let
   inherit (lib) recurseIntoAttrs;
   newpkgs = {
     last-commit-id = callPackage ./last-commit-id.nix { };
-    lua-filters = callPackage ./lua-filters.nix { };
     mkpdf = callPackage ./mkpdf { };
     quickcmd = callPackage ./quickcmd.nix { };
     sway-dropdown-term = callPackage ./sway-dropdown-term.nix { };
