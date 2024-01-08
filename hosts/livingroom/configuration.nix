@@ -150,6 +150,8 @@ in
   # Make USB webcam writeable for others allows passthrough with QEMU
   services.udev.extraRules = ''
     SUBSYSTEM=="usb", ATTRS{idVendor}=="0bda", ATTRS{idProduct}=="58b0*", MODE="0666"
+    #ThinkPad TrackPoint Keyboard I & II USB fnlock off
+    SUBSYSTEM=="hid", DRIVER=="lenovo", ATTRS{idVendor}=="17ef", ATTRS{idProduct}=="6047|60ee", ATTR{fn_lock}="0"
   '';
 
   # Enable Steam
