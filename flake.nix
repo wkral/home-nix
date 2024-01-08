@@ -15,9 +15,13 @@
       url = github:Jovian-Experiments/Jovian-NixOS;
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    dracula-alacritty = {
+      url = github:dracula/alacritty;
+      flake = false;
+    };
   };
 
-  outputs = inputs @ { self, nixpkgs, home-manager, sops-nix, jovian }:
+  outputs = inputs @ { self, nixpkgs, ... }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -25,9 +29,7 @@
       };
     in
     {
-      nixosConfigurations = import ./hosts {
-        inherit nixpkgs sops-nix home-manager jovian;
-      };
+      nixosConfigurations = import ./hosts inputs;
       devShells.${system}.default = pkgs.mkShell {
         buildInputs = [
           pkgs.sops

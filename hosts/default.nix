@@ -1,4 +1,4 @@
-{ nixpkgs, sops-nix, home-manager, jovian, ... }:
+{ nixpkgs, sops-nix, home-manager, jovian, ... } @ inputs:
 let
   host = { name, system, extraModules ? [ ] }: (nixpkgs.lib.nixosSystem {
     inherit system;
@@ -10,6 +10,7 @@ let
       ./${name}/hardware-configuration.nix
       home-manager.nixosModules.home-manager
       {
+        home-manager.extraSpecialArgs = { inherit inputs; };
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
         home-manager.users.wkral = import ./${name}/wkral.nix;
