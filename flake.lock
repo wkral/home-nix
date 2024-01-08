@@ -117,7 +117,8 @@
         "home-manager": "home-manager",
         "jovian": "jovian",
         "nixpkgs": "nixpkgs",
-        "sops-nix": "sops-nix"
+        "sops-nix": "sops-nix",
+        "vim-colours": "vim-colours"
       }
     },
     "sops-nix": {
@@ -138,6 +139,22 @@
       "original": {
         "owner": "Mic92",
         "repo": "sops-nix",
+        "type": "github"
+      }
+    },
+    "vim-colours": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1571371417,
+        "narHash": "sha256-kc4bf8bRsenvf3HpxKEpMEi73A/Sm0g2UsdDlq40HkY=",
+        "owner": "wkral",
+        "repo": "vim-colours",
+        "rev": "28b0142aa73a6903b29174600cf8602c0eeb1d4d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "wkral",
+        "repo": "vim-colours",
         "type": "github"
       }
     }

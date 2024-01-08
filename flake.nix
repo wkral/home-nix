@@ -19,6 +19,10 @@
       url = github:dracula/alacritty;
       flake = false;
     };
+    vim-colours = {
+      url = github:wkral/vim-colours;
+      flake = false;
+    };
   };
 
   outputs = inputs @ { self, nixpkgs, ... }:

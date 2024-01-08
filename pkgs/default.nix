@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, inputs, ... }:
 let
   inherit (pkgs) callPackage;
   inherit (lib) recurseIntoAttrs;
@@ -10,7 +10,9 @@ let
     texlive = callPackage ./texlive.nix { };
 
     node-tools = recurseIntoAttrs (callPackage ./node-tools { });
-    vimPlugins = recurseIntoAttrs (callPackage ./vim-plugins { });
+    vimPlugins = recurseIntoAttrs (callPackage ./vim-plugins {
+      inherit (inputs) vim-colours;
+    });
   };
 in
 {

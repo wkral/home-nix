@@ -2,6 +2,7 @@
 let
   host = { name, system, extraModules ? [ ] }: (nixpkgs.lib.nixosSystem {
     inherit system;
+    specialArgs = { inherit inputs; };
     modules = [
       nixpkgs.nixosModules.notDetected
       sops-nix.nixosModules.sops

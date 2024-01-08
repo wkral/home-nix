@@ -80,7 +80,6 @@ with lib;
           vim-fireplace
           vim-polyglot
           colours
-          salt
         ];
       };
     };
