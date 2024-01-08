@@ -2,15 +2,13 @@
 let
   ddterm = "${pkgs.wk.sway-dropdown-term}/bin/sway-dropdown-term";
   overrides = {
-    title = "Dropdown Term";
+    window.title = "Dropdown Term";
     colors.primary.background = "0x0d1f21";
     window.padding.x = 8;
   };
   ddconfig = lib.recursiveUpdate config.programs.alacritty.settings overrides;
-  config-pkg = pkgs.writeTextFile {
-    name = "config.yaml";
-    text = builtins.toJSON ddconfig;
-  };
+  tomlFormat = pkgs.formats.toml { };
+  config-pkg = tomlFormat.generate "config.toml" ddconfig;
   modifier = config.wayland.windowManager.sway.config.modifier;
 in
 {
