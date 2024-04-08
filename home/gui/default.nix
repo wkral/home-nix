@@ -96,7 +96,7 @@ in
       imv
       pavucontrol
       alsa-utils
-      pinentry-gnome
+      pinentry-gnome3
       xdg-utils
 
       wk.quickcmd
