@@ -108,6 +108,8 @@ in
 
   # List packages installed in system profile
   environment.systemPackages = with pkgs; [
+    lm_sensors
+    qemu_kvm
   ];
 
   programs.captive-browser = {
