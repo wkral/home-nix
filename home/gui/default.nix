@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 with lib;
 let
   cfg = config.wk.gui;
@@ -75,6 +75,7 @@ in
   };
 
   imports = [
+    inputs.wayland-pipewire-idle-inhibit.homeModules.default
     ./alacritty.nix
     ./sway
     ./mako.nix
@@ -125,6 +126,11 @@ in
     wayland.windowManager.sway.enable = true;
 
     services.kanshi = {
+      enable = true;
+      systemdTarget = "sway-session.target";
+    };
+
+    services.wayland-pipewire-idle-inhibit = {
       enable = true;
       systemdTarget = "sway-session.target";
     };

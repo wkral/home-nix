@@ -23,6 +23,10 @@
       url = github:wkral/vim-colours;
       flake = false;
     };
+    wayland-pipewire-idle-inhibit = {
+      url = github:rafaelrc7/wayland-pipewire-idle-inhibit;
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ { self, nixpkgs, ... }:
