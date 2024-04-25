@@ -77,6 +77,8 @@ in
 
   security.sudo.wheelNeedsPassword = false;
 
+  services.fwupd.enable = true;
+
   sops = {
     defaultSopsFile = ./secrets.yaml;
     age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
@@ -111,11 +113,6 @@ in
     lm_sensors
     qemu_kvm
   ];
-
-  programs.captive-browser = {
-    enable = true;
-    interface = "wlp1s0";
-  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
