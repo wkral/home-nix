@@ -8,6 +8,7 @@
     ../../home/gui/mkpdf.nix
     ../../home/gui/signal.nix
     ../../home/gui/zoom.nix
+    ../../home/gui/slack.nix
     ./monitors.nix
   ];
   wk = {

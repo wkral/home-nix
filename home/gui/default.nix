@@ -167,6 +167,7 @@ in
 
     home.sessionVariables = {
       BROWSER = "firefox";
+      NIXOS_OZONE_WL = 1;
     };
 
     home.file.".Xresources".text = ''
