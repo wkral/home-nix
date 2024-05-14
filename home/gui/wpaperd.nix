@@ -21,7 +21,7 @@ in
         WantedBy = [ "graphical-session.target" ];
       };
       Service = {
-        ExecStart = "${pkgs.wpaperd}/bin/wpaperd";
+        ExecStart = "${pkgs.wpaperd}/bin/wpaperd -d";
         Type = "forking";
       };
     };
