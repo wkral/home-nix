@@ -1,10 +1,12 @@
-{ config, lib, pkgs, ... }:
+{ pkgs, ... }:
 {
   home.packages = [
     pkgs.nixpkgs-fmt
     pkgs.nixpkgs-review
     pkgs.nix-update
     pkgs.niv
+    pkgs.nixd
+    pkgs.devenv
   ];
 
   programs.direnv = {

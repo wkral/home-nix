@@ -1,5 +1,4 @@
-{ config, lib, pkgs, ... }:
-with lib;
+{ pkgs, ... }:
 {
   programs.neovim = {
     enable = true;
@@ -70,14 +69,14 @@ with lib;
             vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
             vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, opts)
             vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
-            vim.keymap.set('n', '<leader>ca', '<cmd>Telescope lsp_code_actions<CR>', opts)
+            vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
             vim.keymap.set('n', 'gr', '<cmd>Telescope lsp_references<CR>', opts)
             vim.keymap.set('n', '<leader>f', vim.lsp.buf.format, opts)
           end
 
           -- Use a loop to conveniently call 'setup' on multiple servers and
           -- map buffer local keybindings when the language server attaches
-          local servers = { 'rust_analyzer' }
+          local servers = { 'rust_analyzer', 'nixd', 'gopls' }
           for _, lsp in pairs(servers) do
             require('lspconfig')[lsp].setup {
               on_attach = on_attach,
