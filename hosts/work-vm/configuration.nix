@@ -56,16 +56,6 @@
     };
   };
 
-  services.greetd = {
-    enable = true;
-    settings = {
-      default_session = {
-        command = ''${pkgs.greetd.tuigreet}/bin/tuigreet --cmd sway'';
-        user = "greeter";
-      };
-    };
-  };
-
   programs.sway.extraSessionCommands = ''
     export QT_QPA_PLATFORM=wayland
     export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"

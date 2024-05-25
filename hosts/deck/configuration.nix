@@ -64,9 +64,6 @@ in
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-
   xdg.portal = {
     enable = true;
     extraPortals = [
@@ -130,7 +127,7 @@ in
   nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = [
   ];
 
 
