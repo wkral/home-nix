@@ -9,8 +9,8 @@
       {
         plugin = dracula-vim;
         config = ''
-          autocmd ColorScheme * highlight Normal ctermbg=None
-          autocmd ColorScheme * highlight NonText ctermbg=None
+          autocmd ColorScheme * highlight Normal ctermbg=None guibg=None
+          autocmd ColorScheme * highlight NonText ctermbg=None guibg=None
           colorscheme dracula
         '';
       }
@@ -76,7 +76,7 @@
 
           -- Use a loop to conveniently call 'setup' on multiple servers and
           -- map buffer local keybindings when the language server attaches
-          local servers = { 'rust_analyzer', 'nixd', 'gopls' }
+          local servers = { 'rust_analyzer', 'nixd', 'gopls', 'golangci_lint_ls' }
           for _, lsp in pairs(servers) do
             require('lspconfig')[lsp].setup {
               on_attach = on_attach,
@@ -105,6 +105,7 @@
         config = ''
           let mapleader=","
           nnoremap <leader>t <cmd>Telescope find_files<cr>
+          nnoremap <leader>b <cmd>Telescope buffers<cr>
           nnoremap <leader>. <cmd>Telescope grep_string<cr>
           nnoremap <leader>/ <cmd>Telescope live_grep<cr>
         '';
