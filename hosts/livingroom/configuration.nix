@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, lib, pkgs, ... }:
+{ config, pkgs, ... }:
 let ids = import ../ids.nix;
 in
 {
@@ -82,16 +82,12 @@ in
       };
       wireguardPeers = [
         {
-          wireguardPeerConfig = {
-            PublicKey = ids.deck.wg-pubkey;
-            AllowedIPs = [ ids.deck.wg-ip ];
-          };
+          PublicKey = ids.deck.wg-pubkey;
+          AllowedIPs = [ ids.deck.wg-ip ];
         }
         {
-          wireguardPeerConfig = {
-            PublicKey = ids.framework.wg-pubkey;
-            AllowedIPs = [ ids.framework.wg-ip ];
-          };
+          PublicKey = ids.framework.wg-pubkey;
+          AllowedIPs = [ ids.framework.wg-ip ];
         }
       ];
     };
@@ -155,10 +151,9 @@ in
   '';
 
   # Enable Steam
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
+    enable32Bit = true;
     extraPackages = [ pkgs.amdvlk ];
     extraPackages32 = [ pkgs.pkgsi686Linux.libva ];
   };

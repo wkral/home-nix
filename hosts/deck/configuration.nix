@@ -38,18 +38,14 @@ in
       };
       wireguardPeers = [
         {
-          wireguardPeerConfig = {
-            PublicKey = ids.livingroom.wg-pubkey;
-            AllowedIPs = [ ids.livingroom.wg-ip ];
-            Endpoint = ids.wireguard-endpoint;
-            PersistentKeepalive = 25;
-          };
+          PublicKey = ids.livingroom.wg-pubkey;
+          AllowedIPs = [ ids.livingroom.wg-ip ];
+          Endpoint = ids.wireguard-endpoint;
+          PersistentKeepalive = 25;
         }
         {
-          wireguardPeerConfig = {
-            PublicKey = ids.framework.wg-pubkey;
-            AllowedIPs = [ ids.framework.wg-ip ];
-          };
+          PublicKey = ids.framework.wg-pubkey;
+          AllowedIPs = [ ids.framework.wg-ip ];
         }
       ];
     };
