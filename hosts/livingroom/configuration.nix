@@ -6,6 +6,9 @@
 let ids = import ../ids.nix;
 in
 {
+  imports = [
+    ./syncthing.nix
+  ];
   #  nixpkgs.overlays = [
   #    (final: prev: {
   #      virglrenderer = pkgs.callPackage ./virglrenderer-0_9_1.nix { };
@@ -182,6 +185,8 @@ in
       owner = config.users.users.systemd-network.name;
       group = config.users.users.systemd-network.group;
     };
+    secrets.syncthing_cert.mode = "0400";
+    secrets.syncthing_key.mode = "0400";
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
