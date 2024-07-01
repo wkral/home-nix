@@ -6,6 +6,8 @@ in
     enable = true;
     cert = config.sops.secrets.syncthing_cert.path;
     key = config.sops.secrets.syncthing_key.path;
+    user = "wkral";
+    dataDir = "/home/wkral/.local/state/syncthing/";
     openDefaultPorts = true;
     settings = {
       devices = {
