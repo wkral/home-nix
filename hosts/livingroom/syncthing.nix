@@ -8,6 +8,7 @@ in
     key = config.sops.secrets.syncthing_key.path;
     openDefaultPorts = true;
     user = "wkral";
+    group = "users";
     dataDir = "/home/wkral/.local/state/syncthing/";
     settings = {
       devices = {
