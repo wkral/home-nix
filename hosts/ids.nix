@@ -9,7 +9,7 @@
     ssh.wkral = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJxgITfJE8nrE1JkTn7U+4otLffeJ4nMVk/CoOORoG5W wkral@framework";
     wg-pubkey = "dRzOQaG4GAmYjs2ZsNeO+ldyA6AxBLj2GpOPHvUM1BM=";
     wg-ip = "10.100.0.3/32";
-    syncthing = "";
+    syncthing = "MKSKMUH-7NG2PYW-G5AIAMW-SGICXTC-SRZSIIP-PR2KBLL-NSE4JJO-BR2F2AG";
   };
   deck = {
     ssh.wkral = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOe6prMbcOivp+6bgN/QZixvljrxRMU9gh0l2TJL2uTt wkral@deck";

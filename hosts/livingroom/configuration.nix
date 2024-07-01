@@ -179,14 +179,16 @@ in
   sops = {
     defaultSopsFile = ./secrets.yaml;
     age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
-    secrets.wkral_password.neededForUsers = true;
-    secrets.wireguard_key = {
-      mode = "0440";
-      owner = config.users.users.systemd-network.name;
-      group = config.users.users.systemd-network.group;
+    secrets = {
+      wkral_password.neededForUsers = true;
+      wireguard_key = {
+        mode = "0440";
+        owner = config.users.users.systemd-network.name;
+        group = config.users.users.systemd-network.group;
+      };
+      syncthing_cert.mode = "0400";
+      syncthing_key.mode = "0400";
     };
-    secrets.syncthing_cert.mode = "0400";
-    secrets.syncthing_key.mode = "0400";
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
