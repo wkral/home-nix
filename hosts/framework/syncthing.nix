@@ -7,6 +7,7 @@ in
     cert = config.sops.secrets.syncthing_cert.path;
     key = config.sops.secrets.syncthing_key.path;
     user = "wkral";
+    group = "users";
     dataDir = "/home/wkral/.local/state/syncthing/";
     openDefaultPorts = true;
     settings = {
