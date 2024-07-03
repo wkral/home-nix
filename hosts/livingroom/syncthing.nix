@@ -20,6 +20,10 @@ in
           id = "wallpapers";
           devices = [ "framework" ];
         };
+        "/home/wkral/projects" = {
+          id = "projects";
+          devices = [ "framework" ];
+        };
       };
     };
   };
