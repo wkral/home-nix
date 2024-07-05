@@ -88,8 +88,8 @@ in
 
     home.packages = with pkgs; [
       firefox-wayland
-      gnome.nautilus # file manager
-      gnome.dconf-editor
+      nautilus # file manager
+      dconf-editor
       wireshark
       networkmanagerapplet
       font-manager
@@ -113,7 +113,7 @@ in
       #wofi
       wofi
       hicolor-icon-theme
-      gnome.adwaita-icon-theme
+      adwaita-icon-theme
 
       libsForQt5.qtstyleplugins
       libsForQt5.qtstyleplugin-kvantum
