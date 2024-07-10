@@ -14,7 +14,6 @@
           colorscheme dracula
         '';
       }
-      editorconfig-nvim
       fugitive
       {
         plugin = gitsigns-nvim;
