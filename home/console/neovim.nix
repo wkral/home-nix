@@ -110,6 +110,15 @@
         '';
       }
       vim-polyglot
+      {
+        plugin = nvim-coverage;
+        type = "lua";
+        config = ''
+        require("coverage").setup({
+          auto_reload = true,
+        })
+        '';
+      }
     ];
     withRuby = false;
     withPython3 = false;
