@@ -75,6 +75,8 @@ in
     pinentryPackage = pkgs.pinentry-gnome3;
   };
 
+  programs.wireshark.enable = true;
+
   security.sudo.wheelNeedsPassword = false;
 
   services.fwupd.enable = true;
@@ -101,7 +103,7 @@ in
       description = "William Kral";
       hashedPasswordFile = config.sops.secrets.wkral_password.path;
       shell = pkgs.bashInteractive;
-      extraGroups = [ "networkmanager" "wheel" "sway" "audio" ];
+      extraGroups = [ "networkmanager" "wheel" "sway" "audio" "wireshark" ];
       openssh.authorizedKeys.keys = [
         ids.livingroom.ssh.wkral
         ids.macbook.ssh.wkral

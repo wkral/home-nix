@@ -19,5 +19,5 @@
   work-vm.ssh.wkral = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILU/4DYvPYGqa8/jmoDo8rC1Yn3uEVfbTwXPhzZh8ZHX";
   macbook.ssh.wkral = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBSsYbuCFzk+qWYhj1C+bPkcfUKQQw9J51bt6FszVZaD";
 
-  wireguard-endpoint = "69.172.157.122:51820";
+  wireguard-endpoint = "107.190.30.201:51820";
 }

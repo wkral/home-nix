@@ -124,6 +124,7 @@ in
     pinentryPackage = pkgs.pinentry-gnome3;
   };
 
+  programs.wireshark.enable = true;
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
