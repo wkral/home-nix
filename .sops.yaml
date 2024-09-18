@@ -2,7 +2,7 @@ keys:
   - &admin_wkral age165akwthnnscg66nlmpmvxj0rexyjqh2t7drem8rmdhxy4l363sps6cpa87
   - &host_livingroom age1tnv6rp0km4y62w3hvap7yea0ulhxquqxjn7f6ert8kfzpcghkcvqnw5k6c
   - &host_work-vm age1zv9njl766480ty05sml58nnseax3wp5pxdxq3udpdwe5928fqpmsje07uh
-  - &host_deck age1fgz9sqqkjsa3y55m9r7mz06enu2gvjzer9ze44g69wgtvvtg0cmqx9wuwq
+  - &host_deck age17pup20vg8pqyjh4k9ewhycfwwwzf9nsdsp3pqe0c5q4um93hrcxqf28fsr
   - &host_framework age1my7f9e4f7fhwdcsul8v5v9z2x55zswgjt00un53g6tzxhrn95g2sdyveq0
 creation_rules:
   - path_regex: hosts/livingroom/secrets\.yaml$
