@@ -11,13 +11,12 @@ in
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # Setup keyfile
-  boot.initrd.secrets = {
-    "/crypto_keyfile.bin" = null;
-  };
-
-  jovian.steam.enable = true;
   jovian.devices.steamdeck.enable = true;
+  jovian.steam = {
+    enable = true;
+    autoStart = true;
+    desktopSession = "sway";
+  };
 
   networking = {
     hostName = "deck"; # Define your hostname.
@@ -134,5 +133,4 @@ in
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.11"; # Did you read the comment?
-
 }

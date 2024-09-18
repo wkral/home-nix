@@ -23,12 +23,12 @@ in
   livingroom = host {
     name = "livingroom";
     system = "x86_64-linux";
-    extraModules = [ ./common-gui.nix ];
+    extraModules = [ ./common-gui.nix ./regreet.nix];
   };
   framework = host {
     name = "framework";
     system = "x86_64-linux";
-    extraModules = [ ./common-gui.nix ./podman.nix ];
+    extraModules = [ ./common-gui.nix ./regreet.nix ./podman.nix ];
   };
   deck = host {
     name = "deck";
