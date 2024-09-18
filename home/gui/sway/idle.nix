@@ -15,6 +15,7 @@ in
     {
       services.swayidle = {
         enable = true;
+        systemdTarget = "sway-session.service";
         timeouts = lib.lists.optional cfg.screen-off.enable
           {
             timeout = cfg.screen-off.timeout;

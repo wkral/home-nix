@@ -1,9 +1,6 @@
 { config, lib, pkgs, ... }:
 let
   cfg = config.wk.gui;
-  fd = "${pkgs.fd}/bin/fd";
-  wlrctl = "${pkgs.wlrctl}/bin/wlrctl";
-  bash = "${pkgs.bash}/bin/bash";
 
   swaymsg = "${pkgs.sway}/bin/swaymsg";
   brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";
@@ -13,11 +10,11 @@ in
     screen-on = {
       Unit = {
         Description = "Screen powered on target";
-        BindsTo = [ "graphical-session.target" ];
-        Wants = [ "graphical-session.target" ];
-        After = [ "graphical-session.target" ];
+        BindsTo = [ "sway-session.target" ];
+        Wants = [ "sway-session.target" ];
+        After = [ "sway-session.target" ];
       };
-      Install = { WantedBy = [ "graphical-session.target" ]; };
+      Install = { WantedBy = [ "sway-session.target" ]; };
     };
     screen-off = {
       Unit = {

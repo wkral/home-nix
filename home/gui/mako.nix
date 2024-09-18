@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }:
+{ pkgs, config, ... }:
 let
   font-base = toString config.wk.gui.font.base-size;
 in
@@ -17,12 +17,12 @@ in
   systemd.user.services.mako = {
     Unit = {
       Description = "Lightweight Wayland notification daemon";
-      PartOf = [ "graphical-session.target" ];
-      After = [ "graphical-session.target" ];
+      PartOf = [ "sway-session.target" ];
+      After = [ "sway-session.target" ];
       ConditionEnvironment = "WAYLAND_DISPLAY";
     };
 
-    Install = { WantedBy = [ "graphical-session.target" ]; };
+    Install = { WantedBy = [ "sway-session.target" ]; };
 
     Service = {
       ExecStart = "${pkgs.mako}/bin//mako";
