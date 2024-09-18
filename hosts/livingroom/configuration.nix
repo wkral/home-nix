@@ -208,7 +208,6 @@ in
       ];
       openssh.authorizedKeys.keys = [
         ids.framework.ssh.wkral
-        ids.deck.ssh.wkral
         ids.macbook.ssh.wkral
         ids.work-vm.ssh.wkral
       ];
