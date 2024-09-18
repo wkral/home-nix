@@ -15,6 +15,7 @@ in
   jovian.steam = {
     enable = true;
     autoStart = true;
+    user = "wkral";
     desktopSession = "sway";
   };
 
