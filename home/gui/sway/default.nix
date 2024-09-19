@@ -3,7 +3,6 @@ let
   cfg = config.wk.gui;
   font-size = cfg.font.base-size;
   modifier = "Mod4";
-  inherit (config.xdg) configHome;
 
   wpctl = action: "exec '${pkgs.wireplumber}/bin/wpctl ${action}'";
   sysd = target: action: "exec 'systemctl --user ${action} ${target}'";
@@ -106,8 +105,13 @@ in
           xkb_options = "caps:escape";
         };
       };
-      seat."*" = {
-        xcursor_theme = "Bibata-Modern-Ice";
+      output = {
+        "*" = {
+          bg = "${pkgs.sway}/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png";
+        };
+      };
+      seat." * " = {
+        xcursor_theme = " Bibata-Modern-Ice ";
       };
       startup = [
         {
@@ -126,3 +130,4 @@ in
   };
 
 }
+
