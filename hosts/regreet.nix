@@ -15,12 +15,25 @@
           fit = "Cover";
         };
         GTK = {
-          font_name = "Noto Sans 18";
-          theme_name = "Dracula";
-          icon_theme_name = "dracula";
-          cursor_theme_name = "Bivata-Modern-Ice";
           application_prefer_dark_theme = true;
         };
+      };
+      theme = {
+        package = pkgs.dracula-theme;
+        name = "Dracula";
+      };
+      iconTheme = {
+        package = pkgs.tela-circle-icon-theme;
+        name = "Tela-circle-dracula-dark";
+      };
+      cursorTheme = {
+        package = pkgs.bibata-cursors;
+        name = "Bibata-Modern-Ice";
+      };
+      font = { 
+        package = pkgs.noto-fonts;
+        name = "Noto Sans";
+        size = 18;
       };
     };
 }
