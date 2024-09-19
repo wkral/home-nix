@@ -1,5 +1,4 @@
 { config, lib, pkgs, inputs, ... }:
-with lib;
 let
   cfg = config.wk.gui;
   font-base = toString cfg.font.base-size;
@@ -8,11 +7,11 @@ let
 in
 {
   options.wk.gui = {
-    enable = mkEnableOption "configured Sway GUI";
-    backlight-control.enable = mkEnableOption "Enable controlls for screen backlight";
+    enable = lib.mkEnableOption "configured Sway GUI";
+    backlight-control.enable = lib.mkEnableOption "Enable controlls for screen backlight";
     font = {
-      base-size = mkOption {
-        type = types.int;
+      base-size = lib.mkOption {
+        type = lib.types.int;
         default = 9;
         example = 14;
         description = "Base font size for GUI layout";
@@ -20,33 +19,33 @@ in
     };
     idle = {
       lock = {
-        enable = mkEnableOption "Screen locking when idle";
-        timeout = mkOption {
-          type = types.int;
+        enable = lib.mkEnableOption "Screen locking when idle";
+        timeout = lib.mkOption {
+          type = lib.types.int;
           default = 720;
           example = 3600;
           description = "Idle time in seconds until screen lock is started";
         };
-        background = mkOption {
-          type = types.path;
+        background = lib.mkOption {
+          type = lib.types.path;
           default = "${config.home.homeDirectory}/wallpapers/lock.jpg";
           example = "~/$HOME/background.png";
           description = "path to an image file to use as lock backgroun";
         };
       };
       suspend = {
-        enable = mkEnableOption "Suspend when idle";
-        timeout = mkOption {
-          type = types.int;
+        enable = lib.mkEnableOption "Suspend when idle";
+        timeout = lib.mkOption {
+          type = lib.types.int;
           default = 720;
           example = 3600;
           description = "Idle time in seconds until system is suspended";
         };
       };
       screen-off = {
-        enable = mkEnableOption "Power off screen when idle";
-        timeout = mkOption {
-          type = types.int;
+        enable = lib.mkEnableOption "Power off screen when idle";
+        timeout = lib.mkOption {
+          type = lib.types.int;
           default = 600;
           example = 1200;
           description = "Idle time in seconds until screen poweroff";
@@ -54,23 +53,23 @@ in
       };
     };
     wallpapers = {
-      enable = mkEnableOption "Random wallpaper switching";
-      directory = mkOption {
-        type = types.path;
+      enable = lib.mkEnableOption "Random wallpaper switching";
+      directory = lib.mkOption {
+        type = lib.types.path;
         default = "${config.home.homeDirectory}/wallpapers/";
         example = "~/wallpapers/";
         description = "Directory with png and jpg images to be selected from";
       };
-      interval = mkOption {
-        type = types.str;
+      interval = lib.mkOption {
+        type = lib.types.str;
         default = "30m";
         example = "1h";
         description = "How long to wait to switch";
       };
     };
     tray = {
-      network-manager = mkEnableOption "Network Manager Tray Applet";
-      battery = mkEnableOption "Waybar battery indicator";
+      network-manager = lib.mkEnableOption "Network Manager Tray Applet";
+      battery = lib.mkEnableOption "Waybar battery indicator";
     };
   };
 
