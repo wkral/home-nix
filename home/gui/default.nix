@@ -129,11 +129,6 @@ in
       systemdTarget = "sway-session.target";
     };
 
-    services.wayland-pipewire-idle-inhibit = {
-      enable = true;
-      systemdTarget = "sway-session.target";
-    };
-
     systemd.user.startServices = true;
 
     programs = {

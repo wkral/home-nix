@@ -1,4 +1,4 @@
-{ config, ... }:
+{ ... }:
 {
   imports = [
     ../../home/console
@@ -9,6 +9,7 @@
     ../../home/gui/signal.nix
     ../../home/gui/zoom.nix
     ../../home/gui/slack.nix
+    ../../home/gui/wayland-pipewire-idle-inhibit.nix
     ./monitors.nix
   ];
   wk = {

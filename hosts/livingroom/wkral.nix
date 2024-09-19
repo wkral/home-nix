@@ -9,6 +9,7 @@
     ../../home/gui/signal.nix
     ../../home/gui/calibre.nix
     ../../home/gui/zoom.nix
+    ../../home/gui/wayland-pipewire-idle-inhibit.nix
     ./monitors.nix
     ./disable-auto-mute.nix
   ];
