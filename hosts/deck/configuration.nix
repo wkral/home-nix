@@ -23,6 +23,7 @@ in
     user = "wkral";
     desktopSession = "sway";
   };
+  jovian.steamos.useSteamOSConfig = true;
 
   networking = {
     hostName = "deck"; # Define your hostname.
