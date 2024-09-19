@@ -107,7 +107,7 @@ in
       };
       output = {
         "*" = {
-          bg = "${pkgs.sway}/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png";
+          bg = "/run/current-system/sw/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill";
         };
       };
       seat." * " = {
