@@ -50,8 +50,10 @@ in
           '';
         };
 
-      systemd.user.services.swayidle.Unit.PartOf = 
-        lib.mkForce [ "sway-session.target" ];
+      systemd.user.services.swayidle.Unit = {
+        PartOf = lib.mkForce [ "sway-session.target" ];
+        After = [ "sway-session.target" ];
+      };
     };
 
 }
