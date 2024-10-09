@@ -25,6 +25,10 @@ in
           id = "projects";
           devices = [ "livingroom" ];
         };
+        "/home/wkral/music" = {
+          id = "music";
+          devices = [ "livingroom" ];
+        };
       };
     };
   };
