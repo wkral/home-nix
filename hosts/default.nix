@@ -28,7 +28,7 @@ in
   framework = host {
     name = "framework";
     system = "x86_64-linux";
-    extraModules = [ ./common-gui.nix ./regreet.nix ./podman.nix ];
+    extraModules = [ ./common-gui.nix ./regreet.nix ./docker.nix ];
   };
   deck = host {
     name = "deck";
