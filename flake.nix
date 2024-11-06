@@ -43,7 +43,7 @@
           pkgs.sops
           pkgs.wireguard-tools
           pkgs.ssh-to-age
-          pkgs.syncthing-cli
+          pkgs.syncthing
         ];
       };
     };
