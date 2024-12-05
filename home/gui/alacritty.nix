@@ -3,7 +3,7 @@
   programs.alacritty = {
     enable = true;
     settings = {
-      import = ["${inputs.dracula-alacritty}/dracula.toml"];
+      general.import = ["${inputs.dracula-alacritty}/dracula.toml"];
       env = {
         TERM = "xterm-256color";
       };
