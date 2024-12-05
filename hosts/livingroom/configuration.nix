@@ -20,7 +20,6 @@ in
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
     plymouth.enable = true;
-    binfmt.emulatedSystems = [ "aarch64-linux" ];
   };
 
   console = {
@@ -158,7 +157,6 @@ in
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
-    extraPackages = [ pkgs.amdvlk ];
     extraPackages32 = [ pkgs.pkgsi686Linux.libva ];
   };
   nixpkgs.config.allowUnfree = true;
