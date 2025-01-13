@@ -27,8 +27,8 @@
         name = "Tela-circle-dracula-dark";
       };
       cursorTheme = {
-        package = pkgs.bibata-cursors;
-        name = "Bibata-Modern-Ice";
+        package = pkgs.simp1e-cursors;
+        name = "Simp1e-Breeze";
       };
       font = { 
         package = pkgs.noto-fonts;

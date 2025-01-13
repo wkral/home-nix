@@ -164,8 +164,16 @@ in
       NIXOS_OZONE_WL = 1;
     };
 
+    home.pointerCursor = {
+      package = pkgs.simp1e-cursors;
+      gtk.enable = true;
+      name = "Simp1e-Breeze";
+      size = 24;
+    };
+
     home.file.".Xresources".text = ''
-      Xcursor.theme=Bibata-Modern-Ice
+      Xcursor.theme=Simp1e-Breeze
+      Xcursor.size=24
     '';
 
     gtk = {
@@ -177,11 +185,6 @@ in
         package = pkgs.tela-circle-icon-theme;
         name = "Tela-circle-dracula-dark";
       };
-      cursorTheme = {
-        package = pkgs.bibata-cursors;
-        name = "Bibata-Modern-Ice";
-        size = 24;
-      };
     };
 
     dconf.settings = {
@@ -190,7 +193,7 @@ in
         document-font-name = "Noto Sans Light " + font-base;
         monospace-font-name = "Noto Sans Mono Medium Semi-Condensed " + font-down;
         gtk-theme = "Dracula";
-        cursor-theme = "Bibata-Modern-Ice";
+        cursor-theme = "Simp1e-Breeze";
         icon-theme = "Tela-circle-dracula-dark";
 
       };

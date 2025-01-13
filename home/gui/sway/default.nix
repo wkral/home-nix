@@ -111,7 +111,7 @@ in
         };
       };
       seat." * " = {
-        xcursor_theme = " Bibata-Modern-Ice ";
+        xcursor_theme = "Simp1e-Breeze";
       };
       startup = [
         {

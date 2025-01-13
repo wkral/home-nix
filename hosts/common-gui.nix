@@ -18,7 +18,7 @@
   environment.systemPackages = with pkgs; [
     # Theme packages
     dracula-theme
-    bibata-cursors
+    simp1e-cursors
     tela-circle-icon-theme
     pulseaudio
   ];
