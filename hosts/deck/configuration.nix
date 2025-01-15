@@ -66,13 +66,6 @@ in
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-  xdg.portal = {
-    enable = true;
-    extraPortals = [
-      pkgs.xdg-desktop-portal-wlr
-    ];
-  };
-
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "us";

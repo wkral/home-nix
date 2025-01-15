@@ -163,13 +163,6 @@ in
   hardware.steam-hardware.enable = true;
   services.pipewire.alsa.support32Bit = true; # required for steam
 
-  xdg.portal = {
-    enable = true;
-    extraPortals = [
-      pkgs.xdg-desktop-portal-wlr
-    ];
-  };
-
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;

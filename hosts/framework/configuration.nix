@@ -50,13 +50,6 @@ in
   # Set your time zone.
   time.timeZone = "America/Vancouver";
 
-  xdg.portal = {
-    enable = true;
-    extraPortals = [
-      pkgs.xdg-desktop-portal-wlr
-    ];
-  };
-
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
