@@ -1,26 +1,20 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   nixpkgs.overlays = [
     (self: super: {
       pass = super.pass.override { waylandSupport = true; };
       waybar = super.waybar.override { pulseSupport = true; };
-      nerdfonts = super.nerdfonts.override {
-        fonts = [
-          "IBMPlexMono"
-          "Noto"
-        ];
-      };
       tela-circle-icon-theme = super.tela-circle-icon-theme.override
         { colorVariants = [ "dracula" ]; };
     })
   ];
 
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = [
     # Theme packages
-    dracula-theme
-    simp1e-cursors
-    tela-circle-icon-theme
-    pulseaudio
+    pkgs.dracula-theme
+    pkgs.simp1e-cursors
+    pkgs.tela-circle-icon-theme
+    pkgs.pulseaudio
   ];
 
   fonts = {
@@ -29,21 +23,22 @@
       sansSerif = [ "NotoSans Nerd Font" ];
       serif = [ "NotoSerif Nerd Font" ];
     };
-    packages = with pkgs; [
-      fira
-      fira-code
-      font-awesome_5
-      font-awesome
-      ibm-plex
-      nerdfonts
-      unifont
-      unifont_upper
-      noto-fonts
-      noto-fonts-extra
-      noto-fonts-emoji
-      material-icons
-      roboto
-      roboto-mono
+    packages = [
+      pkgs.fira
+      pkgs.fira-code
+      pkgs.font-awesome_5
+      pkgs.font-awesome
+      pkgs.ibm-plex
+      pkgs.nerd-fonts.blex-mono
+      pkgs.nerd-fonts.noto
+      pkgs.unifont
+      pkgs.unifont_upper
+      pkgs.noto-fonts
+      pkgs.noto-fonts-extra
+      pkgs.noto-fonts-emoji
+      pkgs.material-icons
+      pkgs.roboto
+      pkgs.roboto-mono
     ];
   };
 
