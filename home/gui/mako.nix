@@ -17,12 +17,12 @@ in
   systemd.user.services.mako = {
     Unit = {
       Description = "Lightweight Wayland notification daemon";
-      PartOf = [ "sway-session.target" ];
-      After = [ "sway-session.target" ];
+      PartOf = [ "niri.service" ];
+      After = [ "niri.service" ];
       ConditionEnvironment = "WAYLAND_DISPLAY";
     };
 
-    Install = { WantedBy = [ "sway-session.target" ]; };
+    Install = { WantedBy = [ "niri.service" ]; };
 
     Service = {
       ExecStart = "${pkgs.mako}/bin//mako";

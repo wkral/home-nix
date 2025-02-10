@@ -7,7 +7,7 @@ let
 in
 {
   options.wk.gui = {
-    enable = lib.mkEnableOption "configured Sway GUI";
+    enable = lib.mkEnableOption "configured niri GUI";
     backlight-control.enable = lib.mkEnableOption "Enable controlls for screen backlight";
     font = {
       base-size = lib.mkOption {
@@ -76,7 +76,7 @@ in
   imports = [
     inputs.wayland-pipewire-idle-inhibit.homeModules.default
     ./alacritty.nix
-    ./sway
+    ./niri
     ./mako.nix
     ./waybar
     ./wofi
@@ -122,11 +122,11 @@ in
       gsettings-desktop-schemas
     ];
 
-    wayland.windowManager.sway.enable = true;
+    #wayland.windowManager.sway.enable = true;
 
     services.kanshi = {
       enable = true;
-      systemdTarget = "sway-session.target";
+      systemdTarget = "niri.service";
     };
 
     systemd.user.startServices = true;

@@ -21,7 +21,7 @@ in
     enable = true;
     autoStart = true;
     user = "wkral";
-    desktopSession = "sway";
+    desktopSession = "niri";
   };
   jovian.steamos.useSteamOSConfig = true;
 
@@ -110,7 +110,7 @@ in
       description = "William Kral";
       hashedPasswordFile = config.sops.secrets.wkral_password.path;
       shell = pkgs.bashInteractive;
-      extraGroups = [ "networkmanager" "wheel" "sway" "audio" ];
+      extraGroups = [ "networkmanager" "wheel" "audio" ];
       openssh.authorizedKeys.keys = [
         ids.livingroom.ssh.wkral
         ids.framework.ssh.wkral

@@ -97,7 +97,7 @@ in
       description = "William Kral";
       hashedPasswordFile = config.sops.secrets.wkral_password.path;
       shell = pkgs.bashInteractive;
-      extraGroups = [ "networkmanager" "wheel" "sway" "audio" "wireshark" ];
+      extraGroups = [ "networkmanager" "wheel" "audio" "wireshark" ];
       openssh.authorizedKeys.keys = [
         ids.livingroom.ssh.wkral
         ids.macbook.ssh.wkral

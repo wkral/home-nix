@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 {
   nixpkgs.overlays = [
     (self: super: {
@@ -43,13 +43,7 @@
   };
 
   environment.variables.TERMINAL = "alacritty";
-  programs.sway = {
-    enable = true;
-    wrapperFeatures = {
-      base = true;
-      gtk = true;
-    };
-  };
+  programs.niri.enable = true;
   services.gnome.at-spi2-core.enable = true;
   programs.dconf.enable = true;
 

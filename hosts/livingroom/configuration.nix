@@ -108,12 +108,6 @@ in
     qemu_kvm
   ];
 
-  programs.sway.extraSessionCommands = ''
-    export QT_QPA_PLATFORM=wayland
-    export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
-    export QT_FONT_DPI=144
-  '';
-
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -192,7 +186,6 @@ in
       shell = pkgs.bashInteractive;
       extraGroups = [
         "wheel"
-        "sway"
         "audio"
         "networkmanager"
         "wireshark"

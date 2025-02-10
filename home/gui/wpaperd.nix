@@ -14,11 +14,11 @@ in
     systemd.user.services.wpaperd = {
       Unit = {
         Description = "minimal wallpaper daemon for Wayland";
-        PartOf = [ "sway-session.target" ];
-        After = [ "sway-session.target" ];
+        PartOf = [ "niri.service" ];
+        After = [ "niri.service" ];
       };
       Install = {
-        WantedBy = [ "sway-session.target" ];
+        WantedBy = [ "niri.service" ];
       };
       Service = {
         ExecStart = "${pkgs.wpaperd}/bin/wpaperd -d";
