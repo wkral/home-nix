@@ -8,17 +8,39 @@ in
     userName = "William Kral";
     userEmail = cfg.user_email;
     extraConfig = {
-      color = { ui = "auto"; };
+      branch.sort = "-committerdate";
+      color.ui = "auto";
+      column.ui = "auto";
+      commit.verbose = true;
       core = {
         editor = "nvim";
         ignorecase = false;
       };
-      init = {
-        defaultBranch = "main";
+      diff = {
+        algorithm = "histogram";
+        colorMoved = "plain";
+        mnemonicPrefix = true;
+        tool = "vimdiff";
+        renames = true;
       };
-      push = { default = "simple"; };
+      fetch = {
+        prune = true;
+        pruneTags = true;
+        all = true;
+      };
+      help.autocorrect = "prompt";
+      init.defaultBranch = "main";
+      merge.conflictStyle = "zdiff3";
       pull = { rebase = "false"; };
-      diff = { tool = "vimdiff"; };
+      push = {
+        default = "simple";
+        autoSetupRemote = true;
+        followTags = true;
+      };
+      rerere = {
+        enabled = true;
+        autoupdate = true;
+      };
     };
     aliases = {
       co = "checkout";
