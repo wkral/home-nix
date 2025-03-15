@@ -37,10 +37,5 @@ in
       ./common-gui.nix
       jovian.nixosModules.jovian
     ];
-  };
-  work-vm = host {
-    name = "work-vm";
-    system = "x86_64-linux";
-    extraModules = [ ./common-gui.nix ];
-  };
+ };
 }

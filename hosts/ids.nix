@@ -16,7 +16,6 @@
     wg-pubkey = "QlckeDNPkP5JhfMI13ginVxnDtg+mUE2HH/0ex7qu2Y=";
     wg-ip = "10.100.0.2/32";
   };
-  work-vm.ssh.wkral = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILU/4DYvPYGqa8/jmoDo8rC1Yn3uEVfbTwXPhzZh8ZHX";
   macbook.ssh.wkral = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBSsYbuCFzk+qWYhj1C+bPkcfUKQQw9J51bt6FszVZaD";
 
   wireguard-endpoint = "107.190.30.201:51820";
