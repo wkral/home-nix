@@ -103,6 +103,7 @@ in
       wk.quickcmd
 
       xwayland
+      xwayland-satellite
       grim # img screencap
       slurp # img selection tool
       mako # notification daemon
