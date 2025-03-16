@@ -3,7 +3,6 @@
   imports = [
     ../../home/console
     ../../home/gui
-    ../../home/gui/games.nix
     ../../home/gui/music.nix
     ../../home/gui/mkpdf.nix
     ../../home/gui/signal.nix
