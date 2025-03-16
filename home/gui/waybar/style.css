@@ -1,12 +1,26 @@
 * {
     border: none;
-    border-radius: 0;
     min-height: 0;
     color: #eaeaea;
 }
 
+.module {
+    background: rgba(29, 31, 33, 0.8);
+    border-radius: 0 0 5px 5px;
+    padding: 0px 5px;
+    margin: 0px 3px;
+}
+
 window#waybar {
-    background: rgba(29, 31, 33, 0.9);
+    background: none;
+}
+
+window#waybar.empty #window {
+    background: none;
+}
+
+#workspaces {
+    padding: 0;
 }
 
 #workspaces button {
@@ -36,9 +50,12 @@ window#waybar {
     border-bottom: 1px solid white;
 }
 
-#clock, #battery, #cpu, #memory, #network, #pulseaudio, #custom-spotify, #tray, #mode, #idle_inhibitor {
-    padding: 0px 4px;
-    margin: 0px 2px;
+tooltip {
+    background: rgba(29, 31, 33, 0.8);
+}
+
+tooltip * {
+    font-family: "NotoSansM Nerd Font";
 }
 
 @keyframes blink {
@@ -57,21 +74,12 @@ window#waybar {
     animation-direction: alternate;
 }
 
-#network {
-    background: #2980b9;
-}
-
-#network.disconnected {
-    background: #f53c3c;
-}
-
 #pulseaudio.muted {
-    background: rgba(255,255,255,0.2);
     color: #999999;
 }
 
-#idle_inhibitor.deactivated {
-    background: rgba(255,255,255,0.2);
+#idle_inhibitor {
+    padding-right: 8px;
 }
 
 #idle_inhibitor.activated {

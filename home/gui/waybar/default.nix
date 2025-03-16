@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, lib, ... }:
 let
   cfg = config.wk.gui;
 
@@ -24,7 +24,7 @@ let
   fillBgSteps = bgSteps (module: step: colour: ''
     #${module}.percent${step} {
       background: linear-gradient(to top, #${colour} ${step}%,
-                                  rgba(255,255,255,0.2) ${step}%);
+                                  rgba(29, 31, 33, 0.8) ${step}%);
     }'');
   colourBgSteps = bgSteps (module: step: colour: ''
     #${module}.percent${step} {
@@ -95,8 +95,8 @@ in
     settings = [
       ({
         layer = "top";
-        modules-left = [ "sway/workspaces" "sway/mode" ];
-        modules-center = [ "sway/window" ];
+        modules-left = [ "sway/workspaces" "niri/workspaces" "sway/mode" ];
+        modules-center = [ "sway/window" "niri/window" "clock" ];
         modules-right = [
           "idle_inhibitor"
           "pulseaudio"
@@ -104,10 +104,22 @@ in
         ] ++ lib.lists.optional cfg.tray.battery "battery" ++
         [
           "tray"
-          "clock"
         ];
         clock = {
-          format = " {:%a, %b %d %H:%M}";
+          format = " {:%H:%M}";
+          tooltip = true;
+          tooltip-format = "{calendar}";
+          calendar = {
+            mode = "year";
+            mode-mon-col  = 3;
+            on-scroll = 1;
+            format = {
+              months = "<span color='#ffead3'>{}</span>";
+              days = "<span color='#ecc6d9'>{}</span>";
+              weekdays = "<span color='#ffcc66'>{}</span>";
+              today = "<span color='#ff6699'><b>{}</b></span>";
+            };
+          };
         };
         cpu = {
           format = "";
@@ -144,11 +156,26 @@ in
         "sway/window" = {
           max-length = 70;
         };
+        "niri/window" = {
+          max-length = 70;
+          separate-outputs = true;
+        };
         "sway/workspaces" = {
           disable-scroll = true;
           format = "{icon} {name}";
           format-icons = {
             "1" = "";
+            default = "";
+            urgent = "";
+          };
+        };
+        "niri/workspaces" = {
+          disable-scroll = true;
+          format = "{icon} {value}";
+          format-icons = {
+            "Surf" = "";
+            "Work" = "⚒️";
+            "Chat" = "🗩";
             default = "";
             urgent = "";
           };
