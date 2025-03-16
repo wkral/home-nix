@@ -15,7 +15,7 @@ in
     {
       services.swayidle = {
         enable = true;
-        systemdTarget = "sway-session.target";
+        systemdTarget = "niri.service";
         timeouts = lib.lists.optional cfg.screen-off.enable
           {
             timeout = cfg.screen-off.timeout;
@@ -51,8 +51,8 @@ in
         };
 
       systemd.user.services.swayidle.Unit = {
-        PartOf = lib.mkForce [ "sway-session.target" ];
-        After = [ "sway-session.target" ];
+        PartOf = lib.mkForce [ "niri.service" ];
+        After = [ "niri.service" ];
       };
     };
 

@@ -12,7 +12,6 @@ in
 {
   imports = [
     ./dropdown-term.nix
-    ./idle.nix
     ./services.nix
   ];
   wayland.windowManager.sway = {

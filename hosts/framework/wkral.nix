@@ -18,7 +18,7 @@
       idle = {
         suspend = {
           enable = true;
-          timeout = 600;
+          timeout = 720;
         };
         lock.enable = true;
       };

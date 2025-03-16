@@ -3,6 +3,26 @@ let
   cfg = config.wk.gui;
 in
 {
+  systemd.user.targets = {
+    screen-on = {
+      Unit = {
+        Description = "Screen powered on target";
+        BindsTo = [ "niri.service" ];
+        Wants = [ "niri.service" ];
+        After = [ "niri.service" ];
+      };
+      Install = { WantedBy = [ "niri.service" ]; };
+    };
+    screen-off = {
+      Unit = {
+        Description = "Screen powered off target";
+        Conflicts = [ "screen-on.target" ];
+        After = [ "screen-on.target" ];
+        StopWhenUnneeded = true;
+      };
+    };
+  };
+
   systemd.user.services = {
     waybar = {
       Unit = {
@@ -35,5 +55,5 @@ in
     };
   };
 
-} 
+}
 

@@ -81,6 +81,7 @@ in
     ./waybar
     ./wofi
     ./wpaperd.nix
+    ./idle.nix
   ];
 
   config = {
@@ -108,6 +109,7 @@ in
       # wlstream      # video screencap
       swaylock
       wl-clipboard
+      brightnessctl
 
       #wofi
       wofi
