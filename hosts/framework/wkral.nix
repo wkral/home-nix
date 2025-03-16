@@ -27,6 +27,11 @@
         battery = true;
       };
       wallpapers.enable = true;
+      niri.extraConfig = ''
+        workspace "Work" {
+            open-on-output "DP-7"
+        }
+      '';
     };
   };
   home.stateVersion = "23.11";
