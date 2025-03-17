@@ -1,6 +1,7 @@
 { config, lib, pkgs, ... }:
 let
   cfg = config.wk.gui;
+  niri = "${pkgs.niri}/bin/niri";
 in
 {
   systemd.user.targets = {
@@ -37,6 +38,20 @@ in
         BusName = "fr.arouillard.waybar";
         Restart = "always";
         RestartSec = "1sec";
+      };
+    };
+    power-screen = {
+      Unit = {
+        Description = "Activate power to screen in sway";
+        BindsTo = [ "screen-on.target" ];
+        After = [ "screen-on.target" ];
+      };
+      Install = { WantedBy = [ "screen-on.target" ]; };
+      Service = {
+        Type = "oneshot";
+        ExecStart = "${niri} msg action power-off-monitors";
+        ExecStop = "${niri} msg action power-on-monitors";
+        RemainAfterExit = "yes";
       };
     };
     xwayland-satellite = {
