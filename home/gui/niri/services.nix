@@ -49,8 +49,8 @@ in
       Install = { WantedBy = [ "screen-on.target" ]; };
       Service = {
         Type = "oneshot";
-        ExecStart = "${niri} msg action power-off-monitors";
-        ExecStop = "${niri} msg action power-on-monitors";
+        ExecStart = "${niri} msg action power-on-monitors";
+        ExecStop = "${niri} msg action power-off-monitors";
         RemainAfterExit = "yes";
       };
     };
