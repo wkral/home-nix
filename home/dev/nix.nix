@@ -1,8 +1,7 @@
 { pkgs, ... }:
 {
   home.packages = [
-    pkgs.nixpkgs-fmt
-    pkgs.nixpkgs-review
+    pkgs.nixfmt-rfc-style
     pkgs.nix-update
     pkgs.niv
     pkgs.nixd
