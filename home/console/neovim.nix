@@ -169,6 +169,8 @@
 
       autocmd Filetype markdown setlocal spell
       autocmd Filetype gitcommit setlocal spell
+
+      set exrc "Allow project level .nvim.lua, .nvimrc, and .exrc file config
     '';
   };
 }
