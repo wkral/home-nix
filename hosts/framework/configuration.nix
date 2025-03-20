@@ -15,6 +15,7 @@ in
   networking = {
     hostName = "framework"; # Define your hostname.
     networkmanager.enable = true;
+    nameservers = [ "1.1.1.1" "1.0.0.1" ];
     firewall.allowedUDPPorts = [ 51820 ];
   };
 
