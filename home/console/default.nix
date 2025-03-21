@@ -57,6 +57,7 @@ with lib;
           }
           starship_precmd_user_func="set_win_title"
           source <("${pkgs.starship}/bin/starship" init bash --print-full-init)
+          source ${pkgs.pass.extensions.pass-otp}/share/bash-completion/completions/pass-otp
         '';
       };
       bottom.enable = true;
