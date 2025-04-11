@@ -30,7 +30,7 @@ in
           devices = [ "livingroom" ];
         };
         "/home/wkral/pictures" = {
-          id = "music";
+          id = "pictures";
           devices = [ "livingroom" ];
         };
       };

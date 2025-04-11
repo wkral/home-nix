@@ -30,7 +30,7 @@ in
           devices = [ "framework" ];
         };
         "/home/wkral/pictures" = {
-          id = "music";
+          id = "pictures";
           devices = [ "framework" ];
         };
       };
