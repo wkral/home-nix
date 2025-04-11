@@ -29,6 +29,10 @@ in
           id = "music";
           devices = [ "framework" ];
         };
+        "/home/wkral/pictures" = {
+          id = "music";
+          devices = [ "framework" ];
+        };
       };
     };
   };

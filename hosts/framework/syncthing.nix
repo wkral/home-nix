@@ -29,6 +29,10 @@ in
           id = "music";
           devices = [ "livingroom" ];
         };
+        "/home/wkral/pictures" = {
+          id = "music";
+          devices = [ "livingroom" ];
+        };
       };
     };
   };
