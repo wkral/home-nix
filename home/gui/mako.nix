@@ -23,7 +23,7 @@ in
       sort = "-time";
       layer = "top";
       ignore-timeout = "false";
-      format = "<b>%s</b>\n%b";
+      format = "<b>%s</b>\\n%b";
       actions = "true";
       markup = "true";
       progress-color = "over #5588AAFF";
