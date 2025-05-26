@@ -108,6 +108,18 @@ in
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  # Enable CUPS to print documents.
+  services = {
+    printing = {
+      enable = true;
+      startWhenNeeded = true;
+    };
+    avahi = {
+      enable = true;
+      nssmdns4 = true;
+    };
+  };
+
   # List packages installed in system profile
   environment.systemPackages = with pkgs; [
     lm_sensors
