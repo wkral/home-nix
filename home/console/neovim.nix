@@ -76,7 +76,7 @@
           -- Use a loop to conveniently call 'setup' on multiple servers and
           -- map buffer local keybindings when the language server attaches
           local nvim_lsp = require("lspconfig")
-          local servers = { 'rust_analyzer', 'gopls', 'golangci_lint_ls', 'pyright' }
+          local servers = { 'rust_analyzer', 'gopls', 'golangci_lint_ls' }
           for _, lsp in pairs(servers) do
             nvim_lsp[lsp].setup {
               on_attach = on_attach,
@@ -171,6 +171,26 @@
       autocmd Filetype gitcommit setlocal spell
 
       set exrc "Allow project level .nvim.lua, .nvimrc, and .exrc file config
+    '';
+    extraLuaConfig = ''
+
+      vim.g.lsp_on_attach = function(client, bufnr)
+        -- Enable completion triggered by <c-x><c-o>
+        vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+        -- Mappings.
+        -- See `:help vim.lsp.*` for documentation on any of the below functions
+        local opts = { buffer=0 }
+        vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+        vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+        vim.keymap.set('n', 'K',  vim.lsp.buf.hover, opts)
+        vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+        vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, opts)
+        vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
+        vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
+        vim.keymap.set('n', 'gr', '<cmd>Telescope lsp_references<CR>', opts)
+        vim.keymap.set('n', '<leader>f', vim.lsp.buf.format, opts)
+      end
     '';
   };
 }
