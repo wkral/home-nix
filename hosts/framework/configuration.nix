@@ -5,6 +5,7 @@ in
 {
   imports = [
     ./syncthing.nix
+    ./openvpn.nix
   ];
 
   # Bootloader.
@@ -87,6 +88,8 @@ in
       };
       syncthing_cert.mode = "0400";
       syncthing_key.mode = "0400";
+      vpn_dev_us_west_1_config.mode = "0400";
+      vpn_dev_us_west_1_auth.mode = "0400";
     };
   };
   # Define a user account. Don't forget to set a password with ‘passwd’.
