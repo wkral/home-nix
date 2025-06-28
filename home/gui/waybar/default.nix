@@ -95,8 +95,8 @@ in
     settings = [
       ({
         layer = "top";
-        modules-left = [ "sway/workspaces" "niri/workspaces" "sway/mode" ];
-        modules-center = [ "sway/window" "niri/window" "clock" ];
+        modules-left = [ "niri/workspaces" ];
+        modules-center = [ "niri/window" "clock" ];
         modules-right = [
           "idle_inhibitor"
           "pulseaudio"
@@ -153,21 +153,9 @@ in
           format-muted = "";
           states = stepped-states;
         };
-        "sway/window" = {
-          max-length = 70;
-        };
         "niri/window" = {
           max-length = 70;
           separate-outputs = true;
-        };
-        "sway/workspaces" = {
-          disable-scroll = true;
-          format = "{icon} {name}";
-          format-icons = {
-            "1" = "";
-            default = "";
-            urgent = "";
-          };
         };
         "niri/workspaces" = {
           disable-scroll = true;
