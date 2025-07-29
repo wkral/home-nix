@@ -198,7 +198,7 @@ in
         gtk-theme = "Dracula";
         cursor-theme = "Simp1e-Breeze";
         icon-theme = "Tela-circle-dracula-dark";
-
+        color-scheme = "prefer-dark";
       };
       "org/gnome/desktop/wm/preferences" = {
         titlebar-font = "Noto Sans Semi-Bold Condensed " + font-up;
