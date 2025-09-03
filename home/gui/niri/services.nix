@@ -54,22 +54,6 @@ in
         RemainAfterExit = "yes";
       };
     };
-    xwayland-satellite = {
-      Unit = {
-        Description="Xwayland outside your Wayland";
-        BindsTo="niri.service";
-        PartOf="niri.service";
-        After="niri.service";
-        Requisite="niri.service";
-      };
-      Service = {
-        Type="notify";
-        NotifyAccess="all";
-        ExecStart="${pkgs.xwayland-satellite}/bin/xwayland-satellite";
-        StandardOutput="journal";
-      };
-      Install = { WantedBy=["niri.service"]; };
-    };
   } // lib.optionalAttrs cfg.tray.network-manager {
     networkmanager-applet = {
       Unit = {
