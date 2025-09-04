@@ -17,6 +17,7 @@ in
       width = "300";
       height = "100";
       margin = "10";
+      outer-margin = "20";
       padding = "5";
       max-visible = "5";
       max-history = "5";

@@ -524,6 +524,35 @@ environment {
 }
 
 window-rule {
+    match is-active=true
+    shadow {
+        on
+        softness 30
+        spread 30
+        offset x=0 y=10
+        draw-behind-window true
+        color "#11111170"
+    }
+}
+
+window-rule {
+    match is-floating=true
+    shadow {
+        on
+        softness 20
+        spread 10
+        offset x=0 y=5
+        draw-behind-window true
+        color "#11111170"
+    }
+}
+
+window-rule {
+    match is-active=false
+    opacity 0.95
+}
+
+window-rule {
     match at-startup=true app-id="firefox"
     open-on-workspace "Surf"
 }
@@ -542,6 +571,28 @@ window-rule {
 layer-rule {
     match namespace="^notifications$"
     block-out-from "screencast"
+
+    shadow {
+        on
+        softness 20
+        spread 0
+        offset x=0 y=5
+        draw-behind-window true
+        color "#11111170"
+    }
+}
+
+layer-rule {
+    match namespace="^wofi$"
+
+    shadow {
+        on
+        softness 20
+        spread 10
+        offset x=0 y=5
+        draw-behind-window true
+        color "#11111170"
+    }
 }
 
 spawn-at-startup "firefox"
