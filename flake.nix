@@ -24,7 +24,7 @@
       flake = false;
     };
     wayland-pipewire-idle-inhibit = {
-      url = "github:rafaelrc7/wayland-pipewire-idle-inhibit/v0.5.1";
+      url = "github:rafaelrc7/wayland-pipewire-idle-inhibit/v0.6.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
