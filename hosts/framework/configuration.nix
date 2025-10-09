@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 
-let ids = import ../ids.nix;
+let
+  ids = import ../ids.nix;
 in
 {
   imports = [
@@ -16,7 +17,10 @@ in
   networking = {
     hostName = "framework"; # Define your hostname.
     networkmanager.enable = true;
-    nameservers = [ "1.1.1.1" "1.0.0.1" ];
+    nameservers = [
+      "1.1.1.1"
+      "1.0.0.1"
+    ];
     firewall.allowedUDPPorts = [ 51820 ];
   };
 
@@ -100,7 +104,12 @@ in
       description = "William Kral";
       hashedPasswordFile = config.sops.secrets.wkral_password.path;
       shell = pkgs.bashInteractive;
-      extraGroups = [ "networkmanager" "wheel" "audio" "wireshark" ];
+      extraGroups = [
+        "networkmanager"
+        "wheel"
+        "audio"
+        "wireshark"
+      ];
       openssh.authorizedKeys.keys = [
         ids.livingroom.ssh.wkral
         ids.macbook.ssh.wkral
@@ -122,6 +131,11 @@ in
       nssmdns4 = true;
     };
   };
+
+  services.udev.extraRules = ''
+    # Make phone user readable for syncing
+    SUBSYSTEM=="usb", ATTRS{idVendor}=="2717", ATTRS{idProduct}=="ff40*", MODE="0666"
+  '';
 
   # List packages installed in system profile
   environment.systemPackages = with pkgs; [
