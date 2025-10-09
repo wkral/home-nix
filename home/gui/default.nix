@@ -139,7 +139,9 @@ in
         enable = true;
         config = {
           cache = "yes";
-          cache-secs = 120;
+          cache-secs = 300;
+          hwdec = "auto";
+          vo = "gpu";
         };
       };
       zathura = {
