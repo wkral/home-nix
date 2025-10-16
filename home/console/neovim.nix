@@ -75,15 +75,15 @@
 
           -- Use a loop to conveniently call 'setup' on multiple servers and
           -- map buffer local keybindings when the language server attaches
-          local nvim_lsp = require("lspconfig")
           local servers = { 'rust_analyzer', 'gopls', 'golangci_lint_ls' }
           for _, lsp in pairs(servers) do
-            nvim_lsp[lsp].setup {
+            vim.lsp.config(lsp, {
               on_attach = on_attach,
-            }
+            })
+            vim.lsp.enable(lsp)
           end
-          nvim_lsp.nixd.setup({
-            cmd = { "nixd" },
+          vim.lsp.config('nixd', {
+            cmd = { 'nixd' },
             on_attach = on_attach,
             settings = {
               nixd = {
@@ -96,6 +96,7 @@
               },
             },
           })
+          vim.lsp.enable('nixd')
         '';
       }
       {
