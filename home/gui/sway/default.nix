@@ -114,7 +114,7 @@ in
       };
       startup = [
         {
-          command = "${pkgs.firefox-wayland}/bin/firefox";
+          command = "${pkgs.firefox}/bin/firefox";
         }
       ];
     };

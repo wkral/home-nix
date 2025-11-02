@@ -1,13 +1,13 @@
-{ config,  ... }:
+{ config, ... }:
 let
   cfg = config.wk.git;
 in
 {
   programs.git = {
     enable = true;
-    userName = "William Kral";
-    userEmail = cfg.user_email;
-    extraConfig = {
+    settings = {
+      user.name = "William Kral";
+      user.email = cfg.user_email;
       branch.sort = "-committerdate";
       color.ui = "auto";
       column.ui = "auto";
@@ -31,7 +31,9 @@ in
       help.autocorrect = "prompt";
       init.defaultBranch = "main";
       merge.conflictStyle = "zdiff3";
-      pull = { rebase = "false"; };
+      pull = {
+        rebase = "false";
+      };
       push = {
         default = "simple";
         autoSetupRemote = true;
@@ -41,10 +43,10 @@ in
         enabled = true;
         autoupdate = true;
       };
-    };
-    aliases = {
-      co = "checkout";
-      lg = "log --graph --pretty=format:'%C(auto)%h %cd %d%n%s %C(245)- %cn%n'";
+      alias = {
+        co = "checkout";
+        lg = "log --graph --pretty=format:'%C(auto)%h %cd %d%n%s %C(245)- %cn%n'";
+      };
     };
     ignores = [
       ".*.s[v-w][a-z]"

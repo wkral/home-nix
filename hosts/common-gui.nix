@@ -34,8 +34,7 @@
       pkgs.unifont
       pkgs.unifont_upper
       pkgs.noto-fonts
-      pkgs.noto-fonts-extra
-      pkgs.noto-fonts-emoji
+      pkgs.noto-fonts-color-emoji
       pkgs.material-icons
       pkgs.roboto
       pkgs.roboto-mono

@@ -87,7 +87,7 @@ in
   config = {
 
     home.packages = with pkgs; [
-      firefox-wayland
+      firefox
       nautilus # file manager
       dconf-editor
       wireshark

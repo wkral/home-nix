@@ -30,7 +30,7 @@ with lib;
       dnsutils
       zip
       tree
-      du-dust
+      dust
       qrencode
       yj
       fd
