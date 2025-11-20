@@ -68,34 +68,62 @@ in
     interfaces.wlp5s0.useDHCP = true;
     networkmanager.enable = true;
     nameservers = [ "1.1.1.1" "1.0.0.1" ];
-    firewall.allowedUDPPorts = [ 51820 ];
+    firewall.allowedUDPPorts = [ 51820 51821 ];
   };
 
   systemd.network = {
     enable = true;
-    netdevs."10-wg0" = {
+    netdevs."10-wg-lan" = {
       netdevConfig = {
         Kind = "wireguard";
-        Name = "wg0";
+        Name = "wg-lan";
       };
       wireguardConfig = {
         PrivateKeyFile = config.sops.secrets.wireguard_key.path;
         ListenPort = 51820;
+        RouteMetric = 100;
       };
       wireguardPeers = [
         {
           PublicKey = ids.deck.wg-pubkey;
           AllowedIPs = [ ids.deck.wg-ip ];
+          Endpoint = "deck.lan:51820";
         }
         {
           PublicKey = ids.framework.wg-pubkey;
           AllowedIPs = [ ids.framework.wg-ip ];
+          Endpoint = "framework.lan:51820";
         }
       ];
     };
-    networks.wg0 = {
-      matchConfig.Name = "wg0";
+    netdevs."11-wg-wan" = {
+      netdevConfig = {
+        Kind = "wireguard";
+        Name = "wg-wan";
+      };
+      wireguardConfig = {
+        PrivateKeyFile = config.sops.secrets.wireguard_key.path;
+        ListenPort = 51821;
+        RouteMetric = 500;
+      };
+      wireguardPeers = [
+        {
+          PublicKey = ids.deck.wg-pubkey;
+          AllowedIPs = [ ids.deck.wg-wan-ip ];
+        }
+        {
+          PublicKey = ids.framework.wg-pubkey;
+          AllowedIPs = [ ids.framework.wg-wan-ip ];
+        }
+      ];
+    };
+    networks.wg-lan = {
+      matchConfig.Name = "wg-lan";
       address = [ "10.100.0.1/24" ];
+    };
+    networks.wg-wan = {
+      matchConfig.Name = "wg-wan";
+      address = [ "10.100.0.101/24" ];
     };
   };
 

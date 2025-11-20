@@ -26,31 +26,54 @@ in
 
   systemd.network = {
     enable = true;
-    netdevs."10-wg0" = {
+    netdevs."10-wg-lan" = {
       netdevConfig = {
         Kind = "wireguard";
-        Name = "wg0";
+        Name = "wg-lan";
       };
       wireguardConfig = {
         PrivateKeyFile = config.sops.secrets.wireguard_key.path;
         ListenPort = 51820;
+        RouteMetric = 100;
       };
       wireguardPeers = [
         {
           PublicKey = ids.livingroom.wg-pubkey;
           AllowedIPs = [ ids.livingroom.wg-ip ];
-          Endpoint = ids.wireguard-endpoint;
-          PersistentKeepalive = 25;
+          Endpoint = "livingroom.lan:51820";
         }
         {
           PublicKey = ids.deck.wg-pubkey;
           AllowedIPs = [ ids.deck.wg-ip ];
+          Endpoint = "deck.lan:51820";
         }
       ];
     };
-    networks.wg0 = {
-      matchConfig.Name = "wg0";
+    netdevs."11-wg-wan" = {
+      netdevConfig = {
+        Kind = "wireguard";
+        Name = "wg-wan";
+      };
+      wireguardConfig = {
+        PrivateKeyFile = config.sops.secrets.wireguard_key.path;
+        RouteMetric = 500;
+      };
+      wireguardPeers = [
+        {
+          PublicKey = ids.livingroom.wg-pubkey;
+          AllowedIPs = [ "10.100.0.0/24" ];
+          Endpoint = ids.wireguard-endpoint;
+          PersistentKeepalive = 25;
+        }
+      ];
+    };
+    networks.wg-lan = {
+      matchConfig.Name = "wg-lan";
       address = [ "10.100.0.3/24" ];
+    };
+    networks.wg-wan = {
+      matchConfig.Name = "wg-wan";
+      address = [ "10.100.0.103/24" ];
     };
   };
   # Set your time zone.
