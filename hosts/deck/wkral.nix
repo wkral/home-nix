@@ -29,6 +29,8 @@
       };
       wallpapers.enable = true;
       niri.extraConfig = ''
+        workspace "Surf"
+
         input touch {
           map-to-output "eDP-1"
         }
