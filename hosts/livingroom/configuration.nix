@@ -86,12 +86,12 @@ in
       wireguardPeers = [
         {
           PublicKey = ids.deck.wg-pubkey;
-          AllowedIPs = [ ids.deck.wg-ip ];
+          AllowedIPs = [ "${ids.deck.wg-ip}/32" ];
           Endpoint = "deck.lan:51820";
         }
         {
           PublicKey = ids.framework.wg-pubkey;
-          AllowedIPs = [ ids.framework.wg-ip ];
+          AllowedIPs = [ "${ids.framework.wg-ip}/32" ];
           Endpoint = "framework.lan:51820";
         }
       ];
@@ -117,13 +117,20 @@ in
         }
       ];
     };
+
     networks.wg-lan = {
       matchConfig.Name = "wg-lan";
-      address = [ "10.100.0.1/24" ];
+      address = [ "${ids.livingroom.wg-ip}/25" ];
+      linkConfig.RequiredForOnline = "no";
     };
     networks.wg-wan = {
       matchConfig.Name = "wg-wan";
-      address = [ "10.100.0.101/24" ];
+      address = [ "${ids.livingroom.wg-wan-ip}/24" ];
+      networkConfig = {
+        IPMasquerade = "ipv4";
+        IPv4Forwarding = "yes";
+      };
+      linkConfig.RequiredForOnline = "no";
     };
   };
 
