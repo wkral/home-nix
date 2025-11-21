@@ -28,6 +28,11 @@
         battery = true;
       };
       wallpapers.enable = true;
+      niri.extraConfig = ''
+        input touch {
+          map-to-output "eDP-1"
+        }
+      '';
     };
   };
   home.stateVersion = "23.05";

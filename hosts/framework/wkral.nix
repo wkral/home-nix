@@ -28,9 +28,19 @@
       };
       wallpapers.enable = true;
       niri.extraConfig = ''
+        workspace "Surf" {
+            open-on-output "DP-7"
+        }
+
         workspace "Work" {
             open-on-output "DP-7"
         }
+
+        workspace "Chat" {
+            open-on-output "eDP-1"
+        }
+
+        spawn-at-startup "signal-desktop"
       '';
     };
   };

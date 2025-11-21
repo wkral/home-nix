@@ -596,13 +596,5 @@ layer-rule {
 }
 
 spawn-at-startup "firefox"
-spawn-at-startup "signal-desktop"
 
-workspace "Surf" {
-    open-on-output "DP-7"
-}
-
-workspace "Chat" {
-    open-on-output "eDP-1"
-}
-
+workspace "Surf"
