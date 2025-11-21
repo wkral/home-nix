@@ -39,12 +39,13 @@ in
       wireguardPeers = [
         {
           PublicKey = ids.livingroom.wg-pubkey;
-          AllowedIPs = [ ids.livingroom.wg-ip ];
+          AllowedIPs = [ "${ids.livingroom.wg-ip}/32" ];
           Endpoint = "livingroom.lan:51820";
+          PersistentKeepalive = 25;
         }
         {
           PublicKey = ids.deck.wg-pubkey;
-          AllowedIPs = [ ids.deck.wg-ip ];
+          AllowedIPs = [ "${ids.deck.wg-ip}/32" ];
           Endpoint = "deck.lan:51820";
         }
       ];
@@ -61,19 +62,21 @@ in
       wireguardPeers = [
         {
           PublicKey = ids.livingroom.wg-pubkey;
-          AllowedIPs = [ "10.100.0.0/24" ];
-          Endpoint = ids.wireguard-endpoint;
+          AllowedIPs = [ ids.wireguard.subnet ];
+          Endpoint = ids.wireguard.external-endpoint;
           PersistentKeepalive = 25;
         }
       ];
     };
     networks.wg-lan = {
       matchConfig.Name = "wg-lan";
-      address = [ "10.100.0.3/24" ];
+      address = [ "${ids.framework.wg-ip}/25" ];
+      linkConfig.RequiredForOnline = "no";
     };
     networks.wg-wan = {
       matchConfig.Name = "wg-wan";
-      address = [ "10.100.0.103/24" ];
+      address = [ "${ids.framework.wg-wan-ip}/24" ];
+      linkConfig.RequiredForOnline = "no";
     };
   };
   # Set your time zone.
