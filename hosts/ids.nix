@@ -22,7 +22,7 @@
   macbook.ssh.wkral = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBSsYbuCFzk+qWYhj1C+bPkcfUKQQw9J51bt6FszVZaD";
 
   wireguard = {
-    subnet = "10.100.0.0/24";
+    subnet = "10.100.0.128/25";
     external-endpoint = "107.190.30.201:51821";
   };
 }

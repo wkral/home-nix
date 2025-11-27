@@ -121,7 +121,6 @@ in
     networks.wg-lan = {
       matchConfig.Name = "wg-lan";
       address = [ "${ids.livingroom.wg-ip}/25" ];
-      linkConfig.RequiredForOnline = "no";
     };
     networks.wg-wan = {
       matchConfig.Name = "wg-wan";
@@ -130,7 +129,6 @@ in
         IPMasquerade = "ipv4";
         IPv4Forwarding = "yes";
       };
-      linkConfig.RequiredForOnline = "no";
     };
   };
 

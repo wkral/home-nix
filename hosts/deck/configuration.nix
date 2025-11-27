@@ -79,12 +79,10 @@ in
     networks.wg-lan = {
       matchConfig.Name = "wg-lan";
       address = [ "${ids.deck.wg-ip}/25" ];
-      linkConfig.RequiredForOnline = "no";
     };
     networks.wg-wan = {
       matchConfig.Name = "wg-wan";
       address = [ "${ids.deck.wg-wan-ip}/25" ];
-      linkConfig.RequiredForOnline = "no";
     };
   };
   # Set your time zone.
