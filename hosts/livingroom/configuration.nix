@@ -125,7 +125,7 @@ in
     };
     networks.wg-wan = {
       matchConfig.Name = "wg-wan";
-      address = [ "${ids.livingroom.wg-wan-ip}/24" ];
+      address = [ "${ids.livingroom.wg-wan-ip}/25" ];
       networkConfig = {
         IPMasquerade = "ipv4";
         IPv4Forwarding = "yes";
