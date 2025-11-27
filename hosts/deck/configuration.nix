@@ -84,6 +84,8 @@ in
 
   services.pipewire.alsa.support32Bit = true;
 
+  services.orca.enable = false;
+
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
