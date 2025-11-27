@@ -27,21 +27,20 @@
         battery = true;
       };
       wallpapers.enable = true;
-      niri.extraConfig = ''
-        workspace "Surf" {
-            open-on-output "DP-7"
-        }
-
-        workspace "Work" {
-            open-on-output "DP-7"
-        }
-
-        workspace "Chat" {
-            open-on-output "eDP-1"
-        }
-
-        spawn-at-startup "signal-desktop"
-      '';
+      niri.workspaces = {
+        surf = {
+          enable = true;
+          monitor = "DP-7";
+        };
+        work = {
+          enable = true;
+          monitor = "DP-7";
+        };
+        chat = {
+          enable = true;
+          monitor = "eDP-1";
+        };
+      };
     };
   };
   home.stateVersion = "23.11";

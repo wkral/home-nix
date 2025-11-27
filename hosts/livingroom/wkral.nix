@@ -24,10 +24,9 @@
         network-manager = true;
       };
       wallpapers.enable = true;
-      niri.extraConfig = ''
-        workspace "Chat"
-        spawn-at-startup "signal-desktop"
-      '';
+      niri.workspaces = {
+        chat.enable = true;
+      };
     };
   };
   home.stateVersion = "22.11";

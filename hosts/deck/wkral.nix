@@ -28,13 +28,7 @@
         battery = true;
       };
       wallpapers.enable = true;
-      niri.extraConfig = ''
-        workspace "Surf"
-
-        input touch {
-          map-to-output "eDP-1"
-        }
-      '';
+      niri.mapTouchOutput = "eDP-1";
     };
   };
   home.stateVersion = "23.05";
