@@ -75,7 +75,7 @@ in
     };
     networks.wg-wan = {
       matchConfig.Name = "wg-wan";
-      address = [ "${ids.framework.wg-wan-ip}/24" ];
+      address = [ "${ids.framework.wg-wan-ip}/25" ];
       linkConfig.RequiredForOnline = "no";
     };
   };
