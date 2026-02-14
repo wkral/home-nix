@@ -14,7 +14,7 @@
           colorscheme dracula
         '';
       }
-      fugitive
+      vim-fugitive
       {
         plugin = gitsigns-nvim;
         type = "lua";
@@ -173,7 +173,7 @@
 
       set exrc "Allow project level .nvim.lua, .nvimrc, and .exrc file config
     '';
-    extraLuaConfig = ''
+    initLua = ''
 
       vim.g.lsp_on_attach = function(client, bufnr)
         -- Enable completion triggered by <c-x><c-o>

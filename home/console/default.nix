@@ -72,9 +72,9 @@ with lib;
         enable = true;
         extraConfig = (builtins.readFile ./vimrc);
         plugins = with pkgs.vimPlugins; with pkgs.wk.vimPlugins; [
-          fugitive
+          vim-fugitive
           fzf-vim
-          gitgutter
+          vim-gitgutter
           vim-jinja
           lightline-vim
           editorconfig-vim
