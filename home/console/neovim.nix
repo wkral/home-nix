@@ -145,14 +145,7 @@
       };
       web-devicons.enable = true;
     };
-    highlightOverride = {
-      Normal = {
-        ctermbg = null;
-      };
-      NonText = {
-        ctermbg = null;
-      };
-    };
+    extraPlugins = [ pkgs.vimPlugins.vim-polyglot ];
     lsp = {
       keymaps = [
 

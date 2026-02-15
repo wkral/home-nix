@@ -84,6 +84,7 @@ with lib;
             fzf-vim
             vim-gitgutter
             lightline-vim
+            vim-polyglot
             editorconfig-vim
             colours
           ];
