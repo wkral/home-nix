@@ -11,7 +11,6 @@ let
 in
 {
   imports = [
-    ./dropdown-term.nix
     ./services.nix
   ];
   wayland.windowManager.sway = {
