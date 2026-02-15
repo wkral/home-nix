@@ -27,6 +27,10 @@
       url = "github:rafaelrc7/wayland-pipewire-idle-inhibit/v0.6.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ { nixpkgs, ... }:

@@ -1,197 +1,247 @@
 { pkgs, ... }:
 {
-  programs.neovim = {
+  programs.nixvim = {
     enable = true;
     defaultEditor = true;
-    viAlias = true;
     vimdiffAlias = true;
-    plugins = with pkgs.vimPlugins; [
-      {
-        plugin = dracula-vim;
-        config = ''
-          autocmd ColorScheme * highlight Normal ctermbg=None guibg=None
-          autocmd ColorScheme * highlight NonText ctermbg=None guibg=None
-          colorscheme dracula
-        '';
-      }
-      vim-fugitive
-      {
-        plugin = gitsigns-nvim;
-        type = "lua";
-        config = ''
-          require('gitsigns').setup()
-        '';
-      }
-      {
-        plugin = lualine-nvim;
-        type = "lua";
-        config = ''
-          require('lualine').setup {
-            options = {
-              theme = 'dracula'
-            },
-            sections = {
-              lualine_a = {
-                { 'mode', fmt = function(str) return str:sub(1,1) end }
-              },
-              lualine_c = {
-                { 'filename', path = 1, shorting_target = 40 }
-              },
-            }
-          }
-        '';
-      }
-      plenary-nvim
-      {
-        plugin = nvim-lspconfig;
-        type = "lua";
-        config = ''
-          -- Mappings.
-          -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-          vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, {})
-          vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, {})
-          vim.keymap.set('n', ']d', vim.diagnostic.goto_next, {})
-          vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, {})
-
-          -- Use an on_attach function to only map the following keys
-          -- after the language server attaches to the current buffer
-          local on_attach = function(client, bufnr)
-            -- Enable completion triggered by <c-x><c-o>
-            vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-
-            -- Mappings.
-            -- See `:help vim.lsp.*` for documentation on any of the below functions
-            local opts = { buffer=0 }
-            vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
-            vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-            vim.keymap.set('n', 'K',  vim.lsp.buf.hover, opts)
-            vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
-            vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, opts)
-            vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
-            vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
-            vim.keymap.set('n', 'gr', '<cmd>Telescope lsp_references<CR>', opts)
-            vim.keymap.set('n', '<leader>f', vim.lsp.buf.format, opts)
-          end
-
-          -- Use a loop to conveniently call 'setup' on multiple servers and
-          -- map buffer local keybindings when the language server attaches
-          local servers = { 'rust_analyzer', 'gopls', 'golangci_lint_ls' }
-          for _, lsp in pairs(servers) do
-            vim.lsp.config(lsp, {
-              on_attach = on_attach,
-            })
-            vim.lsp.enable(lsp)
-          end
-          vim.lsp.config('nixd', {
-            cmd = { 'nixd' },
-            on_attach = on_attach,
-            settings = {
-              nixd = {
-                nixpkgs = {
-                  expr = "import <nixpkgs> {}",
-                },
-                formatting = {
-                  command = { "nixfmt" },
-                },
-              },
-            },
-          })
-          vim.lsp.enable('nixd')
-        '';
-      }
-      {
-        plugin = nvim-treesitter.withAllGrammars;
-        type = "lua";
-        config = ''
-          require('nvim-treesitter.configs').setup {
-            highlight = {
-              enable = true,
-              additional_vim_regex_highlighting = false,
-            },
-            indent = {
-              enable = true,
-            }
-          }
-        '';
-      }
-      {
-        plugin = telescope-nvim;
-        type = "viml";
-        config = ''
-          let mapleader=","
-          nnoremap <leader>t <cmd>Telescope find_files<cr>
-          nnoremap <leader>b <cmd>Telescope buffers<cr>
-          nnoremap <leader>. <cmd>Telescope grep_string<cr>
-          nnoremap <leader>/ <cmd>Telescope live_grep<cr>
-        '';
-      }
-      vim-polyglot
-      {
-        plugin = nvim-coverage;
-        type = "lua";
-        config = ''
-          require("coverage").setup({
-            auto_reload = true,
-          })
-        '';
-      }
-    ];
     withRuby = false;
     withPython3 = false;
-    extraConfig = ''
-
-      " disable until https://github.com/neovim/neovim/issues/18573 resolved
-      " set title "Window title for vim
-
-      set smartindent "Indentation that doesn't suck
-      set wildmode=longest,list "more bashy tab competion for file paths
-      set linebreak "if you're going to wrap do it right
-      set backspace=indent,eol,start "Let my backspace fly
-      set nofoldenable "I don't like code folding
-      set cursorline "show which line I'm on
-      set colorcolumn=80 "better version of 80 column editing
-      set clipboard=unnamedplus "Use system clipboard
-
-      let mapleader=","
-
-      nnoremap <silent> <c-h> :wincmd h<cr>
-      nnoremap <silent> <c-j> :wincmd j<cr>
-      nnoremap <silent> <c-k> :wincmd k<cr>
-      nnoremap <silent> <c-l> :wincmd l<cr>
-
-      " Close the quickfix and other windows with a q
-      nnoremap <expr> q (!&modifiable ? ':close!<CR>' : 'q')
-
-      au BufNewFile,BufRead * match ExtraWhitespace /\s\s\+$/
-      match ExtraWhitespace /\s\s\+$/
-
-      "Spell checking
-      set spelllang=en_ca
-
-      autocmd Filetype markdown setlocal spell
-      autocmd Filetype gitcommit setlocal spell
-
-      set exrc "Allow project level .nvim.lua, .nvimrc, and .exrc file config
+    colorschemes.dracula.enable = true;
+    clipboard.register = "unnamedplus";
+    extraConfigLuaPost = ''
+      vim.cmd [[
+        highlight Normal guibg=none
+        highlight NonText guibg=none
+        highlight Normal ctermbg=none
+        highlight NonText ctermbg=none
+      ]]
     '';
-    initLua = ''
+    autoCmd = [
+      {
+        event = "Filetype";
+        pattern = [
+          "markdown"
+          "gitcommit"
+        ];
+        command = "setlocal spell";
+      }
+    ];
+    opts = {
+      smartindent = true;
+      wildmode = [
+        "longest"
+        "list"
+      ];
+      linebreak = true;
+      backspace = [
+        "indent"
+        "eol"
+        "start"
+      ];
+      foldenable = false;
+      cursorline = true;
+      colorcolumn = "80";
+      spelllang = "en_ca";
+      exrc = true;
+    };
+    globals.mapleader = ",";
+    keymaps = [
+      {
+        action = "<cmd>Telescope find_files<cr>";
+        key = "<leader>t";
+        mode = [ "n" ];
+        options.noremap = true;
+      }
+      {
+        action = "<cmd>Telescope buffers<cr>";
+        key = "<leader>b";
+        mode = [ "n" ];
+        options.noremap = true;
+      }
+      {
+        action = "<cmd>Telescope grep_string<cr>";
+        key = "<leader>.";
+        mode = [ "n" ];
+        options.noremap = true;
+      }
+      {
+        action = "<cmd>Telescope live_grep<cr>";
+        key = "<leader>/";
+        mode = [ "n" ];
+        options.noremap = true;
+      }
+      {
+        action = "<cmd>wincmd h<cr>";
+        key = "<c-h>";
+        mode = [ "n" ];
+        options.noremap = true;
+        options.silent = true;
+      }
+      {
+        action = "<cmd>wincmd j<cr>";
+        key = "<c-j>";
+        mode = [ "n" ];
+        options.noremap = true;
+        options.silent = true;
+      }
+      {
+        action = "<cmd>wincmd k<cr>";
+        key = "<c-k>";
+        mode = [ "n" ];
+        options.noremap = true;
+        options.silent = true;
+      }
+      {
+        action = "<cmd>wincmd l<cr>";
+        key = "<c-l>";
+        mode = [ "n" ];
+        options.noremap = true;
+        options.silent = true;
+      }
+      {
+        action = "(!&modifiable ? ':close!<CR>' : 'q')";
+        key = "q";
+        mode = [ "n" ];
+        options.noremap = true;
+        options.expr = true;
+      }
+    ];
+    plugins = {
+      fugitive.enable = true;
+      gitsigns.enable = true;
+      lualine = {
+        enable = true;
+        settings = {
+          options = {
+            theme = "dracula";
+          };
+          sections = {
+            lualine_a = [
+              {
+                __unkeyed-1 = "mode";
+                fmt = {
+                  __raw = "function(str) return str:sub(1,1) end";
+                };
+              }
+            ];
+            lualine_c = [
+              {
+                __unkeyed-1 = "filename";
+                path = 1;
+                shorting_target = 40;
+              }
+            ];
+          };
+        };
+      };
+      lspconfig.enable = true;
+      telescope.enable = true;
+      treesitter = {
+        enable = true;
+        grammarPackages = pkgs.vimPlugins.nvim-treesitter.allGrammars;
+        highlight.enable = true;
+        indent.enable = true;
+        folding.enable = false;
+      };
+      web-devicons.enable = true;
+    };
+    highlightOverride = {
+      Normal = {
+        ctermbg = null;
+      };
+      NonText = {
+        ctermbg = null;
+      };
+    };
+    lsp = {
+      keymaps = [
 
-      vim.g.lsp_on_attach = function(client, bufnr)
-        -- Enable completion triggered by <c-x><c-o>
-        vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-
-        -- Mappings.
-        -- See `:help vim.lsp.*` for documentation on any of the below functions
-        local opts = { buffer=0 }
-        vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
-        vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-        vim.keymap.set('n', 'K',  vim.lsp.buf.hover, opts)
-        vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
-        vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, opts)
-        vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
-        vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
-        vim.keymap.set('n', 'gr', '<cmd>Telescope lsp_references<CR>', opts)
-        vim.keymap.set('n', '<leader>f', vim.lsp.buf.format, opts)
-      end
-    '';
+        {
+          action.__raw = "vim.diagnostic.open_float";
+          key = "<leader>e";
+          mode = "n";
+        }
+        {
+          action.__raw = "vim.diagnostic.goto_prev";
+          key = "[d";
+          mode = "n";
+        }
+        {
+          action.__raw = "vim.diagnostic.goto_next";
+          key = "]d";
+          mode = "n";
+        }
+        {
+          action.__raw = "vim.diagnostic.setloclist";
+          key = "<leader>q";
+          mode = "n";
+        }
+        {
+          key = "gd";
+          lspBufAction = "definition";
+          mode = "n";
+        }
+        {
+          key = "gD";
+          lspBufAction = "declaration";
+          mode = "n";
+        }
+        {
+          key = "K";
+          lspBufAction = "hover";
+          mode = "n";
+        }
+        {
+          key = "gi";
+          lspBufAction = "implementation";
+          mode = "n";
+        }
+        {
+          key = "<leader>D";
+          lspBufAction = "type_definition";
+          mode = "n";
+        }
+        {
+          key = "<leader>rn";
+          lspBufAction = "rename";
+          mode = "n";
+        }
+        {
+          key = "<leader>ca";
+          lspBufAction = "code_action";
+          mode = "n";
+        }
+        {
+          key = "gr";
+          action = "<cmd>Telescope lsp_references<CR>";
+          mode = "n";
+        }
+        {
+          key = "<leader>f";
+          lspBufAction = "format";
+          mode = "n";
+        }
+      ];
+      servers = {
+        basedpyright.enable = true;
+        rust-analyzer.enable = true;
+        gopls.enable = true;
+        golangci_lint_ls.enable = true;
+        nixd = {
+          enable = true;
+          config = {
+            nixpkgs = {
+              expr = "import <nixpkgs> {}";
+            };
+            formatting = {
+              command = [ "nixfmt" ];
+            };
+          };
+        };
+        nushell.enable = true;
+        ruff.enable = true;
+        ty.enable = true;
+      };
+    };
   };
 }

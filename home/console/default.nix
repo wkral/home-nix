@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
 with lib;
 {
   options.wk = {
@@ -13,6 +18,7 @@ with lib;
   };
 
   imports = [
+    inputs.nixvim.homeModules.default
     ./git.nix
     ./neovim.nix
     ../dev/python.nix
@@ -47,7 +53,6 @@ with lib;
       };
     };
 
-
     programs = {
       bash = {
         enable = true;
@@ -71,17 +76,17 @@ with lib;
       vim = {
         enable = true;
         extraConfig = (builtins.readFile ./vimrc);
-        plugins = with pkgs.vimPlugins; with pkgs.wk.vimPlugins; [
-          vim-fugitive
-          fzf-vim
-          vim-gitgutter
-          vim-jinja
-          lightline-vim
-          editorconfig-vim
-          vim-fireplace
-          vim-polyglot
-          colours
-        ];
+        plugins =
+          with pkgs.vimPlugins;
+          with pkgs.wk.vimPlugins;
+          [
+            vim-fugitive
+            fzf-vim
+            vim-gitgutter
+            lightline-vim
+            editorconfig-vim
+            colours
+          ];
       };
     };
   };
