@@ -26,6 +26,11 @@
         command = "setlocal spell";
       }
     ];
+    filetype = {
+      extension = {
+        nu = "nu";
+      };
+    };
     opts = {
       smartindent = true;
       wildmode = [
