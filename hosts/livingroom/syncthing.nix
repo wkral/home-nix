@@ -1,5 +1,6 @@
 { config, ... }:
-let ids = import ../ids.nix;
+let
+  ids = import ../ids.nix;
 in
 {
   services.syncthing = {
@@ -12,26 +13,37 @@ in
     dataDir = "/home/wkral/.local/state/syncthing/";
     settings = {
       devices = {
-        framework = {
-          id = ids.framework.syncthing;
-        };
+        framework.id = ids.framework.syncthing;
+        phone.id = ids.phone.syncthing;
       };
       folders = {
-        "/home/wkral/wallpapers" = {
+        "wallpapers" = {
+          path = "/home/wkral/wallpapers";
           id = "wallpapers";
           devices = [ "framework" ];
         };
-        "/home/wkral/projects" = {
+        "projects" = {
+          path = "/home/wkral/projects";
           id = "projects";
           devices = [ "framework" ];
         };
-        "/home/wkral/music" = {
+        "music" = {
+          path = "/home/wkral/music";
           id = "music";
           devices = [ "framework" ];
         };
-        "/home/wkral/pictures" = {
+        "pictures" = {
+          path = "/home/wkral/pictures";
           id = "pictures";
           devices = [ "framework" ];
+        };
+        "phone" = {
+          path = "/home/wkral/phone";
+          id = "phone";
+          devices = [
+            "phone"
+            "framework"
+          ];
         };
       };
     };

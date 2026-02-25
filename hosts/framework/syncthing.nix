@@ -1,5 +1,6 @@
 { config, ... }:
-let ids = import ../ids.nix;
+let
+  ids = import ../ids.nix;
 in
 {
   services.syncthing = {
@@ -12,26 +13,37 @@ in
     openDefaultPorts = true;
     settings = {
       devices = {
-        livingroom = {
-          id = ids.livingroom.syncthing;
-        };
+        livingroom.id = ids.livingroom.syncthing;
+        phone.id = ids.phone.syncthing;
       };
       folders = {
-        "/home/wkral/wallpapers" = {
+        "wallpapers" = {
+          path = "/home/wkral/wallpapers";
           id = "wallpapers";
           devices = [ "livingroom" ];
         };
-        "/home/wkral/projects" = {
+        "projects" = {
+          path = "/home/wkral/projects";
           id = "projects";
           devices = [ "livingroom" ];
         };
-        "/home/wkral/music" = {
+        "music" = {
+          path = "/home/wkral/music";
           id = "music";
           devices = [ "livingroom" ];
         };
-        "/home/wkral/pictures" = {
+        "pictures" = {
+          path = "/home/wkral/pictures";
           id = "pictures";
           devices = [ "livingroom" ];
+        };
+        "phone" = {
+          path = "/home/wkral/phone";
+          id = "phone";
+          devices = [
+            "phone"
+            "livingroom"
+          ];
         };
       };
     };

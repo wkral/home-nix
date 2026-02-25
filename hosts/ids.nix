@@ -19,6 +19,9 @@
     wg-wan-ip = "10.100.0.130";
     wg-ip = "10.100.0.2";
   };
+  phone = {
+    syncthing = "4AMUKZM-XYXOKFJ-JM3L6GQ-UTBCHJ5-WM2P254-C2CKL6J-KUNYN23-SONLYAJ";
+  };
   macbook.ssh.wkral = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBSsYbuCFzk+qWYhj1C+bPkcfUKQQw9J51bt6FszVZaD";
 
   wireguard = {
