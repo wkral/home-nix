@@ -221,24 +221,27 @@
         }
       ];
       servers = {
-        basedpyright.enable = true;
+        basedpyright = {
+          enable = true;
+          config.settings.basedpyright.analysis.typeCheckingMode = "standard";
+        };
+
         rust-analyzer.enable = true;
         gopls.enable = true;
         golangci_lint_ls.enable = true;
         nixd = {
           enable = true;
           config = {
-            nixpkgs = {
-              expr = "import <nixpkgs> {}";
-            };
-            formatting = {
-              command = [ "nixfmt" ];
-            };
+            nixpkgs.expr = "import <nixpkgs> {}";
+            formatting.command = [ "nixfmt" ];
           };
         };
         nushell.enable = true;
-        ruff.enable = true;
-        ty.enable = true;
+        ruff = {
+          enable = true;
+          config.init_options.settings.lineLength = 120;
+        };
+        #ty.enable = true;
       };
     };
   };
