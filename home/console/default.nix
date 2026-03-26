@@ -71,7 +71,10 @@ with lib;
         defaultCommand = "rg --files --follow --no-ignore-exclude";
       };
       gpg.enable = true;
-      git.enable = true;
+      git = {
+        enable = true;
+        signing.format = null;
+      };
       jq.enable = true;
       vim = {
         enable = true;
