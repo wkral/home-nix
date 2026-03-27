@@ -150,7 +150,10 @@
       };
       web-devicons.enable = true;
     };
-    extraPlugins = [ pkgs.vimPlugins.vim-polyglot ];
+    extraPlugins = [
+      pkgs.vimPlugins.vim-polyglot
+      pkgs.vimPlugins.plenary-nvim
+    ];
     lsp = {
       keymaps = [
 
